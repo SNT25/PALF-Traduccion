@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/scenes/1_April/010409Friday/010409lunch.rpy", line 217: end of line expected.
+    red @closedbrow talking2mouth "Bueno... están Hilda, Bianca, Hilbert, Whitney, Flannery, Nate[(", " + morefriends_str) if morefriends_str else ""] y Rosa. Ah, y Silver."
+                                                                                                    ^
+
+Ren'Py Version: Ren'Py 8.3.2.24090902
+Sat Mar 15 18:14:54 2025

@@ -1,0 +1,423 @@
+label gym010405:
+
+$ timeOfDay = "Noon"
+
+play music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+$ renpy.music.play("Audio/school_crowd.ogg", channel='crowd', loop=True, fadein=1.0)
+
+$ renpy.transition(dissolve)
+show screen currentdate
+
+scene gym with Dissolve(2.0)
+
+$ renpy.pause(1.0, hard=True)
+
+ethan uniform @talkingmouth "So this is the gymnasium.{w=0.5} I wonder if this is an official gym sanctioned by the Pokémon League?"
+
+red uniform @talking2mouth "Most likely not. I didn't read anything about that on the website when I was doing my research."
+red @closedbrow talkingmouth "I think it's safe to assume it's just another fancy room in the academy's collection.{w=0.5} Though, other than some old banners lining the walls, this place is barren compared to the others."
+
+ethan @surprised "Old banners?! Dude, those are Champion pennants! They're only given to winners of {i}at least{/i} national tournaments!"
+
+red @happy "Yeah, but they're just banners. If it was the actual Champions hanging up there, then maybe I'd be impressed."
+
+pause 2.0
+
+red @sad "That didn't sound the way I thought it was going to."
+
+ethan @talking2mouth "Yeah, let's just... ignore that..."
+
+hide blank2
+
+show brendan uniform happy with vardis(0.5):
+    xpos (1/6) xzoom -1
+
+show may uniform happy with vardis(0.75):
+    xpos (2/6)
+
+show leaf uniform flirt behind may with vardis(1.0):
+    xpos (3/6)
+
+show calem uniform happy behind leaf with vardis(1.25):
+    xpos (4/6)
+
+show hilbert uniform sad with vardis(1.5):
+    xpos (5/6)
+
+ethan @happy "Hey, look, there's the rest of the gang!"
+
+pause 1.0
+
+show misty uniform with vardis(1.0):
+    xpos (4.5/6)
+
+red @talkingmouth "Oh, and there's Misty...{w=0.5} Hopefully she's feeling a bit better since I last saw her."
+
+ethan @talkingmouth "What's her story?"
+
+red @happy "Wish I knew."
+
+if (GetElective("Water") > 0 or GetElective("Ice") > 0):
+    red @talkingmouth "I learned more from our elective together than I did before."
+
+hide misty 
+hide calem
+hide cheren
+hide hilda
+hide hilbert
+hide brendan
+hide leaf
+hide may
+with dis
+
+show flannery uniform with vardis(0.5):
+    xpos (1/6)
+
+show whitney uniform happy with vardis(0.75):
+    xpos (2/6)
+
+show gardenia uniform cocky with vardis(1.0):
+    xpos (4/6)
+
+show sabrina uniform behind gardenia with vardis(1.25):
+    xpos (5/6) 
+
+show skyla uniform with vardis(1.5):
+    xpos 850 alpha 0.0
+    pause 1.0
+    parallel:
+        ease 0.5 alpha 1.0
+    parallel:
+        ease 0.3 xpos 950
+        ease 0.3 xpos 900
+        pause 0.3
+        ease 0.3 xpos 870
+        ease 0.3 xpos 920
+        
+show text "{size=70}{b}?{/b}{/size}":
+    xpos 1200 ypos 400 alpha 0.0 zoom 1.0
+    pause 2.5
+    parallel:
+        ease 0.5 alpha 1.0
+        pause 1.0
+        ease 0.5 alpha 0.0
+    parallel:
+        ease 2.5 xpos 1120 ypos 300 rotate 30 zoom 1.5
+
+$ renpy.pause(1.5, hard=True)
+
+ethan @talkingmouth "Man, this is a huge class.{w=0.75} I can actually recognize a few faces now!"
+
+hide flannery
+hide whitney
+hide gardenia
+hide sabrina
+hide skyla
+with dis
+
+show blue uniform with dis
+
+red @talkingmouth "Looks like [blue_name]'s sitting alone. Kinda surprising. I'd've thought he would have tried to surround himself with people by now."
+
+ethan @talkingmouth "You know that guy?"
+
+red @talkingmouth "Yeah. We have a history."
+
+ethan @confused "Oh, you dated?"
+
+red @happy "Hah! No, I still have some dignity. Trust me, his personality is {i}not{/i} worth it."
+
+ethan @happy "I dunno, I feel like my standards could learn to limbo for that guy..."
+
+pause 1.0
+
+red @angrybrow talking2mouth "Ethan."
+ethan @surprised "Uh? So serious, all of a sudden..."
+red @angrybrow talking2mouth "I'm saying this in {i}full seriousness.{/i} Don't do that to yourself."
+ethan @winkeyes sadeyebrows sweat talking2mouth "Alright! I'll take your word for it."
+
+hide flannery
+hide whitney
+hide gardenia
+hide sabrina
+hide skyla
+hide text
+
+hide blue with dis
+
+red @talkingmouth "Anyway, let's go sit over by the gang.{w=0.5} Don't want to end up like Mr.-Too-Cool-For-Friends."
+
+$ renpy.pause(1.0, hard=True)
+
+hide blue
+
+show bruno with dis:
+    xpos 0.33
+
+show alder happy with dis:
+    xpos 0.66
+
+alder @happy2 "Yes, right. Settle down."
+
+$ renpy.music.stop(channel='crowd', fadeout=1.5)
+
+redmind @thonk "Are these guys our teachers?{w=0.5} The guy on the left definitely looks like one..."
+
+show bruno think with dis:
+    xpos 0.33
+
+ethan @closedbrow talkingmouth "But the other guy looks like one of those off-the-grid mountain hermits you hear about on survivalist websites."
+
+$ BecomeNamed("Alder")
+$ BecomeNamed("Bruno")
+
+alder @norm2 "Welcome to gym class!{w=0.5} I'm Alder and he's Bruno."
+alder @happy2 "We'll be your instructors for this year."
+alder @norm2 "Now I bet you're all wondering what you'll actually be doing in this class.{w=0.5} Well, it'll be just like the other gym classes you've probably taken in your other schools."    
+alder @happy2 "Except we're not going to make you change into shorts and play sports.{w=0.5} In this school, we focus more on training Pokémon, not your bodies."    
+alder norm @norm2 "But training your body is important too, ha ha!"
+
+pause 1.5
+
+alder @norm2 "Ahem. Anyway, the real reason why this school has a gym class like this is to prepare you kids for the real Pokémon Gyms after you graduate.{w=0.5} At least for those interested in tackling the League."
+alder @happy2 "Can any of you tell me why Gyms exist in the first place?"
+
+hide alder 
+hide bruno 
+with dis
+
+show cheren uniform with dis:
+    xpos 0.25
+        
+show hilda uniform behind cheren with dis:
+    xpos 0.75
+    
+show serena uniform behind cheren with dis:
+    xpos 0.5
+
+cheren @talking2mouth "Gyms were created as a way to gatekeep less strong Trainers from challenging the Pokémon leagues."
+    
+serena @talkingmouth "Quite. If we didn't have Gyms, any trainer could directly attempt to challenge the league, overwhelming its resources."
+
+hilda @closedbrow talking2mouth "Yeah, and they're a hell of a good wakeup call for people who think they can challenge the league without training!"
+
+hide hilda
+hide cheren
+hide serena
+show alder happy:
+    xpos 0.66
+show bruno:
+    xpos 0.33
+with dis
+
+alder @winkbrow talkingmouth "Right, very good guesses...{w=0.5} but the main purpose of a Gym is to allow Trainers who are less experienced to test their skills against more experienced ones on even footing."
+
+hide cheren
+hide hilda
+hide serena
+
+alder @happy2 "And that is what we're going to be doing in this class."
+alder @talkingmouth "Everyone will have at least one battle a day. But we won't start on that {i}immediately.{/i}"
+alder @spunky2 "First, we need to review the basics.{w=0.5} You're all so busy trying to learn new things that sometimes you forget the most rudimentary skills."
+
+leaf uniform @surprised "What, are you going to teach us how to catch Pokémon or something?"
+
+show bruno think with dis
+
+alder norm @happy2 "Yes, that's a very important part of the curriculum!"
+
+leaf @sadmouth "Sheesh..."
+
+alder @happy2 "Even if some of you think you have everything you need to know about Pokémon battling, trust me when I say you don't."
+alder @happy2 "We've been in this field a lot longer than you have and even {i}we{/i} still don't have it down perfectly, ha ha!"
+
+show alder happy with dis
+
+show blue uniform angry behind alder with dis:
+    xpos 0.95 xzoom -1 zoom 0.9
+
+redmind @thinking "As I expected, [blue_name] seems a bit irked by what Alder just said."
+redmind @sad "I hope he doesn't make a scene like he did in homeroom."
+
+hide blue with dis
+
+alder @surprised2 "Oh, excuse me for rambling on like that."        
+alder @happy2 "Uhhhh, Bruno!{w=0.5} Why don't you tell them more about this class?"
+
+bruno @think2 "Very well."    
+bruno @norm2 "This gym was first and foremost designed to be a training ground for students, and as such, it is available for free use after class hours."
+bruno @think2 "Just bring your student ID and you receive unlimited access to its facilities."
+bruno @talkingmouth "In addition to the exercise machines available, the gym also contains several battle simulators to allow students to experience what a live Pokémon match would feel like in real-time."
+bruno @sadbrow talkingmouth "These are useful in case you wish to simulate battles outside of the realm of your own ability to train."
+bruno @talkingmouth "On your own time, you may also hold battles here--genuine or simulated. Another place live battles may be fought is in the Battle Hall."
+bruno @think2 "However, the members of the Battle Team have priority to use the Battle Hall."
+
+blue uniform @talkingmouth "Battle Team? What's that about?"
+
+bruno @closedbrow talkingmouth "Our school has a competitive battling team for students who wish to take their Pokémon training to the next level."
+bruno @closedbrow happymouth "They have the honor and privilege of representing Kobukan in national and international engagements."
+bruno @angrybrow talkingmouth "It's a very selective club, so don't think about signing up so quickly."
+
+blue @angrybrow talking2mouth "Oh, yeah?{w=0.5} What does it take to get in there? Impeccable grades? A strong team?"
+
+bruno @think2 "Nothing quite so concrete. You must impress the captain of the Battle Team."
+
+blue @happy "Ha! That's easy!"
+
+bruno @closedbrow talking2mouth "Hm."
+bruno -think @closedbrow smilemouth "You may test that assumption at your convenience."
+
+blue @happy "C'mon, how hard can it be? All I've gotta do is impress the captain? If he has eyes, he'll be impressed when he sees me!"
+
+alder -happy @sadbrow talkingmouth "Be careful of what you say.{w=0.5} Arrogance and strength do not go hand in hand." 
+
+blue @happy "I'm telling you, it'll be a piece of cake.{w=0.5} Who's in charge of the team?"
+
+$ showredonly = True
+
+lance @talking2mouth "My goddaughter."
+
+show bruno: 
+    xpos 0.33
+    ease 0.5 xpos 0.25
+
+show alder:
+    xpos 0.66
+    ease 0.5 xpos 0.75
+
+show lance with dis:
+    xpos 0.9 zoom 1.15
+    ease 0.75 xpos 0.5 zoom 1.0
+
+pause 1.5
+
+$ showredonly = False
+
+calem uniform @surprised "H-huh?"
+
+red @confused "Wait, who is this guy? He looks familiar. Did I... see him on a newspaper?"
+
+$ BecomeNamed("Lance")
+
+ethan @surprised "Dude! Don't you go on the internet?! That's Lance! He's the Indigo League Champion! {i}Our{/i} League, dude!"
+
+red @happy "Then I guess [blue_name] should watch his mouth around him."
+    
+lance @talking2mouth "Being accepted to the Battle Team is one of the highest honors a student can receive in this school.{w=0.5} It is not to be taken lightly."
+
+bruno @norm2 "Lance.{w=0.5} How long have you been standing there?"
+
+lance @talking2mouth "I was just passing by.{w=0.5} It's been a while, Bruno. Alder."
+
+alder @happy2 "Ha! It has indeed."
+
+alder @happy2 "Oh, where are my manners?{w=0.5} Students, this is Lance, the advisor of the Battle Team."
+
+lance @talking2mouth "Pleased to meet you all."
+lance @closedbrow talking2mouth "So these are the new students that just came in?{w=0.5} They look quite capable."
+lance angrybrow @talking2mouth "I expect great things from some of you.{w=0.5} Janine will certainly--"
+    
+blue cocky "Hey, you're the guy running the Battle Team?"
+
+lance @angrybrow talking2mouth "...Yes. And you should heed the advice of Alder and Bruno."
+
+lance @closedbrow talking2mouth "For someone currently at your level, it'd be impossible to get in."
+    
+blue angry "...What did you say?"
+
+redmind @upeyes frownmouth angryeyebrows "Here we go..."
+    
+blue @angry "Just because you're some bigshot Champion doesn't mean you can look down on me!"
+
+lance @closedbrow talking2mouth "I am not a 'bigshot Champion,' nor am I looking down on you.{w=0.5} I am simply stating the facts."
+
+lance @talking2mouth "...Anyway, I'm in a hurry.{w=0.5} I have business to attend to and I cannot be late."
+
+alder @happy2 "All right. It was good seeing you again, Lance." 
+alder @sadbrow happymouth "You know, you could drop by the staff dorms once in a while--Lenora's throwing a party before Springsday, and--"
+
+lance @talking2mouth "My thoughts on such things are apparent. Take care, Alder. Bruno."
+
+hide lance with dis
+
+pause 0.5
+
+show bruno:
+    xpos 0.25
+    ease 0.5 xpos 0.33
+
+show alder:
+    xpos 0.75
+    ease 0.5 xpos 0.66
+
+blue angrybrow frownmouth "{w=0.5}.{w=0.5}.{w=0.5}."
+blue angry "{size=30}You'll see, so-called 'champion.'{/size}"
+
+alder @happy2 "You heard him!{w=0.5} The Battle Team is serious business!"
+alder @talkingmouth "After all, it wasn't luck that our school has produced the most World Champions, Elite Four members, and holds the record for most wins at the National Tournament."
+
+alder @happy "But anyway, you shouldn't worry about things like that. Not yet, at least!"
+alder @closedbrow talking2mouth "There are much more important things to take care of, after all."
+
+show bruno think with dis
+
+alder @happy2 "Like graduating on time, heh heh!"
+
+pause 1.5
+
+alder @happy2 "Well, uh, I think that about covers all the boring boilerplate stuff. Let's move on."
+
+show blank2 with dis
+
+narrator "Despite Alder's assertion you were done with the 'boring boilerplate', you notice more than a couple of your classmates are struggling to stifle yawns as the lectures continue."
+    
+hide blank2 with dis
+
+window hide
+$ renpy.music.set_volume(0.1, delay=1.0, channel="music")
+$ PlaySound("BellChime.ogg")
+
+$ renpy.music.stop(channel='misc', fadeout=1.0)
+
+$ renpy.pause(2.0, hard=True)
+$ renpy.music.set_volume(1.0, delay=1.0, channel="music")
+
+alder norm @happy2 "Okay, that's enough for one day, students. Believe me, I'd {i}love{/i} to jump into the battling myself, but the lectures must continue until morale improves!"
+
+show bruno think with dis
+
+alder @talkingmouth "Next class, we'll talk about the basics of Pokémon battling and how to deal with Pokémon in the wild."
+
+show bruno with dis
+    
+bruno @think2 "It'll be review, but don't underestimate the intricacies of the basics."
+
+alder @happy2 "Right.{w=0.5} Well then, so long, students! Enjoy the rest of your day."
+
+call clearscreens
+hide alder
+hide bruno
+show blank2
+with dis
+
+ethan uniform @talkingmouth "Looks like... next on our schedule is lunch! I gotta handle something at the office, so you head on without me, alright?"
+
+red @talkingmouth "Sure thing. Take care."
+
+hide bruno
+hide alder
+hide bianca
+hide cheren
+
+window hide
+stop music fadeout 1.0
+$ renpy.pause(1.0, hard=True)
+
+show cafe behind blank2
+show afternoon at vspaz
+    
+pause 3.5
+
+jump lunch010405

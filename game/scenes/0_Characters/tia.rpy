@@ -1,0 +1,1054 @@
+label Tia1:
+    if (not IsBefore(1, 5, 2004)):
+        $ persondex["Tia"]["Events"].append("Level2SceneVer2")
+    stop music fadeout 1.5
+    queue music "audio/music/TiaTheme_start.ogg" noloop 
+    queue music "audio/music/TiaTheme_loop.ogg"
+
+    scene garden:
+        zoom 0.625
+    show clouds behind garden
+    with Dissolve(2.0)
+
+    if (IsBefore(17, 4, 2004)):
+        show tia closedbrow with Dissolve(2.0):
+            xpos 0.5 ypos 1.0 xzoom 1.0
+            parallel:
+                ease 4.0 xpos 0.25
+                ease 4.0 xpos 0.5
+                ease 4.0 xpos 0.75
+                ease 4.0 xpos 0.5
+                repeat
+            parallel:
+                ease 2.0 ypos 1.05
+                ease 2.0 ypos 1.0
+                ease 2.0 ypos 0.95
+                ease 2.0 ypos 1.0
+                repeat
+            parallel:
+                pause 3.7 
+                ease 0.3 xzoom -1
+                pause 3.7
+                ease 0.3 xzoom 1
+                repeat
+    else:
+        show tia hat closedbrow with Dissolve(2.0):
+            xpos 0.5 ypos 1.0 xzoom 1.0
+            parallel:
+                ease 4.0 xpos 0.25
+                ease 4.0 xpos 0.5
+                ease 4.0 xpos 0.75
+                ease 4.0 xpos 0.5
+                repeat
+            parallel:
+                ease 2.0 ypos 1.05
+                ease 2.0 ypos 1.0
+                ease 2.0 ypos 0.95
+                ease 2.0 ypos 1.0
+                repeat
+            parallel:
+                pause 3.7 
+                ease 0.3 xzoom -1
+                pause 3.7
+                ease 0.3 xzoom 1
+                repeat
+
+    narrator "You walk into the garden and are greeted by the amusing sight of what looks like Tia performing a solo waltz."
+
+    pause 2.0
+
+    narrator "She bounces her head along to some music that only she can hear."
+
+    pause 2.0
+
+    narrator "You take a deep breath and flex your hands out before revealing what you've been practicing."
+
+    red @happy "<Hello, Tia.>"
+
+    pause 1.0
+
+    redmind @thinking "Wait. Eyes closed. She can't see me. I'm an idiot."
+
+    show tia surprisedbrow frownmouth with dis 
+
+    red @talkingmouth "Hey, Tia."
+
+    show tia happy with dis
+
+    pause 1.0
+
+    show tia surprisedbrow frownmouth with dis
+
+    red @talkingmouth "<You dance?>"
+
+    pause 1.0
+
+    show tia happy:
+        ease 0.5 xpos 0.5 ypos 1.0 xzoom 1
+        parallel:
+            ease 0.3 ypos 1.0
+            ease 0.3 ypos 1.1
+            repeat
+
+    tia "You learned JSL? That's {font=fonts/sign.ttf}great{/font}! I'm so {font=fonts/sign.ttf}happy{/font}! Now we can {font=fonts/sign.ttf}talk{/font} and {font=fonts/sign.ttf}play{/font} and I {font=fonts/sign.ttf}don't{/font} {font=fonts/sign.ttf}need{/font} {font=fonts/sign.ttf}Whitney{/font}!"
+
+    red @surprisedbrow frownmouth "<Slow down, very slow. I cannot speak that fast.>"
+
+    pause 1.0
+
+    red @closedbrow talking2mouth "<I meant I cannot {i}read{/i} that fast.>"
+
+    show tia happy:
+        ease 0.5 xpos 0.5 ypos 1.0 xzoom 1
+
+    tia -happy @surprised "Oh. Well, I'm still {font=fonts/sign.ttf}happy{/font}!"
+    tia @sadbrow happymouth "But it's okay if you want to just speak."
+    tia @happy "I really {font=fonts/sign.ttf}appreciate{/font} you making the effort, {font=fonts/sign.ttf}[first_name]{/font}!"
+
+    red @happy "I might just take you up on that. I'll try to sign and speak at the same time, though. Whitney makes it look easy!"
+
+    pause 1.0
+
+    red @talkingmouth "Anyway, those were some sick dance moves. Or... I guess 'sick' isn't the right word. Elegant?"
+    red @happy "Where'd you learn to dance, spacewoman? The moon?"
+
+    tia @happy "In A-L-T-O M-A-R-E! My sister and I used to dance {font=fonts/sign.ttf}all{/font} {font=fonts/sign.ttf}the{/font} time."
+
+    red @talking2mouth "Right... and your Sister is 'Bianca,' right?"
+
+    tia @frownmouth "That's right. I miss her..."
+
+    red @talkingmouth "...She must love you a lot, to let you get into this school under her name."
+
+    tia @happy "She does! She was my first {font=fonts/sign.ttf}human{/font} friend. Before I {font=fonts/sign.ttf}met{/font} {font=fonts/sign.ttf}her{/font} it was just my brother and I hiding in the city."
+
+    red @talkingmouth "Oh, so your brother and you came before your Sister? So I guess Bianca is a younger sister, then."
+
+    if (IsBefore(1, 5, 2004)):
+        red @confused "Wait... {i}hiding{/i} in the city? Were you homeless?"
+
+        tia @surprised "No! Alto Mare was my home."
+
+        red @closedbrow talking2mouth "Uh... but where did you sleep at night? Before your Sister, I mean."
+
+        tia @happy "Under a bridge!"
+
+        pause 1.0
+
+        red @confused "Tia, that's called being homeless."
+
+        tia @angrybrow poutmouth "{font=fonts/sign.ttf}Nuh-uh{/font}! Alto Mare was my home."
+
+        pause 1.0
+
+        red @closedbrow talking2mouth "Well, I'm glad you got out of that situation, anyway."
+
+    red @confused "I've got a question, though. If she was willing to let you take her place at Kobukan, why didn't she want to go herself?"
+
+    tia @happy "Oh, she's busy helping {font=fonts/sign.ttf}grampy{/font} run Alto Mare. My grandpa is the city's {font=fonts/sign.ttf}mayor{/font}!"
+    tia @talkingmouth "And someone needs to run the {font=fonts/sign.ttf}Defense{/font} {font=fonts/sign.ttf}Mechanism{/font} of Alto Mare, of course."
+
+    red @confused "The... what?"
+
+    tia @happy "The {font=fonts/sign.ttf}Defense{/font} {font=fonts/sign.ttf}Mechanism{/font} of Alto Mare!"
+
+    red @sadbrow happymouth "Gimme a hint here. The food court of Alto Mare? The tourism bureau of Alto Mare? The sewer system of Alto Mare?"
+
+    tia @thinking "Hm."
+    tia @talkingmouth "D-M-A."
+
+    red @closedbrow talking2mouth "DMA? Uh... the dirty manhole of Alto Mare? The dogmatic militia of Alto Mare?"
+
+    tia @thinking "The second one is {i}kinda{/i} right."
+
+    tia @happy "The DMA keeps the bad people away from us!"
+
+    red @surprised "Oh, bad people... like the one you said you were hiding from."
+
+    tia @happy "Yes, {font=fonts/sign.ttf}exactly{/font}! Grandpa said he knew the bad person would appear in Kobukan {i}months{/i} ago, so that's why I'm here."
+
+    show tia:
+        ease 0.2 ypos 1.2 zoom 1.3
+
+    tia @angrybrow happymouth "I'm here to protect you!"
+
+    show tia:
+        ease 0.2 ypos 1.0 zoom 1.0
+
+    red @happy "Aw. I thought I was protecting {i}you{/i}, though?"
+
+    tia @lightblush talkingmouth "I... might need that for a little bit longer."
+    tia @angrybrow happymouth "The {font=fonts/sign.ttf}bad{/font} {font=fonts/sign.ttf}person{/font} is much stronger than grandpa thought. I could only barely {font=fonts/sign.ttf}fight{/font} {font=fonts/sign.ttf}them{/font}, and I got really tired after..."
+    tia @talkingmouth "Normally my brother {font=fonts/sign.ttf}handles{/font} stuff like that, though."
+
+    red @closedbrow talking2mouth "Your grandpa and your sister engaged in a conspiracy to get your sister into this school so that you could take her place and be here to protect the population of Kobukan from... a bad person?"
+
+    if (IsAfter(15, 5, 2004)):
+        redmind @thinking "I don't know if this is more or less confusing now that I know the 'bad person' is an alien Pokémon that hitched a ride on a meteor."
+
+    tia @happy "Yep! I'm going to be a hero!"
+
+    if (IsAfter(15, 5, 2004)):
+        red @talkingmouth "Um... what would you say if I told you that the 'bad person' has already been captured?"
+
+        tia @happy "I would stay here to {font=fonts/sign.ttf}beat{/font} them up if they come back! They're no match for me!"
+
+    pause 1.0
+
+    red @confusedeyebrows frownmouth "{w=0.5}.{w=0.5}.{w=0.5}."
+
+    show tia surprisedbrow frownmouth with dis
+
+    if (IsBefore(1, 5, 2004)):
+        red @closedbrow talking2mouth "I don't think you're lying, but it's kinda hard to believe what you're saying."
+
+        tia sadbrow frownmouth "It is...?"
+
+        red @sad "Aw, don't feel bad, Tia. I {i}did{/i} say I don't think you're lying. It's just... if there was any actual threat, why would they send a tiny eighteen-year-old girl to face it?"
+
+        show tia angrybrow poutmouth with dis
+
+        red @happy "I mean... I'm pretty sheltered, growing up in Pallet Town, but I, at least, know how to use a phone."
+
+    else:
+        red @talkingmouth "So... you kinda got your butt kicked by the 'bad person' the first time, huh?"
+
+        show tia angrybrow poutmouth with dis 
+
+    tia "Mrgrgr!"
+
+    "{color=#000}TL Note{/color}" "There is no sign for 'Mrgrgr.' And yet, that is the only possible translation for Tia's hands in this moment."
+
+    if (IsBefore(1, 5, 2004)):
+        tia "You don't need to know how to use a dumb ol' {font=fonts/sign.ttf}phone{/font} to protect people!"
+    else:
+        tia "It was at least a {font=fonts/sign.ttf}draw{/font}!"
+
+    show tia happy with dis
+
+    if (IsBefore(1, 5, 2004)):
+        red @closedbrow talking2mouth "Hm... Alright. I don't get it, but I choose to believe you."
+    else:
+        red @happy "Alright, alright, you're right."
+
+    tia "Yay! Thank you, [first_name]!"
+
+    red @happy "So. What do you need to do to get better at protecting people?"
+
+    tia @surprised "Huh?"
+
+    if (IsBefore(1, 5, 2004)):
+        red @talkingmouth "Y'know. If you're really here to defend us against a bad person, then you probably need to train, right? What's your battle strategy?"
+
+    else:
+        red @talkingmouth "Y'know. If you're going to defend us against bad people, then you probably need to train, right? What's your battle strategy?"
+
+    tia @talkingmouth "Oh, I like to help my brother! I give him a Helping Hand in his battles, and, if he's tired or hurt, I use Heal Pulse!"
+
+    red @closedbrow talking2mouth "Hm. That's... that's kinda..."
+
+    pause 1.0
+
+    show tia sadbrow frownmouth with dissolve
+
+    tia "...I know. My brother isn't {font=fonts/sign.ttf}here{/font}..."
+
+    red @closedbrow talking2mouth "Also, I was kinda asking more about your solo battle strategy. Like, what you do when it's just one trainer against another."
+
+    tia -sadbrow -frownmouth @talkingmouth "Well, I just ask my friends to do their best! And they always do!"
+
+    red @closedbrow talking2mouth "Hm... why don't you send one of your friends out? Maybe I can take a look at them."
+
+    python:
+        mimeid = GetTrainerTeam("Tia", "Mime Jr.").GetId()
+        sidemonnum = mimeid
+
+    $ PlaySound("Pokemon/Ball sound.ogg")
+    $ GetTrainerTeam("Tia", "Mime Jr.").PlayCry()
+
+    show sideportraitfull at dormdesk, pokeball
+    show tia:
+        ease 0.5 xpos 0.75
+
+    $ hideside = True
+
+    sidemon @talkingmouth "Mime!~"
+
+    pause 1.0
+
+    $ hideside = False
+
+    red @happy "Hi, there, buddy. You're looking good."
+
+    $ hideside = True
+
+    $ GetTrainerTeam("Tia", "Mime Jr.").PlayCry()
+    sidemon @talkingmouth "Mi-mi-mime!~"
+
+    pause 1.0
+
+    $ hideside = False
+
+    show sideportraitfull:
+        xpos 0.5 ypos 0.78 zoom 1.0 xzoom 1.0 matrixcolor BrightnessMatrix(0.0) * ContrastMatrix(1.0)
+        parallel:
+            ease 4.0 xpos 0.25
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.75
+            ease 4.0 xpos 0.5
+            repeat
+        parallel:
+            ease 2.0 ypos 1.0
+            ease 2.0 ypos 1.05
+            ease 2.0 ypos 1.0
+            ease 2.0 ypos 1.05
+            repeat
+        parallel:
+            pause 3.7 
+            ease 0.3 xzoom -1
+            pause 3.7
+            ease 0.3 xzoom 1
+            repeat
+
+    red @happy "Aw, the little guy's cute. He..."
+
+    pause 2.0
+
+    red @surprised "Wait! He's doing the same dance you did!"
+
+    tia @happybrow lightblush "Yes! I taught him this dance!"
+
+    red @surprised "Woah. You taught your Pokémon how to dance?"
+
+    tia @happy "Yeh! It's a good way to learn how to dodge!"
+
+    show tia closedbrow:
+        xpos 0.75 ypos 1.0 xzoom 1.0
+        parallel:
+            ease 4.0 xpos 0.25
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.75
+            ease 4.0 xpos 0.5
+            repeat
+        parallel:
+            ease 2.0 ypos 1.05
+            ease 2.0 ypos 1.0
+            ease 2.0 ypos 0.95
+            ease 2.0 ypos 1.0
+            repeat
+        parallel:
+            pause 3.7 
+            ease 0.3 xzoom -1
+            pause 3.7
+            ease 0.3 xzoom 1
+            repeat
+
+    pause 2.0 
+
+    if (IsBefore(1, 5, 2004)):
+        redmind @thinking "Huh... Pokémon have an instinct to battle. Not so much to dance. Training a Pokémon to dance would take some serious skill, or at least some serious ability to communicate with your Pokémon. I wonder what's going on here...?"
+    else:
+        redmind @thinking "Huh... Pokémon have an instinct to battle. Not so much to waltz." 
+        redmind @thinking "Training a Pokémon to dance would take some serious skill, or at least some serious ability to communicate with your Pokémon. One of the perks of {i}being{/i} a Pokémon, I guess."
+
+    pause 2.0
+
+    show tia -closedbrow with dis:
+        ease 0.5 xpos 0.5 xzoom 1.0 ypos 1.0
+
+    red @talkingmouth "I'm impressed. You're a better trainer than I've given you credit for."
+
+    tia @sadbrow happymouth "Aw, thanks. But I think I need a {font=fonts/sign.ttf}trainer{/font} myself..."
+
+    red @confused "A what?"
+
+    tia @closedbrow frownmouth "Hm... you know, a {i}you!{/i}"
+
+    red @closedbrow talking2mouth "Me? A... student? A Champion?"
+
+    tia @angrybrow poutmouth "No, no! The person who throws the {font=fonts/sign.ttf}poke{/font} Balls!"
+
+    red @happy "Oh, a trainer!"
+
+    tia @happy "Yeah! There's a lot I don't know about {font=fonts/sign.ttf}humans{/font}. I want to learn how to be a better {font=fonts/sign.ttf}human{/font}."
+
+    red @talkingmouth "Well, I might be able to help you with that. I mean, I don't know much about being a trainer myself, yet, but I guess I know a little bit more than you."
+
+    tia angrybrow happymouth "Yay! Thank you, {color=#0048ff}{font=fonts/sign.ttf}Trainer{/font}!{/color}"
+
+    $ ValueChange("Tia", 5, 0.5)
+
+    $ RelationshipRankUp("Tia", "[tiafont]Trainer{/font}", 1)
+return
+
+label Tia2:
+    $ RecordKnownLocations("Tia", "Cafe")
+    stop music fadeout 1.5
+    queue music "audio/music/TiaTheme_start.ogg" noloop 
+    queue music "audio/music/TiaTheme_loop.ogg"
+
+    scene garden:
+        zoom 0.625
+    show clouds behind garden
+    with Dissolve(2.0)
+
+    narrator "You walk into the garden, but are surprised to see Tia isn't bouncing around in her normal spot."
+
+    show kris with dis
+
+    kris @talkingmouth "[first_name]? Hi."
+
+    if (GetRelationshipRank("Professor Cherry") > 0):
+        kris @talkingmouth "What's up? Are you looking for another lesson?"
+
+    else: 
+        kris @talkingmouth "What's up? Are you looking for another picnic spot?"
+
+    red @happy "Not this time. I was actually looking for Tia. Any idea where she is?"
+
+    kris @talkingmouth "Oh... yes! She told me she has a part-time job at a café in the city. The Inspira Pokécafé, I believe."
+
+    if (HasLocation("Cafe")):
+        red @talkingmouth "Got it. I know where that is."
+
+    else:
+        red @talking2mouth "Huh. I'm not sure I know where that is... or maybe that was one of the places Tia and I went with Leaf, Flannery, and Whitney, all that time ago?"
+        red @happy "Well, if I just pick a direction, and keep running, I'll find it eventually."
+
+    pause 1.5
+
+    red @confused "Wait. Sorry, it took me a second to catch up to what you said. You said Tia has a part-time job?"
+
+    kris @surprisedbrow talking2mouth "I know! It's surprising, isn't it? Kobukan students are so busy--I don't know how she finds the time."
+
+    redmind @thonk "Not exactly what I was surprised about, but I guess that's part of it."
+
+    kris @talkingmouth "She's often working there--[bluecolor]if you head to the city on any weekday{/color}, I bet you can find her."
+
+    red @talkingmouth "Thanks for letting me know. You're her homeroom Professor, right? I guess you probably know her pretty well, then."
+
+    kris @happy "I was pretty surprised when she showed up in my class all of a sudden. 'Bianca' was meant to be in Professor Nanakamado's class, after all, and when she didn't show up for a couple weeks..."
+    kris @sadbrow frownmouth "[ellipses]"
+    kris @closedbrow talking2mouth "Well, it's just lucky that she landed in mine. Though I'm not sure why Oak reassigned her, it was definitely for the best. Oh, I don't want to imagine what would've happened if poor Tia ended up in Rowan's class."
+
+    if (IsAfter(30, 5, 2004)):
+        red @wince talking2mouth "Yeah... he gets pretty intense."
+
+        kris @sadbrow talkingmouth "Poor Winona is always only a couple seconds away from having a heart attack whenever Rowan's around."
+
+    kris @talking2mouth "The language barrier would be a bad enough obstacle, of course, but Tia needs a lot of attention and support. Not that Rowan couldn't provide that, of course. But his brand of tough love might... er..."
+    kris @happy "You know, I think I've just about said enough. It's just incredibly lucky that Tia ended up in the homeroom of the one Professor in this school who can communicate with her."
+    kris @closedbrow talking2mouth "...Well, I suppose there's Nurse Miriam. But she has a nursing degree. She's not a Professor."
+
+    pause 1.0
+
+    kris sadbrow frownmouth @talking2mouth "Oh, that sounded {i}way{/i} more arrogant than I intended."
+
+    red @happy "Maybe a little bit. It's alright, I won't tell anyone."
+
+    $ ValueChange("Kris", 3)
+
+    kris sadbrow talkingmouth "Thanks, [first_name]."
+
+    hide kris with dis
+
+    narrator "Kris walks away. [bluecolor]The short conversation did not take much time, so you should still be able to go into the city and talk to Tia, if you wish.{/color}"
+
+    $ AddEvent("Tia", "Tia2Part1")
+
+    if sceneviewer:
+        return
+
+    $ renpy.pop_call()
+    jump freeroam
+
+label Tia2Part2:
+    $ AddEvent("Tia", "Tia2Part2")
+    scene citycafe with splitfade
+
+    stop music fadeout 1.5
+
+    show screen songsplash("Relic Song", "Zame")
+    queue music "audio/music/relicsong.ogg" 
+
+    redmind @thinking "Hm... this is the right place, right? Then, she should be..."
+
+    show tia cafe with Dissolve(1.0)
+
+    redmind "Aw, that's cute. They gave her a little outfit."
+
+    narrator "You watch as Tia moves from place to place in the café, delivering drinks and small cakes to the various patrons." 
+    narrator "She seems to glide effortlessly across the tiled floor, and though there are beads of sweat on her forehead, she seems to be in high spirits."
+
+    show tia happy sweat with dis
+
+    redmind @thinking "Hm. Why is she sweating? I mean, it's an illusion, right? She'd have to {i}choose{/i} to make herself sweat, surely."
+    redmind @thonk "...I thought the questions about her would end when I learned she was a Psychic Pokémon sent to fight off a meteor alien, but somehow there are just more questions."
+
+    show tia surprisedbrow frownmouth with dis
+
+    pause 1.0
+
+    show tia happy with dis:
+        ypos 1.0 zoom 1.0
+        ease 0.5 ypos 1.2 zoom 1.3
+
+    tia -sweat @happy "[first_name]! You're [tiafont]here!{/font}"
+
+    red @happy "I sure am.{w=0.5} Probably."
+    red @talkingmouth "I heard you had a part-time job, and just had to check it out."
+
+    tia -happy @talkingmouth "Welcome to the [tiafont]Inspira{/font} Pokécafé, then! Where we serve drinks by Pokémon, for Pokémon, from Pokémon! Is this your first [tiafont]time{/color}?"
+
+    if (HasLocation("Cafe") or sawwallyellow):
+        red @talkingmouth "Nah, I've been here before."
+
+    else:
+        red @talking2mouth "I think we might have dropped in for a couple minutes that day I saw you jump off the roof, but beyond that, nope."
+
+    tia @talkingmouth "Oh, okay! Well, would you like a seat or a [tiafont]booth{/font}?"
+
+    red @talking2mouth "Prrrobably the first thing?"
+
+    tia @poutmouth sadeyes angryeyebrows "Mmmpft."
+
+    red @sadbrow talkingmouth "Sorry. My JSL's gotten better, but I still can't interpret very fast. I sometimes miss words at the end of sentences."
+
+    tia @sadbrow talkingmouth "Oh, I know. I'm not angry. I just love that you're trying."
+    tia @closedbrow talking2mouth "Um... they're going to make me stop working in half an [tiafont]hour.{/font} Something about a [tiafont]union{/fomt}."
+    tia "Will you be here then? I'd love to talk!"
+
+    red @happy "Sure. I can do that."
+
+    tia @happy "Great! I'll get you the Nutmeg Caramel Swirl Chocolate Pie Cake Coffee."
+
+    red @talking2mouth "Uh... I think I mistranslated something there. Is that--"
+
+    narrator "Tia happily points to the menu, where the aforementioned drink is displayed, and on offer. The calorie count is mindboggling, and the cost is prohibitive."
+
+    red @sadbrow talkingmouth "Hey, thanks, Tia, but I'm not sure I want to {i}drink{/i} that, never mind {i}pay for it.{/i} It's--"
+
+    show tia:
+        ypos 1.2 zoom 1.3
+        ease 0.5 ypos 1.0 zoom 1.0
+
+    tia @happy "Oh, that's alright! I'll pay for it. Did you know they actually give {i}me{/i} [tiafont]money{/font} for working here? I thought {i}I{/i} had to pay {i}them!{/i}"
+
+    red @talking2mouth "For how long?"
+
+    pause 1.0
+
+    tia lightblush frownmouth sad2eyes "[ellipses][tiafont]Embarrassingly{/font}[ellipses]"
+
+    hide tia with dis
+
+    pause 1.0
+
+    narrator "Tia brings you the drink, and, as expected, it's a massive tower of sugar, whip cream, powders, and... you're not even sure what that yellow glaze is. Caramel? Honey? Only God knows."
+
+    pause 1.0
+
+    narrator "You slowly sip it over the next half hour as you do your best to not go into cardiac arrest."
+
+    pause 3.0
+
+    narrator "Eventually, Tia comes back."
+
+    show tia sweat talking2mouth closedbrow hat with dis:
+        xpos 1.5
+        ease 0.3 xpos 1.0
+        ease 0.3 xpos 0.75
+        ease 0.3 xpos 0.5
+
+    pause 1.0
+
+    tia @talkingmouth "Phew."
+
+    red @happy "Hard work?"
+
+    tia -sweat surprisedbrow frownmouth @sadbrow talkingmouth "...Not enough. I wish I could just tell them I'm a Latias. Then I bet they'd let me work [tiafont]longer{/font}."
+
+    red @happy "I'm pretty sure they'd just fire you, honestly."
+
+    tia @sad "What? No! Why'd they do that?!"
+
+    $ autoquote = False
+
+    red @surprisedbrow talking2mouth "\"Oh, I... I mean, I was making a joke, but...\"{w=0.5} <you're a Mythical Pokémon, right, Tia?>"
+
+    $ autoquote = True
+
+    red @sadbrow talkingmouth "They'd probably just be confused. And maybe a little bit scared. I mean, who knows what labor laws for Pokémon should be, you know? They'd want to protect you."
+
+    tia @frownmouth sad2eyes angryeyebrows "That's dumb. I should be [tiafont]protecting{/font} them."
+
+    red @unamusedbrow talkingmouth "You were pretty happy with me being your protector a while ago."
+
+    tia -surprisedbrow @closedbrow talking2mouth "You're different. You're [tiafont]special.{/font}"
+
+    red @sad2brow frownmouth "[ellipses]"
+    
+    $ autoquote = False
+
+    red @talkingmouth "\"Why do you want to protect\"{w=0.5} <humans?>"
+
+    $ autoquote = True
+
+    tia @confusedeyebrows frownmouth "Hm? I'm a Pokémon. We exist to protect and partner with humans. We exist to protect their weak little [tiafont]bodies, and their small minds, and their featherless skin, and their...{/font}"
+
+    red @confused "That's quite a claim, and I feel like I'd be offended if I caught the second half of that. Why do you think that?"
+
+    tia -frownmouth @talkingmouth "That's what The Ancestors told me."
+
+    red @confused "The ancestors?"
+
+    tia @happy "Yes. The Old Dragons. The Original Dragon. Everything from before we Aeons were born. The Eternity before."
+
+    red @talkingmouth "Um... so your great-great-great-great-great-grandparents?"
+
+    tia @talkingmouth "Some of them were family, yes."
+
+    red @talking2mouth "...I think I'm just more confused now."
+
+    tia @sadbrow "...I [tiafont]understand.{/font} Humans are very naive about some parts of the world."
+
+    red @unamusedbrow talking2mouth "Tia, you jumped in a water fountain, and cross streets without looking for cars."
+
+    tia @sadbrow "...Yes, but humans are the ones who trap their water, and build places that aren't safe for their own young to travel over."
+
+    red @confused "Getting kinda judgey here, aren't we?"
+
+    tia @closedbrow talkingmouth "I don't judge. I'm an Eon--Eternity expressing itself. Judging a [tiafont]species{/font} who only lives for [tiafont]eighty years{/font} would be, um..."
+    tia @happy "A waste of time!"
+    tia @sadbrow talkingmouth "So I'm not judging. I'm just pointing out that everyone has their blind spots. I'm not great at using the [tiafont]technology{/font} of humans. But I'm pretty sure you can't □."
+
+    red @talking2mouth "Huh?"
+
+    tia @happy "You can't □."
+
+    red @talking2mouth "I, uh, don't know what that means."
+
+    tia @sadbrow talkingmouth "I know. It's a word that can't be signed. It's something only Pokémon can understand. It's the purest expression of [tiafont]love{/font}--of [tiafont]existence{/font}--of [tiafont]fulfillment.{/font}"
+
+    pause 0.5
+
+    tia @sad2brow "When I arrived at Kobukan, the only humans I'd met were my family. And they were loving. And good. I thought that's how all humans were with each other."
+    tia @talkingmouth "But now I understand humans can be cruel to each other--they can be unkind. They can be forgetful, and [tiafont]callous{/font}, and even worse."
+    tia "[ellipses]"
+    tia @happy "And that's fantastic!"
+
+    red @surprised "Huh?"
+
+    tia "That means every time a human does something nice, they're actually {i}trying{/i} to be nice! That's even better than just [tiafont]being{/font} pure good, like I thought humans were!"
+
+    red @talkingmouth "I guess. That's definitely a way to look at it."
+
+    pause 1.0
+
+    red @talkingmouth "Well... this is a whole new side of you, Tia. I didn't realize you were so, uh... I don't know. I mean, you know a {i}lot{/i} more big words than I thought you did. You've really learned, huh?"
+
+    tia sad2brow poutmouth "Hmph."
+
+    red @confused "Wait, what is it?"
+
+    tia "I always knew those words. I was [tiafont]dumbing{/font} my language down so you could understand me, and Whitney could [tiafont]translate{/font} quickly."
+
+    $ autoquote = False
+
+    red @wince "<Oh.>"
+
+    $ autoquote = True
+
+    tia @talking2mouth "I know some humans think I'm slow. Or [tiafont]silly{/font}. Or naive."
+    tia @angrybrow "But I'd like to see them fly. Or read emotions on the [tiafont]aural wind{/font}. Or create a {i}perfect{/i} illusion of another person [tiafont]twenty-four{/font} hours a day."
+    tia "It's not as easy as I make it look!"
+
+    red @sadbrow talkingmouth "I'm sure."
+
+    pause 1.0
+
+    red @talkingmouth "Hey, why don't you tell me about it?"
+
+    tia surprisedbrow frownmouth "What?"
+
+    red @talkingmouth "Your illusion. I kinda figured it was, like, a hologram, but..."
+
+    show tia lightblush with dis
+
+    narrator "You poke Tia's 'hand.' Besides feeling surprisingly cold, it definitely feels like there's something there." 
+    narrator "The more you concentrate, though, the more you begin to realize it doesn't have any texture, and a moment after you realize that, your hand goes right through Tia's."
+
+    tia -lightblush -surprisedbrow @lightblush sad2brow poutmouth "Don't break my [tiafont]illusion{/font}."
+
+    red @sweat closedbrow talking2mouth "Sorry. I mean, I can feel you, you know? If it's just light, then shouldn't my hand just go straight through yours immediately?" 
+
+    tia -frownmouth @closedbrow frownmouth "Hm..."
+    tia @talkingmouth "It's difficult to explain this to someone who can't see, um... I guess the [tiafont]closest{/font} word is 'hearts.'"
+    tia @happy "But that's alright. I'm sure you'll get it. When I put up an [tiafont]illusion{/font}, I'm not tricking your eyes. I'm tricking your {i}heart.{/i}"
+    tia @talkingmouth "I reflect the light around me, so that you see a specific image. Right now, I'm choosing the image of my [tiafont]sister{/font}."
+    tia @closedbrow "But I don't {i}just{/i} bend light. I bend your heart toward me. So when I show you that I'm [tiafont]standing{/font} here... you believe it. And you believe it {i}so{/i} hard that you can even feel it."
+
+    pause 1.0
+
+    show tia surprisedbrow frownmouth with dis
+
+    red @confused "So, wait, what would happen if someone threw a baseball at your illusion?"
+
+    tia -surprisedbrow @angrybrow poutmouth "Well, I can't bend a baseball's heart. It would just go through me, and then probably hit me, and that would [tiafont]hurt{/font}."
+
+    red @sweat happy "Oh, okay! I can understand {i}that{/i} part. Baseballs {i}do{/i} hurt."
+    red @talkingmouth "Oh, wait, I just thought of another question. When your illusion does something--are you {i}always{/i} controlling it to do that? Like, your illusion blinks. Do you do that manually?"
+
+    tia @talkingmouth "No. I let The Ancestors handle that. It's like, um... you know how your heart beats without you thinking about it? The Ancestors move my illusion to match my thoughts. And I don't even need to think about it!"
+
+    pause 1.0
+
+    red -frownmouth @confused "That's the second time you've mentioned The Ancestors. Are they, like... do they exist in your mind?"
+
+    tia @talkingmouth "In my heart."
+
+    red @unamusedbrow unamusedmouth "[ellipses]"
+
+    show tia sadbrow with dis
+
+    red @closedbrow sweat talking2mouth "I'm sorry, I'm too human for this conversation. Somehow, getting over the language barrier just made it harder to communicate."
+
+    tia @sad2brow talking2mouth "Well... I'm not [tiafont]supposed{/font} to show any humans this... but I guess I could introduce you to The Ancestors."
+
+    show tia surprisedbrow frownmouth with dis
+
+    red @happy "Hey, is this like meeting the parents of your date?"
+
+    tia shadow angrybrow "Do {i}not{/i} joke about that."
+
+    red @surprised "Wha-"
+
+    tia @talking2mouth "Humans have lots of laws. You create all these [tiafont]structures{/font} and rules so that you can keep your [tiafont]cities{/font} running for a couple centuries, so you can keep your lives going for less than one."
+    tia @talking2mouth "Pokémon do not have laws. There is only one thing forbidden: to love a human."
+    tia -shadow @sad2brow talking2mouth "I know you didn't know, but... don't talk about that kind of thing ever again. Even as a [tiafont]joke{/font}."
+
+    red @sadbrow talking2mouth "I'm... sorry. I didn't know. I guess that's a really serious thing for Pokémon?"
+
+    tia @talking2mouth "Yes."
+
+    pause 1.0
+
+    tia -angrybrow @closedbrow talking2mouth "I know you want to know why. The Ancestors can [tiafont]explain{/font}."
+
+    pause 1.0
+
+    tia -frownmouth @sadbrow "If you still want?"
+
+    red @sadbrow talkingmouth "Please."
+
+    tia @talking2mouth "Okay. Meet me on the [tiafont]roof{/font} above the greenhouse."
+
+    hide tia with gaussdissolve
+
+    pause 2.0
+
+    red @surprisedbrow frownmouth "Um."
+
+    pause 2.0
+
+    red @sadbrow talking2mouth "I... she realizes getting there is going to take me, like, an hour, right?"
+
+    call clearscreens() from _call_clearscreens_55
+    scene blank2 with splitfade
+
+    pause 1.0
+
+    show likeanhourlater at vspaz 
+
+    pause 3.5
+
+    scene rooftop with splitfade
+
+    $ location = "school"
+
+    red @talkingmouth "Tia?"
+
+    show latias hat with gaussdissolve:
+        xpos 0.5 ypos 1.0
+        parallel:
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.52
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.48
+            repeat
+        parallel:
+            ease 2.0 ypos 1.0
+            ease 2.0 ypos 1.02
+            ease 3.0 ypos 1.0
+            ease 3.0 ypos 0.98
+            repeat
+
+    red @talking2mouth "Hey. Are The Ancestors up here?"
+
+    narrator "Tia holds out a small circular orb, something that reminds you of the crystal ball a wizard might ponder."
+
+    red @talkingmouth "You want me to touch this?"
+
+    latias @talkingmouth "Lati."
+
+    red @confused "Okay. But I don't see what--"
+
+    stop music
+
+    scene blank2
+
+    pause
+
+    red swimsuithatless @confused "Hello?"
+
+    pause 0.5
+
+    redmind @surprisedbrow frownmouth "Oh, I'm naked."
+
+    image pmdmovie = Movie(play="images/videos/waves.webm", loop=True)
+
+    show pmdmovie behind blank2:
+        xzoom 2.7 yzoom 2.25
+
+    show blank2:
+        alpha 1.0
+        linear 120 alpha 0.0
+
+    show latias powered poweredeyes frownmouth with gaussdissolve:
+        xpos 0.5 ypos 1.0
+        parallel:
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.52
+            ease 4.0 xpos 0.5
+            ease 4.0 xpos 0.48
+            repeat
+        parallel:
+            ease 2.0 ypos 1.0
+            ease 2.0 ypos 1.02
+            ease 3.0 ypos 1.0
+            ease 3.0 ypos 0.98
+            repeat
+
+    red @talking2mouth "Tia?"
+
+    $ AddEvent("Tia", "RenameBriefly")
+
+    latias @talking2mouth "I AM AND AM NOT."
+    latias @talking2mouth "I LIVED BEFORE HER. I AM HER NOW. I WILL SUCCEED HER. I AM MOTHER. I AM DAUGHTER. I AM THE ANCESTOR."
+
+    red @sad2brow talking2mouth "Oh."
+
+    pause 1.0
+
+    red @happy "Uh, I'm [first_name]."
+
+    latias @talking2mouth "YOU HAVE ENTERED INTO THE SOUL DEW. HUMANS SHOULD NOT BE HERE."
+
+    red @talking2mouth "Sorry, I touched an orb, and--"
+
+    latias @talking2mouth "YOU HAVE TOUCHED THE SOUL DEW."
+
+    pause 1.0
+
+    red @talking2mouth "Maybe? I'm not sure what that is."
+
+    narrator "You take a look around, and begin to notice something strange--the sky seems to curve, as though you're in a giant dome. Beyond the sky, you think you see a shadowy shape that resembles... yourself?"
+
+    red @surprised "Oh, wait, what? Am I... {i}in{/i} the orb?"
+
+    pause 1.0
+
+    latias @talking2mouth "THE HUMAN RACE HAS NOT BECOME NOTABLY MORE INTELLIGENT SINCE I DREW BREATH, APPARENTLY."
+
+    red @unamusedbrow talking2mouth "...Look, I'd rather not be roasted by Tia's grandparents. Can I get my answers and get out?"
+
+    latias @talking2mouth "YOU WISH TO KNOW WHY {i}IT{/i} IS FORBIDDEN."
+
+    red @talking2mouth "Kinda, yeah. Everything Tia's told me so far about how Pokémon work makes you seem... perfect, all-loving. I don't get why... why {i}that{/i} would be your one rule."
+
+    show latias poweredangryeyes with dis
+
+    pause 2.0
+
+    show blank2 as blank2two with dis:
+        alpha 0.5
+
+    image historyline1 = Text("Once, man and Pokémon were one. They loved, and lived, as one.",size=30,color="#fff")
+    image historyline2 = Text("However, there was a man whose love for a Pokémon was too strong.",size=30,color="#fff")
+    image historyline3 = Text("There was a Pokémon whose love for a man was too strong.",size=30,color="#fff")
+    image historyline4 = Text("When their bond shattered, so too did the world.",size=30,color="#fff")
+    image historyline5 = Text("In rage and grief, the man built a weapon to grant her company.",size=30,color="#fff")
+    image historyline6 = Text("In grief and rage, the man built a device to take her from her home.",size=30,color="#fff")
+    image historyline7 = Text("This weapon made the world as it should not be.",size=30,color="#fff")
+    image historyline8 = Text("Such is the taboo of love between man and Pokémon:",size=30,color="#fff")
+    image historyline9 = Text("Such love is stronger than the world can endure again.",size=30,color="#fff")
+
+    show historyline1 with gaussdissolve:
+        ypos 1/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline2 with gaussdissolve:
+        ypos 2/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline3 with gaussdissolve:
+        ypos 3/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline4 with gaussdissolve:
+        ypos 4/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline5 with gaussdissolve:
+        ypos 5/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline6 with gaussdissolve:
+        ypos 6/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline7 with gaussdissolve:
+        ypos 7/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline8 with gaussdissolve:
+        ypos 8/11 xalign 0.5 yanchor 0.5
+
+    pause 0.5
+
+    show historyline9 with gaussdissolve:
+        ypos 9/11 xalign 0.5 yanchor 0.5
+
+    pause
+
+    hide historyline1
+    hide historyline2
+    hide historyline3
+    hide historyline4
+    hide historyline5
+    hide historyline6
+    hide historyline7
+    hide historyline8
+    hide historyline9
+    hide blank2two
+    show latias powered poweredsadeyes frownmouth
+    with Dissolve(5.0)
+
+    red swimsuithatless @closedbrow talking2mouth "So... because one human ruined it for everyone, Pokémon and human are separate now?"
+    red @sad2brow talking2mouth "That doesn't seem fair."
+
+    latias @talking2mouth "WE ARE HUMANITY'S ANGELS. WE ARE HUMANITY'S PROTECTORS. WE ARE HUMANITY'S PERFECT PARTNERS."
+    latias @talking2mouth "AND THAT IS ALL WE WILL BE."
+
+    pause 2.0
+
+    red @sadbrow talking2mouth "...What is this place?"
+
+    latias @talking2mouth "THE FINAL RESTING PLACE OF EVERY EON THAT CAME BEFORE. OUR POWER AND KNOWLEDGE IS LATIAS' TO CONTROL."
+    latias @talking2mouth "BUT SHE NEEDS TRAINING. SHE NEEDS TO LEARN TO HARNESS THIS POWER."
+
+    red @surprisedbrow talking2mouth "What for?"
+
+    latias @talking2mouth "HER DUTY IS NOT OVER. IT HAS YET TO BEGIN. SHE MUST ROAR WITH THE VOICE OF AN ETERNITY OF DRAGONS IF RUIN IS TO BE AVOIDED."
+    latias @talking2mouth "HER APPRECIATION OF HER CHARGES DISTRACTS HER. IT IS NOT HER DUTY TO CARE FOR, TO BOND WITH, NOR TO BECOME HER CHARGES. IT IS TO PROTECT. SHE MUST BE REALIGNED."
+    latias @talking2mouth "WE LAY THIS DUTY ON YOU, [bluecolor]HUMAN{/color}. TRAIN HER. BECOME PARTNERS. TEACH HER TO ACCESS THE STRENGTH WE WISH TO GIVE HER."
+    latias @talking2mouth "AND... WAKE."
+
+    scene rooftop
+    show tia hat
+    stop music
+    queue music "audio/music/TiaTheme_loop.ogg" loop
+
+    red @surprisedbrow frownmouth "[ellipses]"
+
+    pause 2.0
+
+    red @surprisedbrow talking2mouth "What?"
+
+    $ RemoveEvent("Tia", "RenameBriefly")
+
+    tia @happy "Did you meet The Ancestors?"
+
+    red @talking2mouth "I... met one, I think."
+
+    tia @talkingmouth "I hope they didn't give you a [tiafont]hard{/font} time about being a human."
+
+    red @closedbrow talking2mouth "Besides one thing at the very beginning, they barely mentioned it."
+
+    tia @happy "They must've liked you. I'm glad! If The Ancestors didn't like you, it would be really hard for you to be a good [tiafont]trainer.{/font}"
+
+    red @talking2mouth "Sorry, my head's still spinning. Tia, how old are you? Not Bianca Vongole, but {i}you,{/i} Venetia."
+
+    tia @talkingmouth "Eternal."
+
+    red @closedbrow talking2mouth "Yeah, no, I got that. You're your ancestors, kinda, sorta, a little bit. I can {i}almost{/i} accept that. But when were you born? You must have hatched from an egg, or... or something, right?"
+
+    tia @happy "Nope! Latias don't need to do that. We've just always existed, watching over [tiafont]humanity{/font}, to protect them."
+    tia @sad2eyes talking2mouth "...Sometimes, one of us gets lost. But our heart always makes its way back to the Soul Dew."
+    tia @closedbrow talkingmouth "One day, I'll be in the Soul Dew, too. I'll be able to tell {i}my children{/i} how to protect humanity best, and, just like my mother did for me and my brother, I'll give them the Soul Dew..."
+
+    pause 1.0
+
+    red @unamusedbrow unamusedmouth "[ellipses]"
+    red @talking2mouth "Tia, I am begging you for a straight answer, how are your species {i}born?!{/i}"
+
+    tia @angrybrow poutmouth "And I'm telling you that we're not! We've always [tiafont]existed{/font}, and we can never [tiafont]die{/font}! We don't need to be born!"
+
+    red @sadbrow talkingmouth "That violates every single law of biology I know."
+
+    tia @closedbrow talking2mouth "I think I've told you what I think of human laws."
+
+    red @upeyes talking2mouth "Gah."
+
+    tia angrybrow frownmouth @poutmouth "[ellipses]"
+    tia @talking2mouth "Where are your feathers?"
+
+    red @confused "What?"
+
+    tia @talking2mouth "Everyone has {i}feathers.{/i} Where are yours?"
+
+    red @unamusedbrow talking2mouth "You know damn well humans don't have those."
+
+    tia -angrybrow @talkingmouth "So where are your wings?"
+
+    red @sad2eyes unamusedeyebrows talking2mouth "I get it."
+
+    tia -frownmouth @playfuleyes playfuleyebrows talkingmouth "So where is your telekinesis organ?"
+
+    red @upeyes angryeyebrows talking2mouth "You can stop."
+
+    tia @happy "So where is your gizzard?"
+
+    red @angry "Humans don't--"
+    red @confused "Wait, you have one of those? Isn't that for grinding up food?"
+
+    tia surprisedbrow frownmouth @talkingmouth "Oh. Um, yes."
+
+    red @confused "Where is it?"
+
+    tia frownmouth heavyblush @angrybrow talking2mouth "You can't just ask a Latias where her gizzard is! That's so--{w=0.5}that's {i}so{/i} inappropriate!"
+    tia closedeyes angryeyebrows sweat frownmouth @talking2mouth "I'm--{w=0.5}I'm leaving! And I expect an apology the next time we see each other!"
+
+    show tia:
+        xpos 0.5
+        ease 0.3 xpos 0.75
+        ease 0.5 xpos -0.5
+
+    pause 1.0
+
+    redmind @unamusedbrow unamusedmouth "She... just jumped off the roof."
+
+    pause 1.0
+
+    redmind @wince frownmouth "...Training Tia is going to be the toughest thing I've ever done."
+
+    $ RelationshipRankUp("Tia", "HUMAN", 2)
+
+return

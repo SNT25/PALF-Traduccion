@@ -1,0 +1,1254 @@
+label freeroam:
+
+python:
+    location = "school"
+    AddPikachu()
+    HealParty() 
+
+label beforemusic:
+
+stop music fadeout 2.5
+
+$ renpy.music.queue("audio/music/GSCBike_Start.ogg", channel='music', loop=None, fadein=1.0, tight=None)
+$ renpy.music.queue("audio/music/GSCBike_Loop.ogg", channel='music', loop=True)
+$ freeroaming = True
+
+scene map with splitfade
+show blank2 as blackground behind map
+show screen currentdate 
+call screen map_UI(_with_none=False)
+hide blackground
+with dissolve
+
+jump skipresetup
+
+label aftersetup:
+scene map
+show screen currentdate
+call screen map_UI(_with_none=False)
+
+label skipresetup:
+
+$ trainer1 = Trainer("red", TrainerType.Ally, playerparty)
+
+$ interaction = _return
+if (interaction in GetStudents()):
+    $ interactionsprite = GetCharacterSprite(interaction)
+
+if (interaction == "Study"):
+    redmind @thinking "Now, which type should I focus on...?"
+
+    show blank2 with dis:
+        alpha 0.8
+
+    $ lastclass = ""
+
+    call screen studyfocus
+    $ selectedtype = _return 
+
+    hide blank2 with dis
+
+    if (selectedtype == "Back"):
+        jump aftersetup
+
+    if (excusesecondelective or excusesecondhomeroom):
+        redmind uniform @thinking "Almost everyone else is in class right now, so I'll have to study alone. It won't be as effective as studying with someone."
+
+        menu:
+            "That's fine.":
+                $ IncreaseProficiency(selectedtype, 0.25)
+
+            "Nevermind":
+                jump aftersetup
+    else:
+        $ willstudy = list(WillStudy(selectedtype))
+        if (len(willstudy) > 0):
+            $ randomstudent = RandomChoice(list(WillStudy(selectedtype)), True)
+
+            $ pronoun = ("him" if persondex[randomstudent]["Sex"] == Genders.Male else "her")
+
+            label afterlibraryseed:
+
+            redmind @thinking "It looks like [randomstudent] is in the library right now. Should I study with [pronoun]?"
+
+            menu: 
+                "Yeah, sure.":
+                    show library with Dissolve(1.0)
+                    $ imagestring = GetCharacterSprite(randomstudent)
+                    $ renpy.show(imagestring, [dissolvein])
+
+                    pause 1.0
+
+                    narrator "You spent some time studying [selectedtype]-type Pokémon with [randomstudent]."
+
+                    python:
+                        renpy.show(GetCharacterSprite(randomstudent, 10))
+                        if (randomstudent in ["Jasmine", "Grusha"]):
+                            ValueChange(randomstudent, 4, 0.5)
+                        else:
+                            ValueChange(randomstudent, 2, 0.5)
+
+                        IncreaseProficiency(selectedtype, 0.5)
+
+                        renpy.transition(dis)
+                        renpy.hide(imagestring)
+
+                "No, contact someone else.":
+                    redmind @thinking "Right... let's see if anyone would be interested in studying this with me."
+                    redmind @thinking "They'll need to be taking the [selectedtype] Elective as well, of course."
+
+                    show phone_B 
+                    show phone_A
+                    with fadeinbottom
+
+                    hide blank2 with dis
+
+                    call screen database(calling=True, limittype=selectedtype, _with_none=False) with Dissolve(1.0)
+                    with dissolve
+                    $ contact = _return
+
+                    if (contact == "Back"):
+                        hide phone_B 
+                        hide phone_A
+                        with fadeoutbottom
+                        jump afterlibraryseed
+                    elif (contact != "Sabrina"):
+                        $ pronoun = ("he" if persondex[contact]["Sex"] == Genders.Male else "she")
+                        redmind @thinking "Alright, I'll text [contact] and see if [pronoun] can show up."
+                    else:
+                        hide phone_B 
+                        hide phone_A
+                        with fadeoutbottom
+                        redmind @thinking "Alright, I'll think hard at Sabrina and see if she can show up."
+
+                    if (contact.title() not in WillStudy(selectedtype)):
+                        pause 3.0
+
+                        narrator "There was no response..."
+
+                        jump aftersetup
+
+                    show library with Dissolve(1.0)
+
+                    hide phone_B 
+                    hide phone_A
+                    with fadeoutbottom
+
+                    $ renpy.show(GetCharacterSprite(contact, 0), [dissolvein])
+
+                    pause 1.0
+
+                    narrator "You spent some time studying [selectedtype]-type Pokémon with [contact]."
+
+                    $ renpy.transition(dis)
+                    $ renpy.show(GetCharacterSprite(contact, 10))
+                    $ ValueChange(contact, 1, 0.5)
+                    $ IncreaseProficiency(selectedtype, 0.5)
+
+                    $ renpy.transition(dis)
+                    $ renpy.hide(contact.lower())
+                
+                "Nevermind, I don't want to study.":
+                    jump aftersetup
+        
+        else:
+            redmind uniform @thinking "It doesn't look like there's anyone in the library willing to study right now, so I'll have to study alone. It won't be as effective as studying with someone."
+
+            menu:
+                "That's fine.":
+                    $ IncreaseProficiency(selectedtype, 0.25)
+
+                "Nevermind":
+                    jump aftersetup
+
+elif (interaction == "Town"):
+    if (IsBefore(17, 4, 2004)):
+        redmind @thinking "I should probably get a bit more used to the campus before I head out alone."
+        jump aftersetup
+
+    elif (trainer1.HasMons()):
+        menu:
+            "Go to the city.":
+                call city from _call_city
+
+            "Nevermind.":
+                jump aftersetup
+    else:
+        redmind @thinking "I shouldn't leave campus with a party this tired-out."
+        jump aftersetup
+
+elif (interaction == "Fields"):
+    if (IsBefore(13, 4, 2004)):
+        redmind @thinking "I should probably get a bit more used to the campus before I head out alone."
+        jump aftersetup
+
+    elif (IsAfter(10, 5, 2004) and not (rescuedwill and rescuedsabrina and rescuedtia) and IsBefore(17, 5, 2004)):
+        menu:
+            "{color=#0f0}[[Easy]{/color} >Rescue Instructor Will from the Unhallowed Holt" if not rescuedwill:
+                jump unhallowedholt
+
+            "{color=#00f}[[Medium]{/color} >Rescue Tia from the Shattered Glades" if not rescuedtia:
+                jump shatteredglades
+
+            "{color=#f00}[[Hard]{/color} >Rescue Sabrina from the Windswept Woods" if not rescuedsabrina:
+                jump windsweptwoods
+ 
+            ">Go to the fields":
+                if (trainer1.HasMons()):
+                    $ wildcount = 0
+                    call wildarea("fields") from _call_wildarea_1
+                else:
+                    redmind @thinking "I shouldn't leave campus with a party this tired-out."
+                    jump aftersetup
+
+            ">Leave":
+                jump aftersetup
+
+    elif (trainer1.HasMons()):
+        $ wildcount = 0
+
+        if (IsDate(17, 5, 2004)):
+            call cyclizarhunt from _call_cyclizarhunt
+
+        if (IsBefore(18, 5, 2004)):
+            call wildarea("fields") from _call_wildarea
+
+        else:
+            menu:
+                ">Go to the fields":
+                    call wildarea("fields") from _call_wildarea_5
+
+                ">Go to Argent Mountain":
+                    python:
+                        rideable = None
+                        for mon in playerparty:
+                            if (pokedexlookupname("Cyclizar", DexMacros.Id) == mon.Id):
+                                rideable = mon
+                                break
+                    if (rideable == None):
+                        narrator "Would you like to pay $500 to rent a Ride Cyclizar?"
+
+                        menu:
+                            ">Pay":
+                                if (money < 200):
+                                    narrator "Embarrassingly, you do not have enough to pay the fee..."
+                                
+                                    jump aftersetup
+
+                                else:
+                                    $ money -= 200
+
+                                    scene blank2 with splitfade
+
+                                    narrator "You ride the rented Cyclizar up to Argent Mountain."
+
+                                    $ sidemonnum = pokedexlookupname("Cyclizar", DexMacros.Id)
+                                    $ PlaySound("pokemon/cries/{}.mp3".format(sidemonnum))
+                                    sidemon "Cyc! Lizar!"
+
+                            ">Do Not":
+                                jump aftersetup
+
+                    else:
+                        scene blank2 with splitfade
+
+                        if (GetRelationshipRank("Silver") > 1):
+                            narrator "You put on the cold-weather gear that Silver gave you and ride your Cyclizar up Argent Mountain."
+                        else:
+                            narrator "You ride your Cyclizar up to Argent Mountain."
+
+                        $ sidemonnum = pokedexlookup("Cyclizar", DexMacros.Id)
+                        $ cyclizarnickname = rideable.GetNickname()
+                        $ PlaySound("pokemon/cries/{}.mp3".format(sidemonnum))
+                        $ sidemonoverride = cyclizarnickname
+                        sidemon "Cyc! Lizar!"
+                        $ sidemonoverride = None
+
+                    call wildarea("mountain") from _call_wildarea_6
+
+                "Nevermind.":
+                    jump aftersetup
+    else:
+        redmind @thinking "I shouldn't leave campus with a party this tired-out."
+        jump aftersetup 
+
+elif (interaction == "Business"):
+    show baseball
+    show gardenia 
+    with dis
+    gardenia @happy "Heya! You're looking good. Ready to talk business?"
+    $ baseindex = investmentthresholds.index(highestbank)
+    label beginbusiness:
+
+    if (highestbank < GetNextInvestmentThreshold()):
+        $ highestbank = GetNextInvestmentThreshold()
+        gardenia @surprised "Oh, hey, you just crossed a new threshold!" 
+        $ ValueChange("Gardenia", investmentthresholds.index(highestbank) - baseindex)
+        gardenia @happy "As a reward for banking with us (me), we (I) have authorized an increase in the interest accumulated by your account."
+        gardenia @talkingmouth "You can now look forward to earning a nice, round, $[math.floor(highestbank / 100)] every day from now 'til the end of the year."
+        gardenia @happy "I look forward to many more economic encounters, my thrifty friend!"
+
+        if (not HasEvent("Gardenia", "FirstThresholdPassed")):
+            $ AddEvent("Gardenia", "FirstThresholdPassed")
+            red @sadbrow talkingmouth "Uh... yeah... I can't help but feel like no matter how much I bank, it'll be small potatoes compared to your empire, though."
+
+            gardenia @talkingmouth "Maybe a bit. But, hey, you know how many potatoes it takes to bring {i}down{/i} an empire?"
+
+            red @confused "Uh, how many?"
+
+            gardenia @sadbrow talkingmouth "Zero. Just ask the Galarians."
+
+            red @closedbrow talking2mouth "Eesh. Point taken."
+
+            gardenia @happy "I cherish {i}every{/i} potato entrusted to me, no matter how small. So don't worry about if you're only a fraction of a fraction of a fraction of my enterprise. I appreciate it all the same."
+
+            red @happy "It's nice to be appreciated."
+
+    if (highestbank > 0 and not HasEvent("Gardenia", "InvestmentIntro")):
+        $ AddEvent("Gardenia", "InvestmentIntro")
+        gardenia @surprised "Oh, that reminds me! Since my bank's earning you a bit of money every day, now, I thought I'd tell you about something you might be interested in spending it on."
+
+        red @closedbrow talkingmouth "Classic Gardenia. You give me a way to earn money, {i}and{/i} a way to spend it."
+
+        gardenia @talking2mouth "Horizontal integration, partner."
+        gardenia @talkingmouth "There are a bunch of items that you'll never find sold in stores run by the Pokémon League." 
+        gardenia @talking2mouth "I'm talking powerful items like Vitamin Concentrates that make EV Training a cinch, herbal medicine way more effective than anything the League sells..."
+        gardenia @happy "Oh, and evolution items. Protectors, Razor Claws, even imported foreign stuff like those armors from Paldea that Charcadet go crazy for."
+
+        red @closedbrow talkingmouth "There's a catch here."
+
+        gardenia @sadbrow talking2mouth "Afraid so. It's not worth the time or money for me to get my hands on those items until I know there's interest in them." 
+        gardenia @talking2mouth "If you invest in my shipping efforts, I can open up a little market here--the 'Junk Shop'--that sells those kinds of items."
+
+        red @closedbrow talking2mouth "You want me to pay you to sell me stuff?"
+
+        gardenia @happy "Given the palms I need to grease to get around the Kobukanian import tariffs, I could ask for a lot more!"
+
+        red @sweat talkingmouth "Guess I should be grateful, then."
+
+        gardenia @talkingmouth "Now you get it! [bluecolor]If you want me to expand my selection of items, just talk to me here and ask about investing money.{/color} I'll always accept it!"
+    
+    menu:
+        ">Manage money in the bank":
+            $ previoushighestbank = GetNextInvestmentThreshold()
+            gardenia @happy "Thank you for banking with us! {w=0.5}...And by us I mean 'me!' You've currently got $[bank] stored with me."
+            if (bank == 0):
+                gardenia @talking2mouth "Why don't you fix that?"
+
+            $ interest = math.floor(highestbank / 100)
+            if (highestbank != 100000):
+                $ nextthreshold = investmentthresholds[investmentthresholds.index(highestbank) + 1]
+                $ nextinterest = math.floor(nextthreshold / 100)
+
+            if (highestbank not in [0, 100000]):
+                gardenia @talkingmouth "You're currently earning $[interest] from interest every day. That'll increase to [nextinterest] when the total amount of money in the bank reaches [nextthreshold]."
+            elif (highestbank == 0):
+                gardenia @talkingmouth "You're not currently earning any interest. If you'd like to start earning a bit of money every day, I'll need you to store at least $1000 in here."
+                gardenia @happy "Don't worry! It'll break even in a clean one hundred days."
+                gardenia @angrybrow talkingmouth "Or you could just deposit the money, cross the threshold, and take it out immediately, I guess..."
+                gardenia @sadbrow talking2mouth "But you might not want to keep all your money on hand. If you wipe out against a wild Pokémon, or lose in a gamble battle, who knows what could happen to your well-gotten goods? You should leave them in my hands."
+                gardenia @happy "Anyway, the decision's yours, and I'm a busy woman. What're you thinking?"
+            else:
+                gardenia @talkingmouth "You're currently earning $[interest] from interest every day. You're maxed out! Truth be told, I started losing money on you a while ago... but there are lots of different kinds of investments, and I think you're one worth making."
+
+            menu:
+                ">Deposit money in the bank" if (money > 0):
+                    gardenia @talkingmouth "{i}Now{/i} we're in business! How much do you want to deposit?"
+                    
+                    $ newinvestment = renpy.input("How much would you like to deposit?", default=money, length=7, allow="1234567890")
+                    if (not newinvestment.isdigit()):
+                        $ newinvestment = 0
+                    else:
+                        $ newinvestment = int(newinvestment)
+
+                    if (newinvestment > money):
+                        gardenia @angry "Watch it, partner. You better not be trying to give me a check that'll bounce when it's time to cash in."
+
+                        red @sweat closedbrow talking2mouth "Oops. Miscounted."
+
+                    elif (newinvestment == 0):
+                        pass
+
+                    else:
+                        $ money -= newinvestment
+                        $ bank += newinvestment
+
+                        gardenia @angrybrow talkingmouth "Depositing $[newinvestment]. Very good. I'll guard it jealously..."
+
+                        $ newesthighestbank = GetNextInvestmentThreshold()
+
+                        if (previoushighestbank != newesthighestbank):
+                            gardenia @surprised "Oh, hey, you just crossed a new threshold!" 
+                            $ ValueChange("Gardenia", investmentthresholds.index(newesthighestbank) - baseindex)
+                            gardenia @happy "As a reward for banking with us (me), we (I) have authorized an increase in the interest accumulated by your account."
+                            gardenia @talkingmouth "You can now look forward to earning a nice, round, $[math.floor(highestbank / 100)] every day from now 'til the end of the year."
+                            gardenia @happy "I look forward to many more economic encounters, my thrifty friend!"
+
+                            if (not HasEvent("Gardenia", "FirstThresholdPassed")):
+                                $ AddEvent("Gardenia", "FirstThresholdPassed")
+                                red @sadbrow talkingmouth "Uh... yeah... I can't help but feel like no matter how much I bank, it'll be small potatoes compared to your empire, though."
+
+                                gardenia @talkingmouth "Maybe a bit. But, hey, you know how many potatoes it takes to bring {i}down{/i} an empire?"
+
+                                red @confused "Uh, how many?"
+
+                                gardenia @sadbrow talkingmouth "Zero. Just ask the Galarians."
+
+                                red @closedbrow talking2mouth "Eesh. Point taken."
+
+                                gardenia @happy "I cherish {i}every{/i} potato entrusted to me, no matter how small. So don't worry about if you're only a fraction of a fraction of a fraction of my enterprise. I appreciate it all the same."
+
+                                red @happy "It's nice to be appreciated."
+
+                ">Withdraw money" if (bank > 0):
+                    gardenia @sadbrow talkingmouth "Ah... 'withdraw.' My least favorite word."
+                    $ withdrawal = renpy.input("How much would you like to withdraw?", default=bank, length=7, allow="1234567890")
+                    if (not withdrawal.isdigit()):
+                        $ withdrawal = 0
+                    else:
+                        $ withdrawal = int(withdrawal)
+
+                    if (withdrawal > bank):
+                        gardenia @happy "Sorry, partner! You don't have that much banked with me."
+                        gardenia @angrybrow talking2mouth "I'd give you a loan, but I'll tell you right now my interest rates are {i}brutal.{/i}"
+
+                        red @sweat happy "Tempting offer. I'll pass!"
+                    
+                    elif (withdrawal == 0):
+                        pass
+
+                    else:
+                        $ money += withdrawal
+                        $ bank -= withdrawal
+
+                        gardenia @angrybrow talkingmouth "Here's your $[withdrawal]. {w=0.5}...I'll take it back any time you want!"
+
+                "Nevermind.":
+                    pass
+                    
+            jump beginbusiness
+
+        ">Invest money" if (not investment >= 100000 and HasEvent("Gardenia", "InvestmentIntro")):
+            $ cost, purchaseprice, itemid, description = GetNextInvestmentPrize()
+            $ name = GetItemName(itemid)
+            $ moretoinvest = cost - investment
+            $ formatdescription = description[0].lower() + description[1:]
+            gardenia @happy "That's the kind of forward-thinking attitude I like to hear, partner!"
+            gardenia @talkingmouth "Once you've invested $[moretoinvest] more, bringing it up to $[cost], I think I should be able to get my hands on a [name] or two. I'll sell 'em back to you for $[purchaseprice]."
+            gardenia @talking2mouth "I think that item [formatdescription] Anyway, buy it and find out if I'm right!"
+            gardenia @talkingmouth "So, how much would you like to invest?"
+            $ investing = renpy.input("How much would you like to invest?", default=money, length=6, allow="1234567890")
+            if (not investing.isdigit()):
+                $ investing = 0
+            else:
+                $ investing = int(investing)
+
+            if (investing > money):
+                if (investing > bank):
+                    gardenia @sadbrow talking2mouth "Sorry. I don't think you've got the money for that kind of investment, and I don't deal in cryptocurrencies."
+                else:
+                    gardenia @talkingmouth "You don't have the money on-hand for that, but I'll take it out of your bank. Sound good?"
+
+                    menu:
+                        "Sure.":
+                            $ bank -= investing
+                            $ investment += investing
+
+                            gardenia @happy "You might not have the wallet of an angel investor, but you've sure got the heart of one. Thanks, [first_name]!"
+
+                        "Nevermind.":
+                            pass
+
+            elif (investing == 0):
+                pass
+
+            else:
+                $ money -= investing
+                $ investment += investing
+
+                gardenia @happy "You might not have the wallet of an angel investor, but you've sure got the heart of one. Thanks, [first_name]!"
+
+            if (investment >= 100000):
+                gardenia @surprised "W-woah! These numbers... looks like the market shifted at the perfect time!"
+                gardenia @happy "[first_name], you've completely maxed out my investment track! And made a {i}lot{/i} of shady moving guys in Inspira happy."
+
+                red @sadbrow talkingmouth "G-great...?"
+
+                if (investment > 100000):
+                    gardenia  @talking2mouth "Here, I'll give you back a bit. I like working with round numbers--so I'll cap off your investment in me at a nice 100k."
+
+                    $ money += (investment - 100000)
+
+                    narrator "Gardenia returned some money."
+
+                gardenia @happy "Yep, that's right--I'm now selling you {i}every{/i} single product I can get my hands on."
+                gardenia @talkingmouth "Ah... I guess that means I'll have to come up with something new, something {i}way{/i} bigger, for you to invest in, then."
+
+                red @sadbrow talkingmouth "Maybe reach out to me next year about that."
+
+                gardenia @angrybrow talking2mouth "I {i}definitely{/i} will. Get that wallet ready for me, [first_name]."
+
+                red @happy "You got it!"
+
+            jump beginbusiness
+
+        ">Go shopping" if (investment >= 1000):
+            call screen shopkeep(marketitems, market=True)
+            $ boughtitem = _return
+            if (boughtitem == "Back"):
+                gardenia @sadbrow talkingmouth "Why do you hate the economy, [first_name]?"
+                jump beginbusiness
+            else:
+                $ totalcost = boughtitem[0] * boughtitems
+                if (totalcost > money):
+                    narrator "You can't afford that!"
+                else:
+                    $ itemname = GetItemName(boughtitem[1])
+                    $ money -= totalcost 
+                    if (boughtitems > 1):
+                        narrator "You bought [boughtitems] [itemname]s for $[totalcost]!"
+                    else:
+                        narrator "You bought a [itemname] for $[totalcost]!"
+                    $ GetItem(itemname, boughtitems)
+                    $ boughtitems = 1
+
+                jump beginbusiness
+
+        ">Sell items" if (persondex["Gardenia"]["Contact"]):
+            gardenia @happy "Sure, I'll buy something off of you. What're ya sellin'?"
+
+            label selling:
+
+            python:
+                global invoverwrite
+                global itemdesc
+                invoverwrite = None
+                itemdesc = ""
+                item = renpy.call_screen("fieldinventory", True)
+            if (item == "back"):
+                gardenia @angrybrow happymouth "Ah, boo!"
+                jump beginbusiness
+            else:
+                $ itemvalue = GetItemSellValue(item)
+                $ itemvalueformat = "{:,}".format(itemvalue)
+                gardenia @talkingmouth "Hm... not a lot of demand for that item. Best I can do is $[itemvalueformat]."
+
+                $ itemcount = GetItemCount(item)
+                $ halfitem = math.floor(itemcount / 2.0)
+
+                menu:
+                    ">Sell one":
+                        $ money += itemvalue
+                        $ LoseItem(item)
+                        gardenia @happy "Pleasure doing business with ya!"
+
+                    ">Sell half ([halfitem])" if (itemcount >= 3):
+                        $ money += itemvalue * halfitem
+                        $ LoseItem(item, halfitem)
+                        gardenia @happy "Pleasure doing business with ya!"
+
+                    ">Sell all ([itemcount])" if (itemcount > 1):
+                        $ money += itemvalue * itemcount
+                        $ LoseItem(item, itemcount)
+                        gardenia @happy "Pleasure doing business with ya!"
+
+                    "Nevermind.":
+                        pass
+
+                jump selling
+
+        "Nevermind.":
+            gardenia @angrybrow happymouth "Ah, boo!"
+
+    hide baseball
+    hide gardenia 
+    with dis
+    jump aftersetup
+
+elif (interaction == "Bees"):
+    call combeefrenzy from _call_combeefrenzy
+
+    if (not HasEvent("Whitney", "FrenzBee")):
+        jump aftersetup
+
+elif (interaction == "LevelCheck"):
+    show stadium_empty
+    show janine 
+    with dis
+    $ levelaim = AimLevel()
+    $ highestlevel = GetHighestLevel()
+    janine @surprised "Hm?"
+    janine @closedbrow talking2mouth "Oh, you want a check-in, huh? You should have a team of level [levelaim] Pokémon."
+    janine @talking2mouth "Your highest-leveled Pokémon is level [highestlevel]. {nw}"
+    if (highestlevel >= levelaim):
+        extend @happymouth "You're good."
+        if (highestlevel > levelaim + 5):
+            janine @surprised "Maybe a bit too good. You've been spending a lot of time training, huh? Don't neglect your other responsibilities."
+    elif (highestlevel < levelaim):
+        extend @sadbrow talkingmouth "Fix that."
+        if (highestlevel < levelaim - 5):
+            janine @sad "Soon. This is a dangerous situation to be in."
+
+    red @talkingmouth "Thanks for the advice."
+
+    jump aftersetup
+
+elif (interaction == "CriticalCheck"):
+    show clouds
+    show garden:
+        zoom 0.625
+    show kris
+    with dis
+    $ critrate = GetAverageProficiency() / 2.0
+    kris @happy "Hello, [first_name]."
+    kris @talkingmouth "Have you been keeping up on your capturing? [bluecolor]Given your current proficiencies, you should expect to be able to land critical captures [critrate]%% of the time."
+
+    red @talkingmouth "Understood. Thanks, Doctor."
+
+    jump aftersetup
+
+elif (interaction == "AccessPC"):
+    $ currentbox = max(0, currentbox)
+    show screen partymons
+    call screen pokemonswap
+    hide screen partymons
+    jump aftersetup
+
+elif (interaction == "CookingClub"):
+    show mallow with dis
+
+    mallow @happy blush "[first_name]! Alola! Great to see you again. Are you here to participate in the Cooking Club? Or do you just want to buy some PokéTreats?"
+
+    red @talkingmouth "Just the treats for now, please."
+
+    mallow @happy "Alright!"
+
+    call screen shopkeep(treatitems)
+    $ boughtitem = _return
+    if (boughtitem == "Back"):
+        mallow surprised "O-oh! Okay! I'll see you later, right?"
+
+        jump aftersetup
+    else:
+        $ totalcost = boughtitem[0] * boughtitems
+        if (totalcost > money):
+            narrator "You can't afford that!"
+        else:
+            $ itemname = GetItemName(boughtitem[1])
+            $ cookingcredit += totalcost
+            $ money -= totalcost 
+            if (boughtitems > 1):
+                narrator "You bought [boughtitems]x [itemname] for $[totalcost]!"
+            else:
+                narrator "You bought [itemname] for $[totalcost]!"
+            $ GetItem(itemname, boughtitems)
+            $ boughtitems = 1
+
+    jump aftersetup
+
+elif (interaction == "Back"):
+    jump aftersetup
+
+elif (len(GetScenes([interaction])) == 1 and GetScenes([interaction])[0][1]):#character scenes
+    $ renpy.hide(interactionsprite)
+    $ renpy.show(interactionsprite, [farleftside, dissolvein])
+    narrator "You want to find [interaction]?"
+
+    menu:
+        "Yes, go looking for [interaction].":
+            $ HangOutsThisWeek[interaction] = copy.copy(calDate)
+            stop music fadeout 2.0
+            $ renpy.hide(interactionsprite)
+            $ renpy.call(GetScenes([interaction])[0][1])
+
+            if (GetRelationshipRank(interaction) == 1 and not (interaction.title() == "Misty" and HasEvent("Misty", "Scene2Part1"))):
+                if (interaction in classdex.keys()):
+                    python:
+                        classessstring = ""
+                        classes = classdex[interaction]
+                        for i, classname in enumerate(classes):
+                            classessstring += (" and " if i == len(classes) - 1 else " ") + classname + ("," if i < len(classes) - 1 and len(classes) != 2 else "")
+
+                    narrator "Hanging out with [interaction] will now convey an amount of EXP to[classessstring] Pokémon in your party. This amount will grow the more points you have with [interaction]."
+
+                elif (interaction == "Janine"):
+                    narrator "Your Pokémon have resolved to work even harder to protect you from the scary woman!"
+                    narrator "(They don't quite get the social dynamics going on here...)"
+
+                    python:
+                        for mon in playerparty:
+                            mon.GainExperience(math.floor(pow(AimLevel(), 3) / 25 / 2))
+
+            jump afterfreetime
+
+        "Nevermind.":
+            python:
+                renpy.hide(interactionsprite)
+                renpy.jump("freeroam")
+
+else:
+    if (interaction in ["Sabrina", "Blue", "Janine", "Misty", "Dawn", "Hilbert", "Professor Cherry"] and GetRelationshipRank(interaction) == 0):
+        narrator "You suspect that you are not close enough to [interaction] to hang out one-on-one..."
+        jump aftersetup
+    elif (interaction == "Janine"):
+        if (janinedomming):
+            narrator "You know better than to bother Janine while she's busy. The possible consequences scare and thrill you... but should be left for another time."
+        else:
+            narrator "You shouldn't bother Janine while she's busy."
+        jump aftersetup
+    elif (interaction == "Yellow"):
+        narrator "Yellow is hard at work in the infirmary... you shouldn't interrupt her right now."
+        jump aftersetup
+    else:
+        $ renpy.hide(interactionsprite)
+        $ renpy.show(interactionsprite, [farleftside, dissolvein])
+        narrator "You want to find [interaction]?"
+
+        menu:
+            ">Yes, hang out":
+                python:
+                    HangOutsThisWeek[interaction] = copy.copy(calDate)
+                    renpy.transition(dis)
+                    renpy.show(GetCharacterSprite(interaction, 10))
+                    valuetochange = 3
+                    if (interaction in ["Jasmine", "Grusha"]):
+                        valuetochange = 6
+                    ValueChange(interaction, valuetochange, 0.12)
+
+                narrator "You spend some one-on-one time with [interaction]."
+                python:
+                    if (GetRelationshipRank(interaction) >= 1):
+                        partyset = set()
+                        if (interaction in classdex.keys()):
+                            for mon in playerparty:
+                                for typename in classdex[interaction]:
+                                    if mon.HasType(typename):
+                                        partyset.add(mon)
+                        for mon in partyset:
+                            mon.GainExperience(math.floor(pow(AimLevel(), 3) / 25 * (GetCharacterLevel(interaction) / 5)))
+
+                    renpy.hide(interactionsprite)
+                jump afterfreetime
+
+            ">Give a gift" if (interaction not in GiftsGiven and persondex["Gardenia"]["Contact"]):
+                python:
+                    global invoverwrite
+                    global itemdesc
+                    invoverwrite = None
+                    itemdesc = ""
+                    item = renpy.call_screen("fieldinventory", True)
+                if (item == "back"):
+                    $ renpy.hide(interactionsprite)
+                    $ renpy.jump("freeroam")
+                else:
+                    $ itemname = GetItemName(item)
+                    menu:
+                        ">Give [interaction] the [itemname]":
+                            python:
+                                presentvalue = GetGiftValue(interaction, item)
+                                renpy.show(GetCharacterSprite(interaction, presentvalue))
+                                if (presentvalue < 1):
+                                    renpy.say(None, "You swear you saw {} cringing as they take the {}...".format(interaction, itemname))
+                                elif (presentvalue == 1):
+                                    renpy.say(None, "{} seems confused, but politely accepts the {}.".format(interaction, itemname))
+                                elif (presentvalue == 2):
+                                    renpy.say(None, "{} accepts the {}.".format(interaction, itemname))
+                                elif (presentvalue == 3):
+                                    renpy.say(None, "{} happily accepts the {}.".format(interaction, itemname))
+                                elif (presentvalue == 4):
+                                    renpy.say(None, "{} joyfully accepts the {}.".format(interaction, itemname))
+                                elif (presentvalue >= 5):
+                                    renpy.say(None, "{} ecstatically accepts the {}!".format(interaction, itemname))
+                                if (interaction in ["Jasmine", "Grusha"]):
+                                    presentvalue *= 2
+                                GiftsGiven.append(interaction)
+                                if (presentvalue > 10):
+                                    ValueChange(interaction, 10, 0.12, pausing=False, changemood=False)
+                                    ValueChange(interaction, presentvalue - 10, 0.24, changemood=False)
+                                else:
+                                    ValueChange(interaction, presentvalue, 0.12, changemood=False)
+                                LoseItem(item)
+
+                        "Nevermind":
+                            pass
+
+                    $ renpy.hide(interactionsprite)
+                    $ renpy.jump("freeroam")
+
+            "Nevermind":
+                python:
+                    renpy.hide(interactionsprite)
+                    renpy.jump("freeroam")
+
+label afterfreetime:
+$ freeroaming = False
+call clearscreens from _call_clearscreens_18
+
+python:
+    if (IsAfter(30, 4, 2004)):
+        added = UpdateForeverals()
+        if (len(added) > 0 and pikachuobj in playerparty):
+            renpy.say(None, "What? [pika_name] started coughing... something's coming out!")
+            for key, value in added.items():
+                count = len(value)
+                if count == 1:
+                    reward = value[0]
+                    renpy.say(None, f"Your bond with {key} earned you the {reward}!")
+                else:
+                    rewards = ', '.join(value[:-1])
+                    last_reward = value[-1]
+                    exclamation_marks = '!' * math.ceil(count / 3)
+                    renpy.say(None, f"Your bond with {key} earned you the {rewards}, and {last_reward}{exclamation_marks}")
+            
+            if (IsAfter(8, 5, 2004) and persondex["Yellow"]["Value"] != 0):
+                persondex["Yellow"]["Value"] = len(claimedforeverals)
+                renpy.say(None, "Yellow is overjoyed!")
+
+hide blank2
+show blank2
+
+pause 1.0
+
+if (timeOfDay == "Morning"):
+    $ timeOfDay = "Noon"
+elif (timeOfDay == "Noon" or timeOfDay == "Afternoon"):
+    $ timeOfDay = "Evening"
+elif (timeOfDay == "Evening" or timeOfDay == "After School"):
+    if (excusesecondhomeroom):
+        $ jumpto = "aftersecondhomeroom"
+        $ jumptoyear = "01"
+        $ jumptomonth = ("0" if calDate.month < 10 else "") + str(calDate.month)
+        $ jumptodate = ("0" if calDate.day < 10 else "") + str(calDate.day)
+        $ renpy.jump(jumpto + jumptoyear + jumptomonth + jumptodate)
+    else:
+        $ timeOfDay = "Night"
+
+hide noon
+hide evening
+hide night
+
+if (timeOfDay == "Noon"):
+    show noon at vspaz
+elif (timeOfDay == "Evening"):
+    show evening at vspaz
+    if (not excusesecondhomeroom and getRWDay(0) not in ["Saturday", "Sunday"]):
+        pause 3.0
+
+        $ jumpto = "secondhomeroom"
+        $ jumptoyear = "01"
+        $ jumptomonth = ("0" if calDate.month < 10 else "") + str(calDate.month)
+        $ jumptodate = ("0" if calDate.day < 10 else "") + str(calDate.day)
+        $ renpy.jump(jumpto + jumptoyear + jumptomonth + jumptodate)
+
+elif (timeOfDay == "Night"):
+    show night at vspaz
+
+    pause 3.0
+
+    show screen currentdate with dis
+
+    call nightscenequeue
+
+    return
+
+pause 3.0
+
+if (IsDate(29, 5, 2004)):
+    if (timeOfDay == "Noon"):
+        jump nooncontestintermission
+
+    else:
+        jump eveningcontestintermission
+
+jump beforemusic
+
+label cyclizarhunt:
+    $ AddEvent("Dawn", "CyclizarHunt")
+    $ renpy.music.queue("audio/music/Fieldstheme_Start.ogg", channel='music', loop=None, fadein=1.0, tight=None)
+    $ renpy.music.queue("audio/music/Fieldstheme_Loop.ogg", channel='music', loop=True)
+    show clouds:
+        yalign 0.5
+    show fields1 :
+        yalign 0.33 xalign 0.95
+    with Dissolve(2.0)
+    show blank2 as blackground behind map
+
+    show leaf with dis:
+        xpos 0.66
+
+    show dawn with dis:
+        xpos 0.33
+
+    dawn @talkingmouth "{size=-15}...so I thought{/size} {size=-10}I might try{/size} {size=-5}to help her{/size} out."
+
+    leaf @talkingmouth "That's a good idea! I bet an awesome trainer like you could also catch a {i}ton{/i} of Cyclizar."
+    leaf @angrybrow talking2mouth "Ooh, maybe we can make it so she doesn't have to pay a single Pokécent out of her own pocket!"
+
+    dawn @sadbrow talkingmouth "Th-that'd be... cool... but, um, some people probably won't be able to ride an untrained Cyclizar without a {i}lot{/i} of practice..."
+
+    leaf @talking2mouth "Well, we'll give it our best! Better to have the tools and not need them than to leave Professor Cherry hanging!"
+    leaf @sadbrow talking2mouth "After all... if what she said about how we've been taught so far is true... then she {i}seriously{/i} deserves some thanks for this. It's the least we can do to show we're grateful."
+
+    dawn @talkingmouth "R-right."
+
+    pause 1.0
+
+    if (not HasEvent("Ethan", "IgnoredFrenzyConfession")):
+        dawn @surprised "O-oh! Rival!"
+
+        red @talkingmouth "That's my name."
+
+        leaf @talking2mouth "You two are rivals now?"
+
+        dawn @talkingmouth "Y-yeah. We, um, decided it last Wednesday."
+
+        red @talkingmouth sweat "More like you decided it."
+
+        dawn @sadbrow "Oh. I'm sorry..."
+
+        red @happy "No, you don't get it. That's {i}great!{/i} I'm {i}glad{/i} you decided it. Good for you."
+
+        red @talkingmouth "I fully support whatever you're passionate about."
+
+        if (GetRelationship("Dawn") == "Muse"):
+            red @happy "That's why I'm your muse, you know?"
+
+            $ ValueChange("Dawn", 2, 0.33, False)
+
+        else:
+            $ ValueChange("Dawn", 1, 0.33, False)
+    
+        leaf @happy "Aw. You are both, honestly, too cute."
+
+        $ ValueChange("Leaf", 1, 0.66)
+    
+    else:
+        leaf @happy "Oh, hey, I didn't see you there!"
+
+    red @talkingmouth "Thought I'd show up and see if there are any Cyclizar I can snag for the Professor. Mind if I join you guys?"
+
+    dawn @talkingmouth "No! That'd be, um, great! The more the merrier."
+
+    red @talkingmouth "Cool. Let's get started."
+
+    leaf @surprised "...Oh, wait. There's one problem. I'm not sure I have enough Poké Balls."
+
+    show gardenia angrybrow happymouth:
+        xpos 1.2 
+        ease 0.3 xpos 0.75
+
+    show dawn surprisedbrow frownmouth:
+        xpos 0.33
+        ease 0.5 xpos 0.25
+
+    show leaf surprisedbrow frownmouth:
+        xpos 0.66
+        ease 0.5 xpos 0.5 xzoom -1
+
+    gardenia "And {i}that's{/i} where I come in!"
+
+    pause 1.0
+
+    dawn "{size=30}Oh, god, it's her again.{/size}"
+
+    gardenia -angrybrow -happymouth @happybrow talking2mouth "Please, hold your applause."
+
+    red @talking2mouth confusedeyebrows "Sorry, what exactly is happening here?"
+
+    gardenia @talkingmouth "I heard that you were in the market for some Poké Balls."
+    gardenia @happybrow talkingmouth "I've also got some Repels, which should make it easier to find the Cyclizar you're hunting for faster--all at very reasonable prices, of course!"
+
+    leaf @sarcastic "Were you, just, like, following us and waiting until someone said they needed something?"
+
+    gardenia @talkingmouth "Funny question! Now, I can't stick around for long--there are some other customers who want my business, I think--but do any of these splendid capture packages interest you?"
+
+    $ discountask = False
+    $ priceone = 4000
+    $ pricetwo = 10000
+    $ pricethree = 15000
+
+    label gardeniafieldshustle:
+
+    menu:
+        "10 Poké Balls & 3 Repels for $[priceone]":
+            if (money >= priceone):
+                $ money -= priceone
+                $ GetItem("Poké Ball", 10)
+                $ GetItem("Repel", 3)
+                $ ValueChange("Gardenia", 1, 0.75)
+
+                gardenia @happy "Pleasure doing business with you!~ Anything else?"
+
+            else:
+                gardenia @sadbrow talking2mouth "Sorry, [first_name]. I can't give credit. Come back when you're a little... mmm... richer!"
+
+            jump gardeniafieldshustle
+
+        "10 Great Balls & 3 Super Repels for $[pricetwo]":
+            if (money >= pricetwo):
+                $ money -= pricetwo
+                $ GetItem("Great Ball", 10)
+                $ GetItem("Super Repel", 3)
+                $ ValueChange("Gardenia", 2, 0.75)
+
+                gardenia @happy "Pleasure doing business with you!~ Anything else?"
+
+            else:
+                gardenia @sadbrow talking2mouth "Sorry, [first_name]. I can't give credit. Come back when you're a little... mmm... richer!"
+
+            jump gardeniafieldshustle
+
+        "10 Ultra Balls & 3 Max Repels for $[pricethree]":
+            if (money >= pricethree):
+                $ money -= pricethree
+                $ GetItem("Ultra Ball", 10)
+                $ GetItem("Max Repel", 3)
+                $ ValueChange("Gardenia", 3, 0.75)
+
+                gardenia @happy "Pleasure doing business with you!~ Anything else?"
+
+            else:
+                gardenia @sadbrow talking2mouth "Sorry, [first_name]. I can't give credit. Come back when you're a little... mmm... richer!"
+
+            jump gardeniafieldshustle
+
+        "What do the repels do?":
+            gardenia @happy "Good question!"
+            gardenia @talkingmouth "Repels have two functionalities."
+            gardenia @talkingmouth "{i}All{/i} Repels allow you to automatically escape from battle."
+            gardenia @happy "And you don't have to use them {i}in-battle{/i}, either. Use repels outside of battle, and they'll last for a while... about twenty encounters."
+
+            gardenia @talkingmouth "Anyway, every kind of Repel keeps away Pokémon of a certain strength."
+            gardenia @talkingmouth "Normal repels keep weaker Pokémon away, so only the stronger Pokémon will show up. This means the Pokémon that appear most commonly in an area, uh, won't!"
+            gardenia @happy "Super Repels keep all weaker Pokémon away, so only the strongest Pokémon in each area will try to attack. That means both common and uncommon Pokémon won't show up."
+            gardenia @talkingmouth "Finally... and this is where the {i}real{/i} power is, if you want my opinion..."
+            gardenia @happy "Max Repels make only the absolute strongest Pokémon show up. The alphas of each herd, the elders of the swarm. The big kahunas, you know?"
+            gardenia @talkingmouth "That means only the most powerful Pokémon in any area will show up, the stuff you might have to spend hours looking for, otherwise. They're very powerful Repels!"
+            gardenia @angrybrow happymouth "And my {i}personal{/i} recommendation, if you happen to be in the market."
+
+            jump gardeniafieldshustle
+
+        "Can I have a discount?" if (not discountask):
+            $ discountask = True
+            show gardenia surprisedbrow frownmouth with dis
+
+            pause 0.5
+
+            gardenia @talkingmouth "Hm. That's ballsy."
+
+            if (investment == 0):
+                gardenia @talkingmouth "Sorry, though, friend. I usually only give discounts to established business partners."
+                gardenia @talkingmouth "Come visit me in the baseball field sometime, though, and we can talk business."
+
+            elif (investment < 10000):
+                $ priceone = 3500
+                $ pricetwo = 9500
+                $ pricethree = 14500
+                gardenia -surprisedbrow -frownmouth @happy "You know what? Why not! I'll knock $500 off the asking price. As a token of my appreciation for our business relationship."
+
+            else:
+                $ priceone = 3000
+                $ pricetwo = 9000
+                $ pricethree = 14000
+                gardenia -surprisedbrow -frownmouth @happy "You know what? Why not! I'll knock a whole grand off the asking price. As a token of my appreciation for our business relationship."
+
+            jump gardeniafieldshustle
+
+        "Away with ye, harbinger of capitalism!":
+            gardenia @happy "Fair enough!"
+
+    gardenia @angrybrow talkingmouth "Now, what about {i}you{/i} fine ladies...?"
+
+    show blank2 with dis
+
+    narrator "Gardenia pressures Dawn into buying a ludicrous amount of merchandise until Leaf rather sharply sends her on her way."
+
+    show leaf -surprisedbrow -frownmouth:
+        xpos 0.66 xzoom 1
+    show dawn:
+        xpos 0.33
+    hide blank2 
+    hide gardenia
+    with dis
+
+    dawn -surprisedbrow frownmouth @sadbrow talkingmouth "I'm... not good at saying no when people try to sell me something..."
+
+    leaf @talkingmouth "Clearly. We'd better make sure you stay far away from {i}Join.{/i} There's a nose cream salesman there who'd eat you alive."
+
+    return
+
+label combeefrenzy:
+    scene baseball
+    show whitney
+    with splitfade
+
+    if (activetreat in ["Picnic Basket", "Bouffalant Wings"]):
+        $ AddEvent("Whitney", "FrenzBee")
+        whitney @talking2mouth "Oh, hey! [first_name], perfect timing!"
+
+        red @confusedeyebrows talkingmouth "What, you're saying the jazz-loving bee that hit on you is here?"
+
+        whitney surprised "Uh, yeah!"
+
+        red @surprised "What?"
+
+        $ renpy.music.queue("Audio/Music/RelicCastle_Start.ogg", channel='music', loop=False, tight=None, fadein=3.0)
+        $ renpy.music.queue("Audio/Music/RelicCastle_Loop.ogg", channel='music', loop=True, tight=None)
+
+        whitney @sad "Ah! It's coming back! And I'm allergic to bee stings!"
+
+        show whitney:
+            xpos 0.5
+            ease 0.3 xpos -0.5
+
+        red @surprised "Wait, really?"
+
+        $ sidemonnum = 415
+
+        $ PlaySound("pokemon/cries/415.mp3")
+
+        sidemon "Hot! Hot! Hot!"
+
+        show sideportraitfull:
+            xpos 1.1 zoom 0.0 ypos 0.0 yanchor 1.0 xanchor 0.5
+            ease 1.0 xpos 0.5 zoom 2.0 ypos 1.0
+            ease 1.0 xpos 0.2 zoom 0.5 ypos 0.3
+            easeout 1.0 xpos 0.5 zoom 1.0 ypos 0.4
+            easein 1.0 zoom 3.0 ypos 1.2
+
+        red @surprised "What? It really {i}is{/i} a Combee! But... there's something different about it...?"
+
+        show sideportraitfull:
+            ease 0.3 zoom 2.0 align (0.5, 0.5) alpha 1.0
+
+        sidemon "Hot! Hot! Hot!"
+
+        python:
+            trainer1 = Trainer("red", TrainerType.Player, playerparty, number=3)
+
+            vespiquenobj = Pokemon("Vespiquen", level=33.3, moves=[GetMove("Attack Order"), GetMove("Defend Order"), GetMove("Heal Order"), GetMove("Acrobatics")], gender=Genders.Female, item="Sitrus Berry", foreverals=["Vespiquen Uneveral"], frenzynerf=(21, ["Slash", "Bug Bite", "Defend Order", "Power Gem"]), intelligence=3)
+            vespiquenobj.ApplyStatus("frenzied")
+            vespiquenobj.Image = "pokemon/415.webp"
+            vespiquenobj.Nickname = "Combee"
+            trainer2 = Trainer("sideportraitfull", TrainerType.Enemy, [vespiquenobj], isPokemon=True)
+
+        call Battle([trainer1, trainer2], healParty = False, specialmusic="Nothing", custombrain=combeebrain) from _call_Battle_168
+        $ battlehistory["Combee1"]  = _return
+
+        stop music fadeout 1.5
+
+        pause 2.0
+
+        queue music "audio/music/goldenrod_start.ogg" noloop
+        queue music "audio/music/goldenrod_loop.ogg"
+
+        show whitney:
+            xpos -0.2
+            ease 2.0 xpos 0.0 rotate 25
+
+        pause 0.5
+
+        whitney sadbrow @talking2mouth "Is it gone?"
+
+        red @talkingmouth sweat "Yeah, it's gone."
+
+        $ ValueChange("Whitney", 3, 0.05)
+
+        show whitney:
+            xpos 0 rotate 25
+            ease 0.5 xpos 0.5 rotate 0
+
+        whitney -sadbrow @talking2mouth "Phew! Thanks for that!"
+        whitney @surprised "But, wait, how could it speak Japanese?"
+
+        red @talkingmouth "I don't think it was speaking Japanese at all."
+        red @closedbrow talking2mouth "When I was battling it, it had a Foreveral on it."
+        red @sideeyes talking2mouth "It's concerning, but I've seen something like that before." 
+        red @talking2mouth "But this one... it looks like it was choking on it."
+        red @sadbrow talkingmouth "That choking sound was probably what you heard. It sounded like it was saying 'Hot! Hot! Hot!'"
+
+        whitney sadbrow frownmouth @sad "Oh no! The poor thing...! Does it need medical attention?"
+
+        if (vespiquenobj in AllPokemon()):
+            red @talking2mouth "Nah. Capturing it broke the Foreveral."
+
+        elif (WonBattle("Combee1")):
+            red @closedbrow talking2mouth "Nah. It seemed fine after I defeated it. I think battling it enough broke the Foreveral."
+
+        else:
+            red @sweat sadbrow talkingmouth "I mean, you saw how it kicked my ass, right? I'm pretty sure it's doing fine. It got the Foreveral out before it flew away, anyway. It shattered before it even hit the ground, though."
+
+        whitney -sadbrow -frownmouth @talkingmouth "...Okay. That's good. But there's one more question..."
+
+        red @confused "Yeah?"
+
+        whitney @confusedbrow talkingmouth "How did it ask me if I liked jazz?"
+
+        red @closedbrow talking2mouth "Cripes, I forgot about that part. Okay, I don't actually know that one. Maybe there was a radio nearby or something?"
+
+        whitney @confusedeyebrows talking2mouth "[first_name], it's 2004. There aren't any radios {i}left.{/i}"
+
+        red @closedbrow talkingmouth "Yeah, alright. You can lord your technological superiority over me later. I need to go."
+
+        whitney @happy "Thanks again for clearing out the baseball field!"
+
+        red @talkingmouth "Any time."
+
+        scene blank2 with splitfade
+
+        pause 2.0
+
+        call clearscreens() from _call_clearscreens_234
+        scene baseball
+        show flannery at leftside:
+            xpos 0.33 xzoom -1
+        with splitfade
+
+        Character("???") "\"Ya like jazz?\""
+
+        show flannery:
+            xpos 0.33
+            ease 0.5 xzoom 1
+
+        flannery @talking2mouth "Huh? Jazz? I mean, sure, it's fine. I don't think I recognize you...?"
+
+        show brock:
+            xpos 1.2 xzoom -1
+            ease 0.5 xpos 0.66
+
+        brock @talkingmouth "Probably not. I'm a candle on the wind, Li'l Sis."
+        brock @happymouth "A flame one moment... aflame the next."
+
+        flannery @confusedbrow talking2mouth "Um... are you meant to be here?"
+
+        brock @talkingmouth "Are any of us really meant to be anywhere?"
+
+        pause 1.0
+
+        brock surprised @happy "Eh-heh. Anyway, I noticed you've got an Onix. Pretty solid. I've got an Onix, too."
+
+        pause 1.0
+
+        flannery tired @tiredbrow talking2mouth "I swear to God, if you take your pants off, I'm having my Numel burn off whatever's underneath."
+
+        brock sadbrow @sad "Wo-hoh! You've got the wrong idea, Li'l Sis. I'm just... uh, just asking questions."
+
+        pause 1.0
+
+        brock sadbrow happymouth "Ya like ska?"
+
+        scene blank2 with splitfade
+
+    else:
+        red @talkingmouth "Hey, Whitney. Is that Combee you were talking about around?"
+
+        whitney @talking2mouth "Not right now. But it keeps coming back to the field--and I {i}swear{/i} it's calling me hot!"
+
+        red @closedbrow talkingmouth "We'll see."
+
+        whitney @upeyes talking2mouth "Anyway, if we want it to show up... hm. I think it shows up more often when Flan and I try to picnic here..."
+        whitney @sadbrow talking2mouth "Maybe that helps?"
+
+        red @closedbrow talking2mouth "Yeah, it just might. I think I know what to do."
+
+    return

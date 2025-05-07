@@ -1,0 +1,562 @@
+label infestedbasementsetup:
+
+python:
+    fullsquad = [MakeRed(), MakeTrainer("Leaf", TrainerType.Ally), MakeTrainer("Ethan", TrainerType.Ally), MakeTrainer("Yellow", TrainerType.Ally)]
+    wildpool = [
+        pokedexlookupname("Weedle", DexMacros.Id), 
+        pokedexlookupname("Paras", DexMacros.Id), 
+        pokedexlookupname("Nymble", DexMacros.Id),
+        pokedexlookupname("Tarountula", DexMacros.Id),
+        pokedexlookupname("Bidoof", DexMacros.Id),
+        pokedexlookupname("Aipom", DexMacros.Id),
+        263.1]#galarian zigzagoon
+    isgame = True
+    activedungeon = Dungeon("basement", "Infested Basement", fullsquad, wildpool, "aftertutorialdungeon", "aftertutorialdungeon", 6, 5, dungeontutorials, dungeontutorialrollfudger, dungeontutorialeventfudger,
+        generateitems=None)#generateitems=[(20, "Gimmighoul Coin"), (10, "Rawst Berry"), (10, "Oran Berry"), (5, "Apple"), (5, "Mossy Stone"), (1, "Odd Keystone"), (5, "Spell Tag"), (5, "Miracle Seed")]
+
+return
+
+# roll-fudger here
+init python:
+    def dungeontutorialrollfudger(dungeon):
+        if (dungeon.GetProgress() == 5):
+            return 20
+        else:
+            return RandInt(15, 20)#I am _not_ having players lose in the tutorial... again.
+
+# event-fudger here
+init python:
+    def dungeontutorialeventfudger(dungeon):
+        if (dungeon.GetProgress() == 0):
+            return "InfestedBasement1"
+        elif (dungeon.GetProgress() == 1):
+            return "InfestedBasement2"
+        elif (dungeon.GetProgress() == 2):
+            return "InfestedBasement3"
+        elif (dungeon.GetProgress() == 3):
+            return "InfestedBasement4"
+        elif (dungeon.GetProgress() == 4):
+            return "InfestedBasement5"
+        elif (dungeon.GetProgress() == 5):
+            if (dungeon.WonlastFight()):
+                return "InfestedBasement6"
+            else:
+                return "InfestedBasement7"
+
+    DungeonEvents["InfestedBasement1"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "The party stands before the entrance to the dank dungeon. On an arch is inscribed the fell text: \"Abandon Hope, All Ye Who Enter Here.\" &0 shivers, but knows &e must press on... what should &0 do?",
+        "GiveUp": False,
+        "Options" : {
+            "Enter here without abandoning hope" : {
+                "Threshold": 15, 
+                "Skill": "Risk-Taking", 
+                "SuccessMessage" : "&0 steels &is grit, and passes through the arch without ill effect. This display of bravery was intensely motivating to the rest of the party!",
+                "SuccessFunction" : (lambda: MotivateParty()),
+            },
+            "Walk around the archway" : {
+                "Threshold": 14, 
+                "Skill": "Adaptability", 
+                "SuccessMessage" : "Though surrounded by a wall, the archway is not the only entrance into the dungeon. Through clever use of literalist pedantry, this ominous warning proves no obstacle! &0 chuckles to &imself at the wordplay.",
+                "SuccessFunction" : (lambda: MotivateSquadder()),
+            },
+            "{i}Pretend{/i} to abandon all hope" : {
+                "Threshold": 8, 
+                "Skill": "Deception",  
+                "SuccessMessage" : "Feigning despair, &0 passes the threshold with much beating of breasts and gnashing of teeth. Perhaps the ominous archway is fooled...? Or perhaps &0 just made an ass of &imself in front of the rest of the party for no reason.",
+                "ExcludeFunction" : ("[first_name] cannot deceive!", (lambda: squadleader.Type == TrainerType.Player))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement2"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "A mysterious Floette holding a red and black flower appears before the party. She asks &0's name--but &0 knows that giving a fairy your true name is always a bad idea. What should &0 say?",
+        "GiveUp": False,
+        "Options" : {
+            "Zoosmell Pooplord" : {
+                "Threshold": 12, 
+                "Skill": "Deception", 
+                "SuccessMessage" : "The Floette seems unimpressed by the obvious deception, but it's clear she's not getting any more information from &0. She flies off in a huff, the party laughing behind it.",
+                "SuccessFunction" : (lambda: MotivateSquadder(change=2)),
+                "ExcludeFunction" : ("[first_name] cannot deceive!", (lambda: squadleader.Type == TrainerType.Player))
+            },
+            "Clive" : {
+                "Threshold": 12, 
+                "Skill": "Deception", 
+                "SuccessMessage" : "Adopting the attitude of a fifty-year old trying to be a hip teenager, &0 thoroughly ruses the Floette as she flies away with only a fake name, prizeless.",
+                "SuccessFunction" : (lambda: MotivateSquadder(change=2)),
+                "ExcludeFunction" : ("[first_name] cannot deceive!", (lambda: squadleader.Type == TrainerType.Player))
+            },
+            "Biggus Dickus" : {
+                "Threshold": 12, 
+                "Skill": "Deception",  
+                "SuccessMessage" : "Even a Pokémon can tell that's a fake name, like Sillius Soddus, or Incontinentia Buttocks. She leaves, disgruntled.",
+                "SuccessFunction" : (lambda: MotivateSquadder(change=2)),
+                "ExcludeFunction" : ("[first_name] cannot deceive!", (lambda: squadleader.Type == TrainerType.Player))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement3"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "A red and gold chest lays in the center of a clearing. It seems harmless, but something about its aura speaks of avarice...",
+        "GiveUp": False,
+        "Options" : {
+            "Pick the chest's lock" : {
+                "Threshold": 16, 
+                "Skill": "Cunning", 
+                "SuccessMessage" : "With the use of a hairpin, a paperclip, and a lockpick set, &0 crafts a rudimentary lockpick, allowing &im to open the unlocked chest. Inside is a pile of gleaming gold, which &e grabs greedily!",
+                "SuccessFunction" : (lambda: DungeonItem(3, mandate=["Gimmighoul Coin"]))
+            },
+            "Break open the chest" : {
+                "Threshold": 14, 
+                "Skill": "Physicality", 
+                "SuccessMessage" : "Thinking with &is feet, &0 smashes the chest's wooden structure by kicking it, hard. Its golden payload spills everywhere, and &0 greedily grabs the golden goods.",
+                "SuccessFunction" : (lambda: DungeonItem(3, mandate=["Gimmighoul Coin"]))
+            },
+            "Use a Pokémon to smash open the chest" : {
+                "Threshold": 10, 
+                "Skill": "Pokémon Handling",  
+                "SuccessMessage" : "&0's &0m destroys the lock of the unlocked chest, spilling its golden payload everywhere! &0 greedily grabs at the golden goods.",
+                "SuccessFunction" : (lambda: DungeonItem(3, mandate=["Gimmighoul Coin"])),
+                "ExcludeFunction": ("Partner cannot learn Rock Smash!", (lambda: not HasRockBreaker()))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement4"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "The air is full of spores... &0 can smell a foul scent ahead.",
+        "GiveUp": False,
+        "Options" : {
+            "Identify the scent" : {
+                "Threshold": 16, 
+                "Skill": "Pokémon Smarts", 
+                "SuccessMessage" : "&0 is able to easily identify the smell. This is clearly a Parasect, waiting in ambush! &0 steels &imself for the battle to come!",
+                "SuccessFunction" : (lambda: MotivateSquadder(change=3))
+            },
+            "Prepare for battle" : {
+                "Threshold": 14, 
+                "Skill": "Leadership", 
+                "SuccessMessage" : "&0 delivers a rousing speech to rest of the party. \"They may take our lives, but they will never take our liberation!\" The party cheers wholeheartedly!",
+                "SuccessFunction" : (lambda: MotivateParty())
+            },
+            "Investigate for clues" : {
+                "Threshold": 12, 
+                "Skill": "Strategy",  
+                "SuccessMessage" : "&0 spots a few claw marks on the floor, small tochukaso growing in the cracks of the &l... this is clearly the den of a Parasect! &0 steels &imself for the battle to come!",
+                "SuccessFunction" : (lambda: MotivateSquadder(change=1))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement5"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "The Parasect appears, menacing with spores and claw!\nYe hath no duty but to striketh it down, brave heroes!\n(Ye remembereth that Parasect be goodly weak to both wind and flame...)",
+        "GiveUp": False,
+        "Options" : {
+            "Attack it!" : {
+                "BattleFunction": (lambda: DungeonFight(assignmon=Pokemon("Parasect", level=10, moves=["Fury Cutter", "Absorb", "Stun Spore", "Poison Powder"])))
+            },
+            "Engage it!" : {
+                "BattleFunction": (lambda: DungeonFight(assignmon=Pokemon("Parasect", level=10, moves=["Fury Cutter", "Absorb", "Stun Spore", "Poison Powder"])))
+            },
+            "Striketh it down, wot ho!" : {
+                "BattleFunction": (lambda: DungeonFight(assignmon=Pokemon("Parasect", level=10, moves=["Fury Cutter", "Absorb", "Stun Spore", "Poison Powder"])))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement6"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "Stepping past the still body of the KO'd Parasect, &0 suddenly finds the person &e heard screaming--a short blonde woman of surpassing beauty. She lays against the stone wall, unconscious, but seemingly unhurt. Being around her makes &0 feel more comfortable, and &e gets a feeling in the pit of &is stomach that everything will be alright.",
+        "GiveUp": False,
+        "Options" : {
+            "Bring her to safety" : {
+                "Threshold": 8, 
+                "Skill": "Physicality", 
+                "SuccessMessage" : "Hoisting the very-light woman over &is shoulders, &0 steps forward into the light, taking the stairway that leads out of this accursed dungeon.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            },
+            "Wake her up" : {
+                "Threshold": 10, 
+                "Skill": "Healing", 
+                "SuccessMessage" : "Sprinkling some water gently over the woman's head, she slowly comes to. In a soft voice, she thanks &0 for &is assistance, and accompanies &im as &e steps into the light that leads out of the dungeon.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            },
+            "Smirk at Blue" : {
+                "SuccessMessage" : "This is a work of fiction, and nothing I say or do here has any resemblance to any real persons, living or dead--like you assholes will be if you don't shut up.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            }
+        }
+    }
+
+    DungeonEvents["InfestedBasement7"] = {
+        "ExcludeFunction" : (lambda: activedungeon.Name != "Infested Basement"),
+        "IntroText" : "&0 manages to flee the brutal Parasect. Fleeing into the next room and slamming the door behind &im, &0 suddenly finds the person &e heard screaming--a short blonde woman of surpassing beauty. She lays against the stone wall, unconscious, but seemingly unhurt. Being around her makes &0 feel more comfortable, and &e gets a feeling in the pit of &is stomach that everything will be alright.",
+        "GiveUp": False,
+        "Options" : {
+            "Bring her to safety" : {
+                "Threshold": 8, 
+                "Skill": "Physicality", 
+                "SuccessMessage" : "Hoisting the very-light woman over &is shoulders, &0 steps forward into the light, taking the stairway that leads out of this accursed dungeon.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            },
+            "Wake her up" : {
+                "Threshold": 10, 
+                "Skill": "Healing", 
+                "SuccessMessage" : "Sprinkling some water gently over the woman's head, she slowly comes to. In a soft voice, she thanks &0 for &is assistance, and accompanies &im as &e steps into the light that leads out of the dungeon.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            },
+            "Smirk at Blue" : {
+                "SuccessMessage" : "This is a work of fiction, and nothing I say or do here has any resemblance to any real persons, living or dead--like you assholes will be if you don't shut up.",
+                "SuccessFunction" : (lambda: MotivateParty(change=3))
+            }
+        }
+    }
+
+# cutscenes here
+init python:
+    def dungeontutorials(dungeon):
+        returnscene = None
+        if (True and "dungeontutorial1" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial1"
+        elif (True and "dungeontutorial2" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial2"
+        elif (True and "dungeontutorial3" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial3"
+        elif (True and "dungeontutorial4" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial4"
+        elif (True and "dungeontutorial5" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial5"
+        elif (True and "dungeontutorial6" not in dungeon.ShownScenes):
+            returnscene = "dungeontutorial6"
+
+        return returnscene
+            
+label dungeontutorial1:
+    pause 3.0
+
+    show blue with Dissolve(1.0)
+
+    blue @talkingmouth "What're you gawking at?"
+
+    red @surprised "This is more in-depth than I expected. Like, wow, you put a lot more effort into this than I thought you would."
+
+    blue @happy "Heh. {i}Inferno & Logos{/i} is one of the most hardcore military strategy games out there. Just wait until we get to the grappling rules."
+
+    show yellow at rightside with dis
+
+    yellow @talkingmouth "Whenever I GM, I tend to go a bit more rules-light, but..."
+
+    blue @angrybrow talkingmouth "But the rules {i}exist for a reason{/i}."
+
+    yellow happy "You're right."
+
+    hide yellow with dis
+
+    pause 1.5
+
+    blue @talkingmouth "Alright."
+
+    pause 0.5
+
+    blue @closedbrow talkingmouth "You awake in a musty dungeon. Your head throbs and your breath is visible in the dank air."
+
+    ethan @closedbrow talkingmouth "{size=30}Heh.{/size}"
+
+    blue @talkingmouth "The last thing you remember is hearing a woman screaming for help."
+    blue surprised @closedbrow happymouth "Bereft of other clues, you decide you need to figure out how to get out of here."
+
+    ethan @talkingmouth "[bluecolor]Advance in a dungeon by reading the scenario presented at the bottom of the screen, then clicking an option from the scroll on the left.{/color}"
+
+    blue -surprised @closedbrow talkingmouth "This is a {i}tabletop{/i} RPG. Not a computer game. Just push your mini. Using your {i}fingers{/i}."
+
+    hide blue with Dissolve(1.0)
+
+    show screen DungeonUI with pixellate
+
+    return
+
+label dungeontutorial2:
+    call cleardungeonscreens from _call_cleardungeonscreens
+    show blue 
+    with Dissolve(1.0)
+
+    blue @talkingmouth "As you walk through the infested basement, you feel your muscles begin to tire. Your partner Pokémon complains as its belly rumbles."
+
+    leaf @surprised "What? But we only walked, like, ten steps."
+
+    blue @closedbrow talkingmouth "It's a {i}magical{/i} tiredness."
+
+    leaf @playfulbrow talkingmouth "Lame. I wanted to get {i}away{/i} from real life."
+
+    blue @talkingmouth "[bluecolor]A single person can't do everything alone. Neither can a single Pokémon.{/color}"
+    blue @happy "Unless they're me and my Pidgeotto, of course!" 
+
+    redmind @thinking "But then... you wouldn't be alone, right?"
+
+    blue @talkingmouth "Sometimes, you're going to want to switch the squad leader. Maybe the current leader isn't good at whatever needs to be done."
+    blue @closedbrow talkingmouth "You can switch leaders as much as you want, whenever you want. There's no penalty for that."
+
+    show yellow at rightside with dis
+
+    yellow @talkingmouth "We'll just say that whoever you selected was {i}always{/i} leading the party."
+    yellow @happy "Small retcons like that are alright, if they're done to make the game more fun."
+
+    blue @angry "I don't like it, but it {i}does{/i} say that in the rulebook..."
+
+    yellow @closedbrow talkingmouth "On page three, even."
+
+    blue @closedbrow talkingmouth "Anyway, you can tell how good each party member is at a certain task by looking at the numbers underneath their portrait."
+
+    leaf @closedbrow talking2mouth "Oh, okay... so that percentage on my character sheet is how likely I am to succeed in the task, right?"
+
+    blue @closedbrow "Right. Having a high bonus doesn't always mean you'll have the highest chance of succeeding in a task, so keep an eye out for that."
+
+    red @talkingmouth "So, how do we switch leaders?"
+
+    yellow @happy "You can switch leaders by asking nicely."
+
+    show yellow sadbrow frownmouth
+    show blue surprised 
+    with dis
+
+    ethan @talkingmouth "[bluecolor]Or by clicking on a party member's portrait on the right-hand side of the screen.{/color}"
+
+    blue @talkingmouth "Clicking?"
+
+    ethan @happy "Yeah, you know. With a mouse."
+
+    yellow -sadbrow -frownmouth @talkingmouth "...Okay."
+    yellow @happy "Come here, Chuchu!"
+
+    $ pichunum = pokedexlookupname("Pichu", DexMacros.Id)
+    $ sidemonnum = pichunum
+    $ PlaySound("pokemon/cries/{}.mp3".format(pichunum))
+    $ sidemonoverride = "Pichu"
+
+    sidemon "Chu! Chu!"
+
+    $ sidemonoverride = None
+
+    hide blue
+    hide yellow 
+    show screen DungeonUI
+    with Dissolve(1.0)
+    return
+
+label dungeontutorial3:
+    call cleardungeonscreens from _call_cleardungeonscreens_1
+    show blue 
+    with Dissolve(1.0)
+
+    blue closedbrow frownmouth @talkingmouth "Around the corner, you hear wind whistling down a set of stairs. You suspect you could advance in the dungeon if you took them."
+
+    leaf @talkingmouth "Wait, aren't we trying to get out? Why would we take a set of stairs going {i}down?{/i}"
+
+    pause 1.0
+
+    blue -closedbrow -frownmouth @closedbrow talkingmouth "It's magic. I don't have to explain shit."
+
+    ethan @confused "Then explain this. What's with those numbers you're having us write down on our sheet whenever we pass an event?"
+    ethan @talkingmouth "You know, those '+1s' and stuff."
+
+    show yellow at rightside with dis
+
+    yellow @talkingmouth "That's your morale! At the end of the dungeon, you want to have as much morale as possible, because you'll get better rewards."
+    yellow @happy "Some {i}really{/i} long dungeons even have multiple checkpoints where you can save your progress and cash in morale rewards early."
+
+    red @talkingmouth "What kind of rewards?"
+
+    blue @talkingmouth "[bluecolor]Items. Money.{/color} Practical stuff."
+    
+    yellow @talkingmouth "[bluecolor]You can also increase your friendship with your party members by the amount of morale they have!{/color}"
+
+    blue @closedbrow talkingmouth "Yeah, but there's no mechanics for that. It's just an RP thing."
+
+    ethan @talkingmouth "And how do we get morale? Is it {i}just{/i} by succeeding in events?"
+
+    blue @closedbrow talkingmouth "Pretty much. Though you can also just get rewards like Gimmighoul Coins directly, sometimes. Depends on what the event is."
+    blue surprised "Oh, right. The currency of this world is Gimmighoul Coins. You can find 'em pretty much anywhere. Pokémon, ghosts, wizards--everyone uses Gimmighoul Coins."
+
+    ethan @talkingmouth "And what do we do with them?"
+
+    pause 0.5
+
+    blue @closedbrow talkingmouth "I... don't know. There's probably shop mechanics or something. Just hold onto them for now."
+
+    hide yellow
+    hide blue 
+    show screen DungeonUI
+    with Dissolve(1.0)
+
+    return
+
+label dungeontutorial4:
+    call cleardungeonscreens from _call_cleardungeonscreens_2
+    show blue 
+    with Dissolve(1.0)
+
+    red @talkingmouth "Wait, you {i}actually{/i} gave us Gimmighoul coins? Like, for real?"
+
+    blue @closedbrow "Sure. They're a dime a dozen out in the forest. Pretty much anywhere where Pokémon hide out. Don't pretend {i}you{/i} don't know that, [first_name]."
+
+    leaf @surprised "Are Gimmighoul actually that common?"
+
+    show yellow frownmouth at rightside with dis
+
+    yellow @talkingmouth "No, but other Pokémon like to raid their chests."
+    yellow @closedbrow talkingmouth "But since they can't do anything with the coins... they end up just carrying the coins to random places and leaving them behind."
+
+    ethan @confused "Wait, is this in the game, or real life?"
+
+    yellow @sadbrow talkingmouth "Real life. It's sad..."
+
+    blue @talkingmouth "If they didn't want their chests to be raided, they'd lock them up better. You see a chest, you take whatever's inside. That's just the rule."
+
+    ethan @sadbrow talking2mouth "Bit harsh."
+
+    blue @angry "Can we {i}move on{/i} from sobbing over nature?"
+
+    yellow @closedbrow talkingmouth "Okay, okay..."
+
+    pause 0.5
+
+    yellow -frownmouth @talkingmouth "Let's talk about progress gems. Each floor has a gemstone on it. These gemstones guide the way to the next floor."
+    yellow @happy "When you have enough of them, you can pierce the mysterious veil over the dungeon, and leave!"
+
+    leaf @happy "Oh, I get this. Every time we succeed in an event, we get a gem, right?"
+
+    blue @closedbrow talkingmouth "Nah, you don't need to succeed. Failing gets you one, too."
+
+    leaf @surprised "Huh?"
+
+    blue @closedbrow "It's called 'failing forward.' When you're a badass, even your failures are victories. So you're always making progress, no matter what."
+
+    red @confused "...Hey, when did you start playing this game?"
+
+    blue @surprised "Huh? I think I was eight?"
+
+    yellow @closedbrow talkingmouth "It was your ninth birthday."
+
+    redmind @thinking "So he's been 'failing forward' for nine years..."
+    redmind @unamusedbrow unamusedmouth "No wonder he never admits when he's defeated."
+
+    ethan @talkingmouth "[bluecolor]You can hover over your progress gems to see how many you have left before you reach the end of the dungeon.{/color}"
+
+    blue @surprised "Hover? Just keep track of it on your character sheet."
+
+    hide yellow
+    hide blue 
+    show screen DungeonUI
+    with Dissolve(1.0)
+
+    return
+
+label dungeontutorial5:
+    call cleardungeonscreens from _call_cleardungeonscreens_3
+    show blue 
+    with Dissolve(1.0)
+
+    blue @talkingmouth "As you make your way through the dungeon, you encounter a snarling, bug-like beast. Its eyes are milky and unfocused, and large fungi seem to be sprouting from its back."
+    blue @talkingmouth "This dread beast seems to be at death's door, but it still seems to be trying to pick a fight with you."
+
+    ethan @happy "Hell yeah! Time for some combat. Healers in the back, tanks up-front. Just like those MMOs I used to play."
+
+    blue @talkingmouth "When fighting an enemy in the dungeon, remember that you'll only have one Pokémon, and your Pokémon do not heal between encounters."
+    blue @closedbrow talkingmouth "Even if your partner has the advantage against the opponent, you might not want to send them out if they only have one HP."
+
+    leaf @talking2mouth "Got it. So that's when you'd want to switch leaders. But, say, hypothetically, I don't know what moves or abilities my allies have... how do I check them out?"
+
+    blue @closedbrow talkingmouth "You're allowed to share character sheets. Just look at each other's sheets, or tell each other what your abilities are. It's called 'table talk', and it's fine."
+
+    yellow @happy "It's more fun to do it in-character, though!"
+
+    show blue surprised with dis
+
+    ethan @talkingmouth "[bluecolor]View a person's character sheet by right-clicking on their portrait. Then you can hover over the Pokémon at the bottom of the screen to get information about them.{/color}"
+
+    blue @talkingmouth "So, we've just agreed we're going to ignore everything Ethan says, right?"
+
+    leaf @sarcastic "Might be for the best."
+
+    red @sadbrow talkingmouth "Sorry, man."
+
+    ethan @happy "Honestly, this time, it's deserved."
+
+    blue @talkingmouth "Anyway, switch to the leader with the Pokémon you think will do the best against this Parasect."
+    
+    hide yellow
+    hide blue 
+    show screen DungeonUI
+    with Dissolve(1.0)
+
+    return
+
+label dungeontutorial6:
+    call cleardungeonscreens from _call_cleardungeonscreens_4
+    show blue 
+    with Dissolve(1.0)
+
+    python:
+        wonbattle = activedungeon.GetLastBattler().GetTeam()[0].Health != 1
+        lastbattler = activedungeon.GetLastBattler().GetFormatName()
+
+    if (lastbattler == first_name):
+        if (wonbattle):
+            red @happy "Hey, nice. Not bad for my first battle in this system."
+
+        else:
+            red @closedbrow talking2mouth "Ah, I didn't win. Guess I need to learn a bit more about the system..."
+
+    elif (lastbattler == "Leaf"):
+        if (wonbattle):
+            leaf @happy "Heck yeah. We showed that overgrown bug what's what!"
+
+        else:
+            leaf @angry "What? That's bull! No way I would have lost in real life!"
+
+    elif (lastbattler == "Ethan"):
+        if (wonbattle):
+            ethan @happy "That Parasect just couldn't stand up to my raw gamer skill."
+
+        else:
+            ethan @closedbrow talking2mouth "Man. Not the first time I've wiped at a raid boss, but it never feels good..."
+
+    elif (lastbattler == "Yellow"):
+        if (wonbattle):
+            yellow @challengingmouth happybrow "'Amarillo smugly curtsies at the defeated foe, laughing at its pitiful attempts to claw its way out of the net she had ensnared it in.'"
+            yellow @happy "Hee hee."
+
+        else:
+            yellow @sad "'Amarillo gasps as she prepares her final--'"
+
+            blue @closedbrow talkingmouth "You're fine, the bug runs away after beating you up. I'm not going to kill a level 1 player."
+
+            yellow @surprised "...Oh."
+
+    leaf @talkingmouth "So, like, what do we get for winning in combat?"
+
+    blue @talkingmouth "Besides experience? Morale. Every victory in combat is worth three morale points to whoever won."
+    blue @happy "It's a consistent and reliable way of getting experience in dungeons!"
+
+    yellow @talkingmouth "You might want to put party members with lower morale against opponents, then, because your morale can't go over five. If someone with full morale defeats a foe, those three points are just wasted."
+
+    ethan @talking2mouth "Sounds pretty powerful, since everything else is so RNG-dependent. What happens if we lose, then?"
+
+    blue @talkingmouth "Then you lose {i}all{/i} your morale. Doesn't matter how much you had before, it's all gone."
+
+    red @surprised "Geez. That's rough."
+
+    blue @talkingmouth "Your Pokémon will come back at one health, at least, but it'll seriously screw up your chances of getting good rewards at the end of the dungeon, if you can only barely manage to stumble out, bruised and battered."
+    blue @surprised "And if there's a boss at the end of the dungeon? Forget it. You better bring healing items, that's all I'm saying."
+
+    red @happy "Got it. Avoid losing battles. Seems like a good strategy. Wish I'd thought of it."
+
+    hide blue 
+    show screen DungeonUI
+    with Dissolve(1.0)
+
+    return

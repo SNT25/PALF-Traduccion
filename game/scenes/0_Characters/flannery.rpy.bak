@@ -1,0 +1,863 @@
+label Flannery1:
+    if (not IsBefore(1, 5, 2004)):
+        $ persondex["Flannery"]["Events"].append("Level2SceneVer2")
+
+    scene baseball 
+    show flannery
+    with Dissolve(2.0)
+
+    $ renpy.music.queue("Audio/Music/MtPyre.ogg", channel='music', loop=True, tight=None)
+        
+    red @talkingmouth "Hey, Flannery."
+
+    if (not IsBefore(1, 5, 2004)):
+        flannery surprisedbrow frownmouth @surprisedmouth "Oh, [first_name]. Hi."
+
+        pause 1.0
+
+        red @sadbrow talking2mouth "Er... something wrong?"
+
+        flannery @closedbrow talkingmouth "Nah."
+        flannery -surprisedbrow -frownmouth @sadbrow talkingmouth "It's just... that whole power thing..."
+        flannery @sadbrow talking2mouth "How are you taking it?"
+
+        red @sadbrow talkingmouth "Looking forward to putting the whole thing behind me. Though I kinda get the feeling I'll be feeling that one for the whole year."
+
+        pause 1.0
+
+        red @talking2mouth "What about you? Are we still cool?"
+
+        flannery @talkingmouth "Yeah. I didn't believe that bull about psychic powers, anyway."
+        flannery @closedbrow talking2mouth "Well... until Whitney told me that some people actually {i}can{/i} control minds. I mean, that was a shock, you know? Didn't see that one coming."
+        flannery @happy "But then she explained how your power really works to me, and your speech sealed the deal."
+
+        pause 1.0
+
+        flannery @sadbrow talkingmouth "That was pretty brave of you."
+
+        red @sweat closedbrow talkingmouth "Thanks, I'll never be able to do it again."
+        red @confusedeyebrows talking2mouth "Anyway, what're you doing? Working up a sweat at the baseball field?"
+
+    else:
+        flannery @happy "Hey, guy. How're you doing?"
+
+        red @talkingmouth "Pretty good. Working up a sweat at the baseball field?"
+
+    flannery @talkingmouth "Totally. After a couple hours of this, there's nothing better than a long shower to cool down in."
+    flannery @happy "Back home we always used to jump in the hot springs after a long morning of battling at the gym. You {i}really{/i} don't know how to unwind until you've been to the Lavaridge Hot Springs."
+
+    red @closedbrow talking2mouth "Lavaridge? Is that where you're from, then? I think you mentioned that a while ago."
+
+    flannery @happy "Yeah. Great little place. Our median age was sixty-two, but it was cozy and warm."
+
+    red @talkingmouth "Cool. You mentioned that you had 'long mornings' of battling at the gym, though? I didn't even know you had any sort of connection to a gym."
+
+    flannery @surprised "Oh, yeah, I guess I didn't mention. My grandpa was the Gym Leader of Lavaridge."
+
+    red @happy "Hey, that's cool."
+
+    flannery @happy "Hot, actually. We were a Fire-type gym."
+
+    red @talkingmouth "But it sounds like you battled as well? How'd that happen?"
+
+    flannery @talkingmouth "Oh, grandpa would always let me watch his battles. And if it was against a weaker trainer, he'd give me his Pokémon and let me battle in his place."
+
+    red @confused "Is that legal?"
+
+    flannery @talkingmouth "Hoenn's pretty casual about stuff like that. It was fine."
+
+    red @talkingmouth "Noticed you're using past-tense, though."
+
+    flannery @sad "Yeah... my grandpa left the gym to become an Elite Four member."
+
+    pause 1.0
+
+    flannery frownmouth @veins furious "And then left the {i}region{/i}, to go be a Gym Leader in another one! What the hell, old man! You took a {i}demotion{/i}, just so you could get away from me?!"
+
+    red @confusedbrow frownmouth "{w=0.5}.{w=0.5}.{w=0.5}."
+
+    flannery -frownmouth @sweat happy "Ah... ha... ha... sorry! Lost my temper there."
+
+    red @talking2mouth "So... who ran the gym after he left?"
+
+    flannery @talkingmouth "Well, me, actually. I'd had a lot of practice. I mean, I had a lot of practice battling. All the other stuff, about, like... running a gym... hiring trainers... payroll... marketing..."
+    flannery @sad "I kinda had to learn that on the job."
+
+    red @confused "Okay, surely dropping your gym duties in the hands of a child isn't legal."
+
+    flannery @sad "I mean, I was fourteen."
+
+    pause 1.0
+
+    flannery @closedbrow talking2mouth "Nah, that doesn't make it better, does it?"
+    flannery @closedbrow talkingmouth "Yeah, it wasn't {i}technically{/i} legal, but, again... people in Hoenn are cool about it."
+
+    red @talking2mouth "What about school?"
+
+    flannery @talkingmouth "Oh, I was homeschooled."
+
+    pause 1.0
+
+    flannery @surprised "Oh, but, uh, I'm not one of those religious wackos! Like, I believe in evolution, and I know Arceus is just a Pokémon, not a god."
+    flannery @sweat happy "I was just homeschooled 'cause the nearest school was miles away, down a rocky mountain path."
+    flannery @talkingmouth "It was just convenience, honest. I'm pretty darn sure that I don't believe any out-there stuff."
+
+    red @happy "Well, hey, it's good to make contact with a country girl. I figured everyone in this school was a city slicker."
+
+    if (GetRelationshipRank("Serena") > 0):
+        red @closedbrow talking2mouth "Or pretending to be a city slicker, anyway."
+
+    flannery @talkingmouth "Yeah. So I've kinda been holding the fort down for a few years. My grandpa still gets paychecks from the league for running the gym, but he just forwards them to me."
+
+    flannery @happy "I made enough money from them that I could afford to go here. So that's what's happening!"
+
+    red @confused "At the risk of you saying 'people in Hoenn are cool' again, is it alright to just have a gym shut down for a year? Won't there be a huge bottleneck of trainers to fight your gym?"
+
+    flannery @closedbrow talkingmouth "Nah. The average trainer's journey takes fifteen years, after all. A year of waiting isn't that much."
+    flannery @happy "Besides, in Hoenn, battling's kinda secondary to contests. The Hoenn League focuses most of their attention there."
+
+    red @surprised "Really? That's wild to hear. Can you tell me more about that?"
+
+    flannery @talkingmouth "Well, contests have always been big in Hoenn. They were invented there. Then we had a Champion who was, before he became Champion, a famous contest star."
+    flannery @closedbrow talkingmouth "Um... what was his name... Wal... Walhart? Walmart? Waluigi?"
+
+    if (HasEvent("Instructor Wallace", 2)):
+        red @surprised "Are you talking about Instructor {i}Wallace?{/i}"
+
+        flannery @happy "Oh, yeah, that's the guy! But why do you call him 'Instructor?' It's not like he goes here."
+
+    flannery @talkingmouth "Anyway, he was super-famous on the contest circuit before he became Champion. So that gave contest coordinating even more of a spotlight."
+    flannery @happy "People really loved him. And, oh my god, you wouldn't believe it, he was {i}so{/i} pretty."
+
+    if (HasEvent("Instructor Wallace", 1)):
+        red @closedbrow talking2mouth "Yeah... no, I believe it. I could grate cheese on those abs."
+
+    flannery @closedbrow talkingmouth "But he, uh, was defeated in, like, three months. By the Champ he'd just unseated, actually."
+    flannery @sweat happy "So... the tabloids love figuring out what happened there. Personally, I think that they were dating, and just switched positions so they could both put 'National Champion' on their resumes."
+
+    red @happy "Right. Do you have {i}any{/i} evidence for that?"
+
+    flannery @angrybrow happymouth "Do binders full of fanfiction count as evidence?"
+
+    red @closedbrow talkingmouth "Well, it's more evidence than {i}empty{/i} binders, I guess."
+
+    pause 1.0
+
+    red @closedbrow talking2mouth "Wait, did you write the fanfic, or just consume it?"
+
+    flannery @happy "Heh heh. I don't mean to brag, but I'm a pretty prolific writer. Whitney often asks me to write slashfic for her. And anything I write is {i}guaranteed{/i} to be hot."
+    flannery @tiredbrow talking2mouth "...Of course, I usually end up staying up all night writing, and then I crash {i}hard{/i} in the morning. And then Whitney makes fun of me for that."
+    flannery @veins angry "It's, like, girl, c'mon! I'm writing {i}your{/i} slashfic! Have a little empathy! And maybe a cup of coffee?"
+
+    red @happy "Heh. You two are funny. How'd you meet?"
+
+    flannery @talkingmouth "Online, actually. I'd spend about hours every day cooling off in the hot springs after a morning full of battles."
+    flannery @happy "While I was doing that, I used to work on stories and fanfics and stuff that I'd post online. Whitney was a big fan, and she actually commissioned a few fics from me."
+    flannery @talkingmouth "Well, one thing led to another, and we started chatting. Met up a couple times IRL. And then we found out we'd both be attending Kobukan Academy, and... that's pretty much our story."
+
+    red @happy "Sounds like a {i}very{/i} devious plan to get free commissions from you."
+
+    flannery @surprised "{w=0.5}.{w=0.5}.{w=0.5}."
+    flannery @closedbrow talkingmouth "Nah, she wouldn't. Probably."
+
+    red @happy "What? Of course she wouldn't!"
+
+    if (persondex["Whitney"]["Value"] < 150):
+        flannery @happy "Hey, you don't know her as well as I do!"
+
+    flannery @talking2mouth "Girl's sneaky. For real."
+
+    red @talkingmouth "Well, it's good that you've got a friend to keep you centered in the morning."
+
+    pause 1.0
+
+    flannery frownmouth @sad "...Yeah."
+
+    pause 1.0
+
+    red @sad "Something wrong?"
+
+    flannery @sad "I mean... you know how I am in the morning. I want to {i}not{/i} be that way. But none of the stuff I've tried works."
+    flannery @tiredbrow talking2mouth "Herbal teas, therapy, sleeping more, even really long showers in the morning... and I'm pretty sure that hypnotist wasn't an actual Esper."
+
+    pause 1.0
+
+    show flannery surprisedbrow frownmouth with dis
+
+    red @closedbrow talking2mouth "Hm... you know, we don't get to have too many conversations like this, where you're just a chill, normal, woman, do we?"
+
+    pause 1.0
+
+    flannery -surprisedbrow -frownmouth -surprised @happy "Hah, now, see, if it was morning time, I'd trash you in a battle for saying that!"
+
+    $ lowertimeofday = timeOfDay.lower()
+    red @closedbrow talking2mouth "Hence why I waited until [lowertimeofday]."
+
+    flannery @talkingmouth "Alright, smart aleck. Yeah, we don't get a whole lot of opportunities to talk like this. What's your point?"
+
+    show flannery surprisedbrow frownmouth with dis
+
+    red @happy "No point. Just saying I like it."
+
+    pause 1.0
+
+    flannery @happy "Dude, cool down! You really had me going there for a moment."
+
+    red @talkingmouth "I'm serious. You're actually pretty cool. I want to see more of this Flannery."
+
+    pause 1.0
+
+    flannery -surprisedbrow -frownmouth -surprised frownmouth @sad "Yeah... so do I." 
+
+    pause 1.0
+
+    flannery @talking2mouth "...I'm open to suggestions."
+
+    pause 1.0
+
+    red @closedbrow talkingmouth "Well, uh..."
+
+    pause 1.0
+
+    red @confused "You mentioned that you used to stay up late writing a lot. Do you still do that?"
+
+    flannery @closedbrow talkingmouth "Yeah, most nights. I mean, Kobukan Academy, right? I've got {i}so much{/i} material to work with."
+
+    red @talkingmouth "Okay, so that's not great. Kobukan takes a lot out of us. Maybe you need to {i}not{/i} do that?"
+
+    flannery @sad "...I guess I could try. But without the hot springs, writing's the only thing I can do to cool off."
+
+    red @confused "Right... and I guess you don't really have time to do it other than right before bed?"
+
+    flannery @talking2mouth "No. I mean, you know how busy we are with studying and training and stuff."
+
+    red @closedbrow talking2mouth "Yeah, I definitely get ya."
+    red @talkingmouth "Okay. What about the hot springs? Maybe they were a bigger, more important, part of your cooling-off period than we thought?"
+
+    flannery @sadbrow talkingmouth "Man, you're going to have to be more creative than that. I've thought of everything you can think of, I promise. The long showers in the morning were to try and replicate the hot springs."
+
+    if (not IsBefore(17, 4, 2004)):
+        flannery @closedbrow talkingmouth "Although I stopped doing that after Tia moved in, since she sleeps even later than I do."
+
+        flannery @talking2mouth "Still. I don't think that's it."
+
+    red @talkingmouth "Okay... well, I've got one more idea."
+
+    flannery @sadbrow happymouth "I'll take anything."
+
+    red @closedbrow talking2mouth "You mentioned that when you were running the Lavaridge Gym, your battles were in the morning. Does that mean you closed the gym in the afternoon?"
+
+    flannery @talking2mouth "Yeah. We closed at noon, sharp. It was a bit of an early close, but the gym wasn't ever very busy, and if I was going to get eight hours of schooling, I needed to close early."
+
+    red @happy "Well... there's gotta be a connection there, right? Maybe, like, your body remembers the stress of the battles in the gym every morning, and it won't let you calm down and realize there's no threat."
+
+    flannery @surprised "Dude. Are you seriously suggesting I've got PTSD from {i}Pokémon{/i} battling? In an official gym? In what was basically {i}my{/i} gym? In my hometown? Surrounded by my family friends?"
+
+    red @sad "Er... I was a lot more confident in my theory before all those question marks..."
+
+    flannery @talkingmouth "Nah, it's not that. Maybe I'm literally just the {i}worst{/i} at mornings."
+
+    red @talkingmouth "Maybe... maybe. Mind if I do some research into this?"
+
+    flannery @surprised "Huh?"
+
+    red @talkingmouth "I really want to see if I can help you. And I'm curious, anyway. I have hunch there's something more to this than... just not being able to wake up well."
+
+    flannery @closedbrow talkingmouth "I mean... yeah, I guess you can do some research. If you can even manage to find the time with how crazy Kobukan runs us. Wait, what kind of research?"
+
+    flannery @unamusedeyebrows playfuleyes talking2mouth "You aren't going to do anything weird, are you?"
+
+    red @confused "I mean... maybe? I have no idea what I'm going to do. I was planning on just going on the internet and searching up 'girl wakes up angry and gets calm in afternoons why?'"
+
+    flannery @tiredbrow talking2mouth "Ugh, don't do that. If you say I'm a girl, they'll say it's some hormonal bullshit, or that it's my period or something. That's what all the doctors say."
+
+    redmind @thinking "...Don't ask. {b}Do not ask.{/b}"
+
+    red @confused "Are you sure it's not that?"
+
+    redmind @thinking "Damn it."
+
+    show flannery:
+        ease 0.5 ypos 1.2 zoom 1.3
+
+    flannery furious "Yes, I'm sure it's not that! And you can take your casual misogyny and shove it right up your ass!"
+
+    red @surprised "W-w-wait! I'm not sexist! Some of my best friends are women!"
+
+    show flannery surprisedbrow frownmouth with dis:
+        ypos 1.2 zoom 1.3
+        pause 1.0
+        ease 0.5 ypos 1.0 zoom 1.0
+
+    pause 1.5
+
+    flannery -surprisedbrow -frownmouth -surprised frownmouth @unamusedeyebrows playfuleyes talking2mouth "That does not work in this situation."
+
+    red @closedbrow talking2mouth "Yep.{w=0.5} Yep, I see that now."
+
+    red @sadbrow talkingmouth "But, seriously. I want to help you. Obviously, there's not a whole lot I can do--I'm just a student. But what I {i}can{/i} do, I will."
+
+    flannery @happy "Thanks." 
+    flannery -frownmouth @sweat sadbrow happymouth "Uh... I'd also like to say... sorry for when I snap at you. In the mornings, sure, but also, like... just now."
+
+    red @sadbrow talkingmouth "It's alright. I don't take it too seriously."
+
+    flannery @happy "Thanks for your patience. You're pretty cool, no matter what Whitney says about you."
+
+    red @confused "What?"
+
+    if (persondex["Whitney"]["Value"] > persondex["Tia"]["Value"]):
+        flannery @happy "Hah, just kidding! Actually, she's been talking a lot about you. In a good way. So, y'know, there's that."
+
+        $ ValueChange("Whitney", 3, -0.5)
+
+        narrator "Your understanding of Whitney increased!"
+
+    else:
+        flannery @happy "Hah, just kidding! Actually, she's been really appreciating how much attention you've been giving Tia. Tia's been really happy recently."
+
+        $ ValueChange("Tia", 3, -0.5)
+
+        narrator "Your understanding of Tia increased!"
+
+    red @talkingmouth "Good to know."
+    red @sadbrow talkingmouth "I'll, uh, get back to you if I get any leads on ways to, uh, help."
+
+    flannery @happy "Cool. Thanks, man. Don't stress yourself out over it, though. But if you actually figure out why I turn into a raging morningzilla, I'll give you an unlimited pass to the Lavaridge Hot Springs."
+
+    red @happy "Heh. Well, now I've {i}gotta{/i} figure it out. I'm coming for that pass! It's a challenge, now!"
+
+    flannery @happy "Heh. I've been an acting Gym Leader long enough to know what to say to that."
+
+    flannery angrybrow happymouth "Bring it on, {color=#0048ff}challenger!{/color}"
+
+    $ RelationshipRankUp("Flannery", "Challenger", 1)
+
+return
+
+label Flannery2:
+    scene lobby with splitfade
+    with Dissolve(2.0)
+
+    stop music fadeout 1.5
+
+    $ renpy.music.queue("Audio/Music/MtPyre.ogg", channel='music', loop=True, tight=None)
+
+    narrator "You are walking through the school when you suddenly hear a string of obscenities being shouted from a room just off the hallway you're walking through."
+
+    show blank2 behind lobby
+    show lobby:
+        ypos 1.0
+        block:
+            ypos 1.02
+            pause 0.01
+            ypos 1.0
+            pause 0.01
+            repeat 150
+
+    Character("{color=#d62e0d}???{/color}") "\"God **** it! **** this entire stupid ******** to ****! I can't take one more ******* of this ******* ******* *******! Why do they have to be so ********** ************* **********************************!\""
+
+    red @surprisedbrow frownmouth "[ellipses]"
+
+    pause 0.5
+
+    red @wince talking2mouth "Oh man... I wish I could just walk past and pretend I didn't hear that, but I recognize that voice. That's definitely Flannery."
+
+    scene musicroom with splitfade
+
+    red @sadbrow talkingmouth "Hey, Flannery...?"
+
+    show flannery business with vpunch
+
+    flannery @happy "Hey, [first_name]! What's up?"
+
+    red @surprisedbrow frownmouth "[ellipses]"
+    red @talking2mouth "Okay, uh, four things."
+
+    show flannery surprisedbrow frownmouth with dis
+
+    red @talkingmouth "Firstly: Not much, I was just heading to the baseball field."
+
+    red @confused "Secondly: That's a killer fit. Where'd you get it? And what's the occasion?"
+
+    red @closedbrow talking2mouth "Thirdly: What are you doing in the music room?"
+
+    show flannery lightblush sad2eyes embarrassedmouth with dis
+
+    red @confused "Fourthly, am I huffing paint, or did I hear you knit and let fly a tapestry of obscenity that is most likely big enough to blot out the sun over the entire region, and if so, uh, why?"
+
+    flannery -lightblush -sad2eyes -embarrassedmouth @closedbrow talkingmouth "Ah-heh... Well, uh, I guess I'll answer those in reverse order, since it'd make more sense that way."
+    flannery @talkingmouth "You, uh, you did. Sorry, I thought I'd closed the door."
+    flannery @sad2brow talking2mouth "I usually come to the music room for these meetings, because as long as no-one's here, it's pretty soundproof. And there's a nice plain white wall over there."
+    flannery @happy sweat "And, uh, the reason for the suit and wall is the meeting I mentioned. It's contract renegotiation time for the gym trainers. I'll be on video calls with them all week. Can't exactly wear the old t-shirt for those."
+
+    red @talking2mouth "...Contract renegotiation?"
+
+    flannery @talking2mouth "Yeah. Being a Gym Leader... people think it's a lot more glamorous than it really is."
+    flannery @tiredbrow talking2mouth "Honestly, most of it's just trying to settle arguments between my Gym Trainers."
+    flannery angrybrow frownmouth @furious "God, would it {i}kill{/i} them to act like adults once in a while?! I'm younger than most of those bastards! Can't they handle their own goddamn problems without running off to tattle on each other?! I feel like I'm running a flipping nursery!"
+
+    pause 1.0
+
+    flannery -angrybrow @closedbrow talking2mouth "Okay. Okay. Deep breaths... {w=0.5}Sorry. Lost my head a little bit there."
+
+    flannery @sad2brow talking2mouth "It's just... it's so frustrating. I mean, I'm at Kobukan, right? They all know that. Can't they stretch their imaginations just a {i}little{/i} bit to figure out I'm probably under a lot of pressure, already?"
+
+    red "[ellipses]"
+
+    show flannery:
+        xpos 0.5 
+        ease 0.5 xpos 0.75
+
+    flannery @closedbrow talking2mouth "This year's hurdle is that Eli is planning on retiring. Cole wants to take his place, but, frankly, Cole isn't skilled enough to be in the highest rank of Gym Trainers yet." 
+    
+    show flannery:
+        xpos 0.75 xzoom 1
+        ease 0.5 xzoom -1
+    
+    flannery @upeyes angryeyebrows talking2mouth "I want Sadie to do it, but she's only available in the Summer months."
+    
+    show flannery:
+        xpos 0.75 xzoom -1
+        ease 0.5 xpos 0.5
+    
+    flannery @tiredbrow talking2mouth "I could pay her extra to stay on fulltime--she's told me as much--but I'm pretty sure Cole would start a coup, and I frankly can't afford to stir the pot while I'm not there to handle things personally."
+    
+    show flannery:
+        xpos 0.5 xzoom -1
+        ease 0.5 xpos 0.25
+    
+    flannery @upeyes talking2mouth "Meanwhile, that traitorous vizier Zane is trying to get the Hoenn League to replace me with himself..."
+    
+    show flannery:
+        xpos 0.25 xzoom -1
+        ease 0.5 xzoom 1
+    
+    flannery @closedbrow sweat talking2mouth "But he's probably the best Gym Trainer I have, and takes peanuts for pay, so as long as I can stop him from taking me by surprise, it's..."
+
+    show flannery:
+        xpos 0.25 xzoom 1
+        ease 0.5 xpos 0.5
+
+    pause 1.0
+
+    flannery @sweat winkeyes sadeyebrows talking2mouth "...Sorry. I can see your eyes glazing over."
+
+    red @sadbrow talkingmouth "Sorry. That was just a lot of names rushing at me all at once."
+
+    flannery @closedbrow talking2mouth "Yeah, it's like writing fanfiction. You can't introduce too many characters at once, or the readers won't care about any of them."
+    flannery @sadbrow talkingmouth "Problem is, I've known all these guys since I was in diapers... and I care about all of them. I wish I could find a way to make all of them happy."
+    flannery @tiredbrow talking2mouth "...Even that smug snake, Zane."
+
+    red @sadbrow talkingmouth "...I think I'm starting to understand something."
+
+    flannery @talking2mouth "Oh, yeah? Is it related to my anger issues?"
+
+    red @talking2mouth "Sort of. Though I'm not sure I'd call them anger issues, necessarily."
+
+    flannery @angryeyebrows upeyes talking2mouth "I'm angry, and it's an issue."
+    flannery surprisedbrow frownmouth @closedbrow talkingmouth "Not sure what else to call it."
+
+    red @talkingmouth "Well, we can figure that out later. Right now, I'd actually like to ask you more about your Gym Leader work."
+
+    flannery -surprisedbrow -frownmouth @surprisedbrow talkingmouth "Uh... sure."
+
+    red @happy "I know how the Kantonian league works, mostly. I know how Gym Leaders are assigned, and how trainers challenge them. But I'm not super-familiar with the Hoenn league."
+
+    flannery @sad2brow talking2mouth "Most Hoennians aren't even super-familiar with the Hoenn league."
+    flannery @happy "Oh, whatever. Sure, let me exposit at you."
+
+    pause 1.0
+
+    flannery @closedbrow talking2mouth "{i}*Ahem.*{/i} In the distant past of Hoenn, circa, uh, something something..."
+    flannery @happy "A shogun was like, hey, wouldn't it be badass if there was, like, one guy who was {i}really{/i} good at battling?"
+
+    red @happy "Yeah, that'd be pretty cool."
+
+    flannery @talkingmouth "So then that shogun created the position of Champion. And then all the other regions were like, hey, we want to get in on that action, too!"
+    flannery @talking2mouth "But then Hoenn's champions kinda just got worse and worse, and the region was a bit infamous for not having a {i}great{/i} champion figure for a century or so..." 
+    flannery @tiredbrow talking2mouth "And that's when contests were invented, which was pretty much the nail in the coffin."
+    flannery @sad2brow talking2mouth "A lot of Hoennians would tell this story as a victorious one--how contests managed to become big in a region. And, yeah, we've got some great Coordinators. Lisia, that one guy who was Champion for three months..."
+
+    if (HasEvent("Instructor Wallace", 2)):
+        red @closedbrow talking2mouth "Instructor Wallace."
+
+    flannery @sadbrow talking2mouth "But... I mean, that's great for the rest of the region, that's great for the Coordinators, I guess, but we {i}do{/i} still need to have a league."
+    
+    pause 1.0
+
+    flannery @closedbrow talking2mouth "I got the position through my grandfather. I told you this, right?"
+
+    red @talking2mouth "Vaguely."
+
+    flannery @closedbrow talking2mouth "Well, my grandfather was a tough trainer. A master of Fire-types. He couldn't {i}quite{/i} beat the Elite Four, but he impressed them enough that, when the Verdanturf Gym Leader retired, they fast-tracked his application."
+
+    red @confused "Wait, Verdanturf?"
+
+    flannery @closedbrow talking2mouth "Yeah... kinda the start of things falling apart. Turns out the former Gym Leader wasn't very popular in Verdanturf. Too much excitement in the battles, too much energy for that sleepy, small, town." 
+    flannery @upeyes angryeyebrows talking2mouth "They said the gym was waking up the Whismur in the nearby tunnel, and 'polluting the air.'" 
+    flannery @sad2brow talking2mouth "They tore down the gym and a Contest Hall snuck in under the cloud of dust. Didn't seem to complain about their air quality for that one, though."
+    flannery @upeyes talking2mouth "So he ended up setting up the Lavaridge Gym instead, on account of it being one of the few populated places with enough open space to do so, and no Contest Halls or Gyms already there."
+
+    red @sadbrow talkingmouth "That worked out, though, right?"
+
+    flannery @sadbrow talkingmouth "Not really. Lavaridge is only accessible if you climb down a volcano to the North, or up a long series of ridges to the East."
+    flannery surprisedbrow frownmouth @closedbrow talking2mouth "We don't really have any native birds common or strong enough to set up a taxi service with like Galar or Paldea..."
+
+    pause 1.0
+
+    flannery @talking2mouth "Hold on. Do you think people would ride a Tropius relay? Like, we could hang big baskets from their sides, and take multiple people at a time. I might be onto something there."
+    
+    red @confused "I guess it's worth a shot?"
+
+    show flannery happybrow -frownmouth with dis
+
+    narrator "Flannery pulls her phone out and quickly taps out a note to herself."
+
+    flannery -happybrow @talkingmouth "Okay. Where was I?"
+
+    red @talking2mouth "You were saying no-one can get to your gym."
+
+    flannery @surprised "Oh! Yeah, that's right!"
+    flannery @happybrow talkingmouth "Well, my grandfather's pretty hot-blooded. Living in Lavaridge with all the old fogeys, getting a challenger maybe once every two years... that didn't sit well with him. He had nothing to do, and was bored out of his mind."
+    flannery @talking2mouth "And then I showed up at his doorstep."
+
+    pause 1.0
+
+    flannery @sad2brow talking2mouth "He took me in when my parents... passed."
+    flannery @sadbrow talking2mouth "But that's not part of this story. I don't really remember what happened--I was pretty young. But they were on the road late at night, and there was a drunk driver who... you know."
+    flannery @closedbrow talking2mouth "Sorry. Depressing side tangent."
+
+    red @confusedeyebrows frownmouth "[ellipses]"
+
+    flannery @happy sweat "A-anyway, with me around, my grandfather started giving me some of the gym responsibilities, too." 
+    flannery @sadbrow talkingmouth "I think he thought I was as bored to tears as he was. I wasn't, though. I just liked hanging out with him."
+    flannery @closedbrow talking2mouth "We kinda turned the Lavaridge gym around, and people actually started going out of their way to visit us--and challenge us."
+
+    pause 1.0
+
+    flannery @tiredbrow talking2mouth "...Bleh. It worked too well. Granddad got promoted. He ended up on the Elite Four. He still lived in Lavaridge, of course, but spent a lot of time flying out to Ever Grande City, waiting for challengers."
+    flannery frownmouth @sad2brow talking2mouth "So he bought a house there, and spent less and less time at the gym."
+
+    pause 0.5
+
+    flannery @talkingmouth "He used to say, jokingly, to the Gym Trainers, that I was in charge. You know, whenever he left for an hour or two to go grocery shopping or whatever."
+    flannery @sweat talking2mouth "But then he kept saying it, even when he left for days. And then weeks. And then months."
+    flannery @closedbrow talking2mouth "And one day I got a letter from the Hoenn League saying that I was the official Gym Leader of the Lavaridge Gym."
+
+    pause 0.5
+
+    flannery @happy "I was really happy. But, like, also, {i}really{/i} confused?"
+    flannery @sad2brow talking2mouth "I called up my grandpa, and he explained that the Galarian League had offered him an invitation." 
+    flannery @sadbrow talkingmouth "He said that his skill and ambition as a battler couldn't ever be displayed and fulfilled in a region where battling played second fiddle to contests."
+    flannery @sad2brow talking2mouth "And that's... kinda where we are now. He's been part of the Galarian League for four years. He's done alright. He dipped into the Minor League at one point, but crawled his way back up."
+
+    pause 0.5
+
+    flannery @happy "Heh, in Hoenn, he was considered one of the toughest Gym Leaders! The climb to Lavaridge was the penultimate step in many trainers' journeys--and the final one in most others!"
+    flannery @sadbrow talkingmouth "But in Galar, he's pretty much the middle of the pack."
+    flannery -frownmouth @happy "Well, at least he's happy."
+
+    red @talkingmouth "...I see. So you're only able to attend Kobukan because the Lavaridge Gym isn't very popular? You'll be away for an entire year."
+
+    flannery @sad2brow talking2mouth "Well... I guess you could say that? Hoenn's one of the dispersed leagues, like your own Kanto, or Paldea."
+
+    red @confused "Right. That means that gyms can be challenged in any order, right?"
+
+    flannery @talkingmouth "Yeah. Depending on how many badges the challenger has, the Gym Leader will use Pokémon of a different level, fighting harder against more experienced trainers." 
+    flannery @talkingmouth "The Pokémon they use belong to the gym, not necessarily the trainer themselves--though their eight-badge fight is usually their own, personal, team, since that's who they battle best with."
+    flannery @happy "That's another reason gyms are monotype! Because most gym leaders in dispersed leagues need to realistically train at least 30 Pokémon at a time. It's {i}way{/i} easier to do that if you're all training Pokémon of the same type."
+    flannery @closedbrow talking2mouth "Maybe even multiple of the same species. I have to admit, the Lavaridge Gym has a {i}lot{/i} of Numel on standby."
+
+    redmind @sadbrow "I knew this, but... it's nice to see Flannery talking about something she's passionate about. {i}And{/i} this is just confirming my theory."
+
+    flannery @talking2mouth "But... because gyms can be challenged in any order..."
+    flannery @tiredbrow talking2mouth "Challengers often leave the gym they think will be easiest for last."
+    flannery angryeyebrows sad2eyes frownmouth @angrybrow talking2mouth "And {i}my{/i} gym hasn't had any challengers for a year. That old man Wattson, though... I know that he's knocking out first-time challengers left and right."
+
+    pause 1.0
+
+    red @talkingmouth sadbrow "You said your gym was hard to get to."
+
+    flannery @talking2mouth "The Sootopolis gym is in a massive meteor crater that you can only get to by air. The Fortree gym is in the middle of a dense jungle with no roads."
+    flannery @sadeyebrows talking2mouth "Maybe the reason no-one cares about the Hoenn league is because we built our gyms in stupid places."
+
+    pause 1.0
+
+    red @talking2mouth "The Pokémon you use... your Pokémon are around level [AimLevel()], right? How do you battle with Pokémon at a higher level?"
+
+    flannery @talking2mouth "...I mean, I just do. I can't train them up to that level, but my grandpa did. And it's not like they... become weaker without him..."
+
+    pause 1.0
+
+    flannery furious "Gah! Okay, fine, I guess they {i}are{/i} getting weaker without him around, but that's not {i}my fault!{/i} I'm training them as best as I can!" 
+    flannery "But in a couple more months, they'll probably be too out-of-shape to even put up a competent seven-badge fight, nevermind an {i}eight-badge{/i} one!"
+    flannery "And that'll probably make the Pokémon Inspection Agency say my gym isn't up to snuff, and they'll take it away, and maybe {i}that{/i} will get that hotheaded old git to pay attention to Lavaridge--{i}his{/i} gym--{i}his granddaughter{/i}--for once!"
+
+    pause 1.0
+
+    show flannery lightblush embarrassedmouth sad2eyes with dis
+
+    pause 2.0
+
+    flannery -lightblush frownmouth sad2brow @sadbrow talking2mouth "I'm trying. I'm spending most of our marketing budget, and what {i}should{/i} be my trainers' bonuses, just so I can come here. I heard that Kobukan can make you champion level in under a year."
+    flannery @angryeyebrows sad2eyes talking2mouth "If I can just... learn to train Pokémon up to a high-enough level by the end of the year, then we should be safe from inspection."
+
+    pause 1.5
+
+    flannery angrybrow tears @talking2mouth "I don't know. If I need to spend a ton of money to attend the 'cheat code to success' to convince the Hoenn League I deserve to be a Gym Leader, does that mean I don't really deserve to be a Gym Leader after all?"
+
+    flannery @talking2mouth "I don't want to lose this damn gym. It stresses me to hell and back, and no-one except the people who work there care about it..."
+    flannery @sad2eyes talking2mouth "But grandpa put me in charge. I've got to keep it. I at least need to keep it until he comes back. And if I {i}can{/i} keep it... then he's gotta come back eventually, right?"
+    flannery @angrybrow talking2mouth "Like, {i}everyone{/i} has to retire eventually, {i}right?!{/i}"
+
+    pause 2.0
+
+    flannery -tears sadbrow @sad2brow talking2mouth "I... I'm sorry."
+    flannery @closedbrow talking2mouth "I'm not angry. I've just been under a lot of stress, recently, and..."
+
+    red @talking2mouth "Flannery."
+
+    flannery @sadmouth "Huh?"
+
+    red @talking2mouth "You {i}are{/i} angry."
+
+    flannery surprisedbrow frownmouth @talking2mouth "What?"
+
+    red @talking2mouth "You're not just angry, you're furious. You're absolutely livid. You are {i}exploding{/i} with rage."
+
+    flannery angrybrow @talking2mouth "What are you saying?"
+    flannery @angry "Why would you say that? What the hell do you think you're trying to do? Did you just sit there with that sad expression on your face for half an hour so you could {i}judge{/i} me?!"
+    flannery surprisedbrow frownmouth @furious "Do you think I give a damn about what you think of me?! I don't need your approval! I can--"
+
+    red @angrybrow talking2mouth "Flannery, you're right!"
+
+    pause 2.0
+
+    flannery sadbrow tears @sadmouth "{size=30}What?{/size}"
+
+    red @sadbrow talking2mouth "You have every right to be angry, Flannery. You've been dealt a shit hand, nobody's acknowledged it, and nobody's helping you with it, either."
+
+    flannery @talking2mouth "...That's not true. Cole is..."
+
+    pause 1.0
+
+    flannery @tiredbrow talking2mouth "I can't even finish that sentence."
+
+    pause 1.0
+
+    red @sad2brow talking2mouth "You deserve better. You deserve to have a grandfather who appreciates your efforts. You deserve to have gym staff that respects how hard you're trying for them." 
+    red @talking2mouth "You deserve to have a league that supports you, where you can shine and stand out, with their help, instead of having to hide and hope they don't notice you."
+    red @angrybrow talking2mouth "And you have {i}every{/i} goddamn right to be angry about it."
+
+    pause 1.0
+
+    flannery surprisedbrow frownmouth -tears @sad "But... the mornings...?"
+
+    red @sadbrow talkingmouth "Flannery, I think you've been reading too much fanfiction. You're not a werewolf; your mood isn't determined by time of day, phase of the moon, or which stars are in alignment."
+    red @talking2mouth "It's not mornings that make you angry. It's not even that you become angry in the morning."
+    red @sadbrow talking2mouth "When you're tired... you aren't able to hide your anger as well. You're always angry. But you've learned to hide it when you're {i}not{/i} tired."
+
+    pause 1.0
+
+    flannery @talking2mouth "Oh."
+
+    pause 1.0
+
+    flannery @closedbrow talking2mouth "That, uh, that actually explains a lot."
+
+    pause 2.0
+
+    flannery @confusedbrow talking2mouth "Well,{w=0.5} gosh dang it. What do I do now?"
+
+    red @surprisedbrow frownmouth "[ellipses]"
+
+    show flannery tiredbrow tiredmouth with dis
+
+    red @happy sweat "Oh, I don't know. Um... therapy, maybe?"
+
+    flannery @talking2mouth "You talked all that paradigm-shifting stuff, but the moment I ask you for something I can {i}actually do{/i}, you clam up?"
+
+    red @talkingmouth "I'm not a therapist. Just a Pokémon Champion{w=0.5}{nw}"
+    extend @wince talking2mouth "--in training."
+
+    pause 1.0
+
+    flannery @talking2mouth "Well, great, I guess I now have a better understanding of what the hell my problem is, but it's not like I have any new way to deal with it."
+
+    pause 1.0
+
+    red @thinking "Hm..."
+    red @talking2mouth "What do you usually do for stress relief? I know you used to take long soaks in the hot springs. There's your writing, too."
+
+    flannery @sad2brow talking2mouth "Hm. Hiking's pretty fun, but Whitney's not so into it, so I can't do it too often."
+    flannery @closedbrow talking2mouth "Uh, biking is in the same boat... swimming's alright, but the stuff Whitney wears to the beach is a bit too distracting for me to {i}really{/i} relax."
+    flannery @talking2mouth "I guess I could do it by myself, but I don't really like doing that kind of stuff without Whitney. I tried something new recently, and... it was {i}not{/i} a good time."
+    
+    pause 1.0
+    
+    flannery @talking2mouth "Lately, I've been on a couple dates. They, uh... didn't work out."
+
+    red @surprised "Oh? You've been dating?"
+
+    flannery -tiredbrow @sad2brow talkingmouth "Ow. Don't sound so surprised."
+
+    red @happy "Sorry! I just thought you'd be too busy for that."
+
+    flannery @sadbrow talkingmouth "I'm too busy to {i}not{/i} make time for it, honestly. I have to do something to keep my mind off work and school, or I'll go insane."
+    flannery frownmouth @sad2brow talking2mouth "That used to be my fanfics, but... even that's become tricky, recently." 
+    flannery surprisedbrow @happy "I keep being inspired by stuff I see my classmates doing, and I want to work it into a fic, but I can't find a setting that fits."
+
+    red @talkingmouth "You could write something original."
+
+    flannery -surprisedbrow -frownmouth @sad2brow talking2mouth "That's what Whitney said. But, come on, you haven't even read one of my fics."
+
+    red @talkingmouth "Nah, but I know Whitney has, and if she thinks you can do it, she's probably right."
+
+    pause 1.0
+
+    flannery tiredbrow frownmouth @talking2mouth "Bleh. Man, she's always right. I wish she'd stop, once in a while."
+
+    pause 1.0
+
+    red @confused "If you don't mind--why didn't your dates work out?"
+
+    pause 1.0
+
+    flannery @talking2mouth "I'll give you one guess."
+
+    pause 3.0
+
+    red @wince talking2mouth "You, uh, got angry at them, yelled at them, and they ran?"
+
+    flannery @talking2mouth "Bingo."
+
+    pause 1.0
+
+    flannery @sad2brow talking2mouth "I mean, how hard is it to find a single guy who doesn't try to move the conversation to the bedroom after the first ten minutes?"
+    flannery @angrybrow talking2mouth "But at least those guys are interested in talking! Most of them just wanted to rattle off a list of accomplishments at me, like I was interested in their damn resume."
+    flannery @upeyes talking2mouth "Worst part is, I've done more than most of those dorks. I just sat there, in my pretty red dress, thinking 'okay, but I'm a Gym Leader.'"
+    flannery @sad2brow talking2mouth "Not that, uh, I'm doing great at it... but it beats out being an 'accounts manager' at Miller & Muther. Whatever the hell that means."
+
+    pause 1.0
+
+    flannery @sadbrow talkingmouth "Okay, I realize that makes it sound like I wasn't listening, but I was. They just... you know, they were boring."
+    flannery @sad2brow talking2mouth "I mean, I thought they were. Or maybe it's just me? Maybe I just can't handle a conversation with someone for more than an hour."
+
+    red @talking2mouth "Well, what did you do after that?"
+
+    flannery @talking2mouth "Went home to Whitney, woke her up, threw myself on her bed, and cried about how I could only find pricks to date."
+
+    red @confusedeyebrows frownmouth "[ellipses]"
+    
+    flannery @talking2mouth "...Man. I need to apologize for the last time I did that. She was fully asleep, and I just woke her up and complained to her for hours, like she didn't have her own things going on."
+    flannery -tiredbrow @sad2brow talking2mouth "I mean, I was even complaining {i}to{/i} her, when I know she's into me... that was kinda screwed up, wasn't it?"
+
+    red @confused "Uh--"
+
+    flannery @angrybrow talking2mouth "All I ever do, whenever I'm feeling stressed out, is bang on her door and use her as... like... an emotional handkerchief. Honestly, calling me a 'project' is mild compared to how I've treated her."
+    flannery @talkingmouth sadbrow "We've known each other for years, and that's all I've ever done. I told her everything about my grandpa years ago. And she never asked for anything in return." 
+    flannery @sadbrow lightblush talkingmouth "I mean, sure, she hits on me, but I never feel, like... unsafe, or like she's {i}just{/i} trying to get with me."
+    flannery @sad2brow talking2mouth "I can't believe {i}I{/i} felt needy when she started hanging out with Tia. I mean, where did that even come from? She suddenly gives another girl a fraction of a fraction of her attention, and I start getting all grabby?"
+    flannery @closedbrow talking2mouth "I mean, {i}she{/i} hasn't even started dating this year, and she could grab any girl she wanted. She's funny, smart, kind, she..."
+    flannery @sad2brow frownmouth lightblush "[ellipses]"
+    flannery @surprisedbrow frownmouth mediumblush "[ellipses]"
+    flannery surprisedbrow frownmouth heavyblush "[ellipses]"
+
+    pause 1.0
+
+    red @unamusedbrow smirkmouth "[ellipses]"
+
+    pause 1.0
+
+    flannery angrybrow @angrymouth "You shut the hell up."
+
+    red @talkingmouth closedbrow sweat "Literally haven't said a word."
+
+    flannery sad2eyes angryeyebrows @talking2mouth "Good. Keep it that way."
+
+    pause 1.5
+
+    flannery @talking2mouth "I mean, I'm straight."
+
+    pause 1.5
+
+    flannery @angry "I am!"
+
+    red @talking2mouth "I'm not arguing with you."
+
+    pause 1.0
+
+    red @talkingmouth "You were homeschooled until Kobukan, right?"
+
+    flannery @sad2brow talking2mouth "Yeah. So what?"
+
+    red @talking2mouth "You said the average age of Lavaridge was, like, sixty-two?"
+
+    flannery tiredbrow frownmouth @talking2mouth "...Yes?"
+
+    pause 1.0
+
+    red @happy "There are a lot of doors out there, Flan. Don't be afraid to open them and pop your head inside. Trust me, it's worth it."
+    red @talkingmouth "I mean, if I hadn't done that, we never would have had this conversation."
+
+    flannery @closedbrow talking2mouth "This isn't a door. I find guys hot. Everyone I've dated has been a guy."
+
+    red @talking2mouth "Sure."
+
+    pause 1.0
+
+    show flannery fullblush -heavyblush surprisedbrow frownmouth with dis
+
+    red @sad2brow talkingmouth "But you know 'both' is an option, right?"
+
+    pause 2.0
+
+    flannery @talking2mouth "{size=30}At-{/size}At the {i}same time?!{/i}"
+
+    red @surprised "No!"
+    red @closedbrow talking2mouth "Well, actually, yes, but that's not what I meant."
+    red @confused "Wait, you write fanfic, how do you not know this?"
+
+    flannery @furious "I {i}DON'T{/i} WRITE SMUT!"
+
+    red @sadbrow talkingmouth "Nothing smutty about it, Flannery. It's just an option."
+
+    flannery furious "YOU... GET OUT! GET OUTTA HERE, NOW! SHOO! GO ON, SCRAM! YOU ARE A [bluecolor]{i}TERRIBLE{/i} INFLUENCE!{/color}"
+
+    red @happy "Alright, alright."
+
+    pause 2.0
+
+    red @winkeyes talking3mouth "Oh, wait. One last thing. When you said Whitney's swimsuit was too distracting, what exactly did you mean by--"
+
+    stop music fadeout 5.0
+
+    call clearscreens()
+
+    show musicroom:
+        ypos 1.0
+        block:
+            ypos 1.02
+            pause 0.01
+            ypos 1.0
+            pause 0.01
+            repeat
+
+    show flannery:
+        ypos 1.0 zoom 1.0
+        ease 5.0 ypos 1.2 zoom 1.3
+
+    show blank:
+        alpha 0.0
+        ease 5.0 alpha 1.0
+
+    flannery "{cps=10}GEEEEEEEEET OOOOOOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT!{/cps}"
+
+    pause 1.0
+
+    scene blank
+
+    $ RelationshipRankUp("Flannery", "Terrible Influence", 2)
+
+return

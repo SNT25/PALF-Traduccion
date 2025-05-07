@@ -1,0 +1,458 @@
+label day010427:
+
+$ timeOfDay = "Morning"
+
+if (pikachuobj in playerparty):
+    $ playerparty.remove(pikachuobj)
+
+call calendar(1) from _call_calendar_22
+$ calDate = calDate.replace(day=27, month=4, year=2004)
+
+show morning at vspaz
+
+$ renpy.music.play("Audio/Morning_ambience.ogg", channel='crowd', loop=True, fadein=1.0)
+
+scene dorm_A 
+with transeye2
+$ renpy.transition(dissolve)
+show screen currentdate
+
+show calem uniform at getcloser behind blank2
+
+pause 0.5
+
+hide blank2
+
+red @confused "{w=0.5}.{w=0.5}.{w=0.5}.Good morning."
+
+calem uniform @talkingmouth "Good morning."
+
+pause 0.5
+
+red @confused "Um, can I help you?"
+
+calem @talkingmouth "I certainly hope so. The Student Council meeting, remember?"
+
+red @surprised "Oh! Right, right." 
+red @happy "Yeah, I forgot about that. Okay, one second while I get dressed."
+
+calem @talkingmouth "I'll give you some privacy."
+
+show calem:
+    ypos 1.1
+    ease 0.5 xpos 1.1
+
+pause 1.0
+
+show calem:
+    ypos 1.0
+    ease 0.5 xpos 0.5 zoom 1.0
+
+red uniform @talkingmouth "Alright, ready to go?"
+
+calem @happy "Quite. Follow me."
+
+scene cafe with splitfade
+
+stop music fadeout 1.5 channel "crowd"
+
+show brawly uniform:
+    xpos 0.9
+show falkner uniform:
+    xpos 0.7
+show roxanne uniform:
+    xpos 0.8
+show cheren uniform shadow sad2eyes:
+    xpos 0.5
+with dis
+
+pause 1.0
+
+calem uniform @surprised "Hm? Cheren looks discomforted."
+
+red uniform @sad "Yeah, looks like he just got some pretty bad news." 
+
+show calem with dis:
+    xpos 0.25
+
+pause 0.5
+
+serena uniform @talkingmouth "{i}Bonjour!{/i}"
+
+show calem:
+    ease 0.2 xpos 0.35 xzoom -1
+
+show serena uniform with dis:
+    xpos 0.15
+
+calem @talkingmouth "{i}Bonjour.{/i} Sleep well?"
+
+show calem:
+    xpos 0.35 xzoom -1
+
+serena @happy "Certainly. I could hardly shut my eyes, I was so excited for this day."
+
+red @surprised "Huh? Excited?"
+
+serena @angrybrow happymouth "Of course! We aim to trick the student population into engaging with their representative government. Isn't that a delightful conspiracy?"
+
+hide brawly
+hide roxanne
+hide falkner
+
+if (GetRelationship("Serena") == "Conspirator"):
+    redmind @thinking "This girl seriously likes her conspiracies..."
+
+calem @talkingmouth "Let's not play the role of the illuminati-like shadow government just yet. We've yet to actually be elected, after all."
+
+show cheren -shadow -sad2eyes with dis:
+    ease 0.5 xzoom -1
+
+show serena frownmouth with dis
+
+cheren @sad "A possibility becoming ever less likely with every passing moment."
+
+show cheren:
+    xzoom -1
+
+pause 0.5
+
+show serena -frownmouth with dis
+
+cheren sadbrow @sadmouth "Well. Thank you for organizing this meeting, Calem. I should have done this myself, a long time ago, but I was occupied with... other matters."
+
+pause 0.5
+
+redmind @confusedeyebrows frownmouth "Cheren's not meeting my eyes. Things between us aren't {i}that{/i} weird, are they?"
+
+show jasmine uniform:
+    xpos 1.1
+    ease 1.0 xpos 0.65
+
+show grusha uniform:
+    xpos 1.1
+    ease 3.0 xpos 0.85
+
+pause 1.0
+
+jasmine @talkingmouth "Hello! Apologies for our lateness."
+
+pause 1.0
+
+jasmine @sweat closedbrow talking2mouth "Grusha?"
+
+pause 0.5
+
+grusha @talkingmouth "Mmph."
+
+jasmine @talkingmouth "Well, Cheren? What's the first point of business?"
+
+cheren @closedbrow "{w=0.5}.{w=0.5}.{w=0.5}."
+
+show calem surprisedbrow frownmouth with dis:
+    ease 0.5 xpos 0.5
+
+show cheren:
+    ease 0.5 xpos 0.35
+
+cheren @sad "I believe that's a question that Calem can answer best."
+
+calem @talkingmouth "Oh? Well, alright. I don't mind leading these proceedings."
+
+show calem closedbrow -surprisedbrow -frownmouth -surprised with dis
+
+pause 0.5
+
+calem @talkingmouth "Okay. I'd like to start this meeting by thanking you all for coming to this meeting. Especially you members of the current Student Council."
+
+roxanne uniform @closedbrow happymouth "It is our pleasure. Feel free to ignore us. We'll step in if we hear anything that we think might warrant our input."
+
+calem -closedbrow @closedbrow talkingmouth "Right."
+
+calem @talking2mouth "So, [first_name] and I were discussing yesterday the issue of voter engagement. I think we can all agree that his poster campaign was the single most effective technique any of us has used during this process."
+
+jasmine @talkingmouth "Yes, it was very well done. I hadn't heard of you before I saw your posters, but as soon as I did, I started asking everyone I knew if they knew you."
+jasmine @happy "Leaving your name off the poster was a brilliant move."
+
+red @sweat sadbrow happymouth "Hah... yeah, uh, funny story about that..."
+
+show cheren surprisedbrow frownmouth with dis
+
+red @closedbrow talking2mouth "That wasn't actually my set of posters. A couple of students who have beef with me put them up to try and mock me."
+
+cheren @talkingmouth "What...?"
+
+red @confused "Yeah, they actually thought that advertising that I picked up trash would be, like, shameful or something. Kinda ridiculous, if you ask me."
+
+show cheren -surprisedbrow -frownmouth -surprised with dis
+
+cheren shadow sad2eyes @sadmouth "I see."
+
+calem @talkingmouth "In any case, if we want to increase voter turnout, then I think the solution is quite simple. We'll simply create a series of coordinated posters that state, in simple terms, what concrete benefits voting for us will give the voters."
+
+calem @closedbrow talking2mouth "Voters simply won't get excited over values, or... {w=0.5}{nw}"
+extend @sad "Well, anything intangible. The student population only cares about the {i}here{/i} and {i}now{/i}, so we need to tell them what we can give them {i}here{/i} and {i}now.{/i}"
+
+grusha @sadbrow talking2mouth "Seems like a lot of work. We'll all get voted in, anyway, even without trying to raise awareness of the election. What's the point of bringing in more people who might vote against us?"
+
+red @talkingmouth "Voter engagement is its own end."
+
+calem @talkingmouth "True. Additionally, if we have any disagreements with the administration, then having a student body who is actually excited about our policies, and genuinely supports us, could give us a much-needed edge."
+calem @closedbrow talking2mouth "We don't want to place ourselves in conflict with the administration, as they'd become defensive and block all our initiatives, but it doesn't hurt to have overwhelming popular support that would make their denial... {i}difficult.{/i}"
+
+serena @talkingmouth "Brilliant, Calem. Watching you plan is like watching a painter at work."
+
+red @talkingmouth "But he {i}is{/i} a painter, isn't he?"
+
+serena @closedbrow talking2mouth "Yes. But watching him paint is like watching a dancer."
+
+red @talkingmouth "Okay. But what's watching him dance like?"
+
+serena @happy "Well, that's like--"
+
+grusha @closedbrow talking2mouth "Can we {i}move on{/i}? Thanks."
+
+calem @talkingmouth "Right. So I suggest that we simply go around the table and say what our number one goal for the student council is. If there are any repeats, then we'll sort that out."
+calem @talking2mouth "Serena, why don't you go first? We'll go clockwise from you."
+
+serena @closedbrow blush talkingmouth "Certainly. My position, as it always has been, is that we should have co-ed dorms."
+
+calem @talkingmouth "...Right. Cheren?"
+
+cheren @sadmouth "I suppose the repeal of the curfew is the only thing left for me."
+
+calem @talkingmouth "Okay. My personal goal is to promote growth of Student Clubs. The clubs that exist right now are small and niche. Few people take them seriously."
+calem @talkingmouth "The exception, of course, is the Battle Team. I dream of a Kobukan where every single club receives the same level of funding, attention, and champion-level guidance as the Battle Team."
+
+jasmine @surprised "Do you think you could get other champions to be the advisors of the other clubs, then?"
+
+calem @closedbrow talking2mouth "I can certainly try. Just imagine how many advantages future and current students of this school might have with direct tutelage from {i}even more{/i} champions."
+
+calem @surprised "It's a pipe dream, but imagine if we could get the Contest Champion to lead the Coordinator's Club. These are the opportunities that Kobukan advertises itself as having--and so far, it's done brilliantly. But let's not let it rest."
+
+grusha @talkingmouth "I dunno. Why would those high-profile people want to leave their jobs, unless they were forced to?"
+
+calem @talkingmouth "Well, money helps. Hopefully, though, we'd be able to leverage favors, and negotiate small portions of their time."
+
+serena @happy "Calem can absolutely do it. He has an unparalleled skill when it comes to forming connections."
+
+cheren @sadmouth "This sounds like it'll raise the cost of tuition quite a bit more."
+
+calem @talkingmouth "Probably, but Kobukan's already so restrictive, in terms of cost. What's just $1,500,000 more per student for the whole year?"
+
+redmind @sad "Um... a lot..."
+
+calem @closedbrow talking2mouth "The benefits will very much outweigh the costs, I believe. Now, Jasmine, your campaign?"
+
+jasmine @talkingmouth "Expanded access and accomodations for disadvantaged students. Economically, mentally, or physically."
+
+calem @happy "How noble. And Grusha?"
+
+pause 0.5
+
+grusha @closedbrow talking2mouth "Yeah. What Jasmine said."
+
+show calem closedbrow with dis
+
+pause 1.0
+
+calem @talkingmouth "We can't put that on your poster."
+
+pause 1.0
+
+show calem -closedbrow with dis
+
+grusha @talkingmouth "Fine. Then I want Naranjuva Academy to come here."
+
+serena @surprised "Naranjuva Academy? The one in Paldea? Coming here? What do you mean?"
+
+grusha @closedbrow talking2mouth "I just... I want our schools to form a connection. I want some of the people from Paldea--from that school--to come here."
+
+calem @talkingmouth "Correct me if I'm wrong, but you're Paldean yourself, right, Grusha?"
+
+grusha @talkingmouth "Yeah."
+
+calem @closedbrow talkingmouth "Hm. You have connections to Naranjuva?"
+
+grusha @talkingmouth "Some, yeah."
+
+calem @talkingmouth "Well. I'm trying to think of how to sell this to the voters..."
+
+pause 1.0
+
+calem @closedbrow talking2mouth "Would an international battle tournament held in Kobukan, where we invite Naranjuva to attend, suffice?"
+
+pause 0.5
+
+grusha @closedbrow talking2mouth "...Sounds like a lot of fuss.{w=0.5}{nw}" 
+extend @talkingmouth " But, yeah, I guess that'd work."
+
+calem @talkingmouth "Right. Then, [first_name], what would your point be?"
+
+red @closedbrow talking2mouth "Well, the thing most important to me would be... voter engagement, I think."
+red @happy "But we can't exactly put up a poster that says, like, 'Vote for me because I'll encourage you to vote.'"
+red @closedbrow talking2mouth "Hm... Truth be told, I'm not sure I really know what my own positions are, yet. I think I always just kinda figured that if I got elected, I'd just try to do the right thing in the moment."
+red @closedbrow talking2mouth "However, after listening to all of you guys, I think I agree most with..."
+
+menu:
+    "Serena.":
+        $ ValueChange("Serena", 3, 0.15)
+
+        serena @happy "Why, {i}thank you{/i} very much."
+
+        serena @closedbrow talking2mouth "I'm sure most male students can think of a couple of female students they'd quite like to dorm with, so I expect widespread support on that position."
+
+        calem @sad "Could you be a {i}tad{/i} subtler...?"
+
+    "Cheren.":
+        $ ValueChange("Cheren", 3, 0.35)
+
+        cheren @surprised "Even after you suggested I abandon that position?"
+
+        cheren @closedbrow talking2mouth "You're a strange man, [first_name]."
+
+    "You, Calem.":
+        $ ValueChange("Calem", 3, 0.5)
+
+        calem @surprised "Oh? Well, that's good to hear."
+
+    "Jasmine.":
+        $ ValueChange("Jasmine", 3, 0.65)
+        
+        jasmine @happy "Splendid. Thank you, [first_name]. I'm quite pleased to hear you're so thoughtful to the plight of others."
+
+    "Grusha.":
+        $ ValueChange("Grusha", 3, 0.85)
+
+        grusha @closedbrow talking2mouth "...Yeah, Calem's way of pitching it as an international tournament sounds pretty cool."
+
+calem @talkingmouth "In any case, I think that about wraps up our meeting for this morning."
+
+calem @talkingmouth "I will design the posters, and Serena, being a wonderful calligrapher, can letter them. We'll then use our library credits to make, say, fifty copies of each. We'll find you during lunch time and share out the poster designs."
+
+jasmine @sadbrow talkingmouth sweat "I'll... try to be there."
+
+grusha @talkingmouth closedbrow "Same."
+
+menu:
+    "{color=#b7669e}[[Charm]{/color} If you're not, I'll hang them up for you two.":
+        $ TraitChange("Charm")
+
+    "{color=#60c2f8}[[Wit]{/color} If you're not, we can hang them.":
+        $ TraitChange("Wit")
+
+jasmine @talkingmouth "Much appreciated."
+
+calem @closedbrow talking2mouth "I think that about resolves everything. Let's all get some breakfast now. We should have time before first homeroom. Former Student Council, we thank you for your presence... and your endorsements?"
+
+roxanne uniform @happy "Yes. Unilaterally. We hope you succeed, all of you."
+
+pause 0.5
+
+hide calem 
+hide serena
+hide jasmine
+hide grusha
+with dis
+
+pause 1.0
+
+show cheren shadow sad2eyes with dis
+
+pause 1.0
+
+cheren @sadbrow talking2mouth "I'm withdrawing my presidential candidacy. The positions I held before anyone else have either been cannibalized by my future council mates, or forbidden by the administration."
+
+cheren @closedbrow talking2mouth "I'm by far the least popular student council hopeful. And yet, I've worked hardest for it. I've been defeated before a single ballot was cast." 
+
+cheren @sad "What, then, can I possibly do? Is my legacy to Kobukan to increase the toilet paper to five-ply and nothing else?"
+
+cheren "{w=0.5}.{w=0.5}.{w=0.5}."
+
+cheren @angry "No. {i}Damn{/i} my legacy. I don't need one. All that matters is that I help my classmates--help this school--be better."
+
+call clearscreens from _call_clearscreens_78
+
+scene blank2 with Dissolve(2.0)
+
+cheren uniform disappointedbrow sadmouth "No matter what."
+
+call silence() from _call_silence
+
+$ renpy.music.queue("Audio/Music/Oak Class.ogg", channel='music', loop=None, fadein=1.5, tight=None)
+
+show oakbg behind blank2
+show homeroom behind oakbg
+
+$ renpy.transition(dissolve)
+show screen currentdate
+
+hide blank2 with splitfade    
+hide morning
+
+$ renpy.pause(0.6, hard=True)
+
+oak @talkingmouth "Good morning, students! As you may know, it is commonly understood that a Pokémon's stat can be reduced or increased six standardized 'stages,' before the diminishing returns become small enough to have no notable effect."
+oak @talkingmouth "For most statistics, an increase of one stage is equal to an increase of 50%%. However, a decrease in one stage diminishes rapidly."
+oak @talkingmouth "A stat lowered one stage is only 66%% as powerful as before. Two stages is 50%%, three stages is 40%%, four stages is 33%%, five stages is roughly 28.5%%..."
+oak @talkingmouth "And, of course, a stat lowered six stages is only 25%% as powerful as it was originally."
+
+pause 1.0
+
+oak @talkingmouth "I see your eyes glazing over. Can anyone tell me what the pattern is for these stat changes? Perhaps someone with a solid understanding of math?"
+
+show hilbert uniform at rightside with dis
+
+pause 0.5
+
+red uniform @surprised "Oh! Looks like Hilbert got up in time. He's been so quiet the past couple of days, I forgot he was here..."
+
+hilbert @talkingmouth "The beginning number, 100%%, is equal to two over two. Positive changes go on the numerator. Negatives on the denominator."
+
+pause 1.0
+
+show whitney uniform with dis
+
+whitney @surprised "Huh?"
+
+show blue uniform at leftside with dis
+
+blue @angry "This class is full of rookies. Have you {i}ever{/i} even looked in a Pokédex before?"
+
+blue @talkingmouth "Think about the numbers, Whitney. If your Pokémon uses Sharpen, and is at +1 to attack, then your attack is...?"
+
+whitney @surprised "Uh... Oak just said 50%%, right? So, 150%% of what it was before?"
+
+blue @talkingmouth "Right. And 150%% is equal to three halves. But if your attack is lowered one stage, then your attack is equal to 66%%, which is..."
+
+hilbert @closedbrow talking2mouth "Two-thirds. The opposite of three halves."
+
+whitney @surprised "Oh, I get it! So if your stats are lowered, you add the penalty to the bottom number, and if your stats are raised, you add the bonus to the top number! And then you can figure out what percentage of the original your stat is."
+
+blue @talkingmouth "God, finally. You've got the world-famous Professor Oak {i}right there.{/i} I shouldn't have to explain this."
+
+hide blue
+hide hilbert
+show whitney frownmouth
+with dis
+
+whitney "{w=0.5}.{w=0.5}.{w=0.5}."
+
+pause 0.5
+
+whitney @talking2mouth "{size=30}Hm. He could be a project...{/size}"
+
+hide whitney with dis
+
+oak @talkingmouth "...However, accuracy and evasion work differently! Same concept, where the numerator and denominator are adjusted, respectively, but the standard fraction is three over three, as opposed to two over two."
+oak @talkingmouth "This means, with an accuracy boost, a move with a natural accuracy of 75%%, or three-fourths, is guaranteed to hit, all other conditions being equal."
+
+pause 1.0
+
+oak @talkingmouth "Some of you may have noticed that in your last quiz, your Munchlax had a single stage accuracy boost. This was to ensure, you see, that Munchlax's Belch, a 90%% accurate move, could not miss."
+
+pause 0.5
+
+oak @talkingmouth "Moving on, then. The..."
+
+jump homeroom1transition

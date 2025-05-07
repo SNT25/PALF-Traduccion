@@ -1,0 +1,279 @@
+label gym010528:
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+$ renpy.music.play("Audio/school_crowd.ogg", channel='crowd', loop=True, fadein=1.0)
+
+$ renpy.transition(dissolve)
+show screen currentdate
+
+scene gym with dis
+
+show blank2 behind gym
+
+$ renpy.pause(2.0, hard=True)
+
+hide blank2
+
+show alder frownmouth with dis:
+    xpos 0.66
+
+show bruno norm with dis:
+    xpos 450
+
+red uniform @confused "Hm? Alder and Bruno look pretty serious today."
+
+pause 1.0
+
+stop music channel "crowd" fadeout 0.3
+
+alder @talking2mouth "...Excuse me. Please pay attention."
+
+red @surprised "Woah. Alder {i}never{/i} talks like that. What's happening?"
+
+pause 1.0
+
+alder @closedbrow talking2mouth "This class is the largest class that Kobukan holds. Students from all homerooms, electives, and positions mix together."
+alder @talking2mouth "This is a good thing. Exposing yourself to new ideas, new people, and new ways of battle and partnership with Pokémon can only make you stronger."
+
+pause 0.5
+
+alder @closedbrow talking2mouth "What does {i}not{/i} make you stronger is putting down other students."
+alder @angrybrow talking2mouth "A student recently approached me. A member of the Coordinator Club. This student says that because of their membership in the Coordinator Club, they've had to endure harassment from other students."
+alder @sadbrow talking2mouth "Some vague notion that being a member of the Coordinator Club makes you 'weaker', or less deserving of your spot in Kobukan." 
+
+bruno @think2 "Nonsense."
+
+alder @talkingmouth "Now, there's {i}no{/i} logic behind this. If--"
+
+show melody on uniform:
+    xpos 0.75 xzoom -1
+show bruno surprised:
+    xpos 450/1920
+    ease 0.5 xpos 0.1
+show alder surprisedbrow frownmouth:
+    xpos 0.66
+    ease 0.5 xpos 0.5
+with dis
+
+pause 1.0
+
+alder angrybrow @talking2mouth "Yes? You, with your hand raised."
+alder @closedbrow talkingmouth "Melody, wasn't it?"
+
+melody @talkingmouth "I don't know who it was, but running to a teacher after hearing a couple mean words {i}does{/i} sound pretty weak."
+
+alder @talking2mouth "There is no weakness in asking for help."
+
+melody @talkingmouth "Begging for protection."
+
+show melody surprisedbrow with dis
+
+bruno @norm2 "The first winning move in any battle is to avoid it. In this environment, where we instructors exist to protect, approaching us is a smart move."
+
+pause 1.0
+
+melody -surprisedbrow @sadbrow talkingmouth "You... exist to protect?"
+melody @angry "Hilarious."
+melody @closedbrow talkingmouth "You're a big name on a list of bigger names meant to lure kids in, and convince them to beg their parents to go bankrupt based on some vague idea of the future Kobukan can give us."
+
+show alder sadbrow frownmouth 
+show bruno sad 
+with dis
+
+melody @talkingmouth "You do the {i}opposite{/i} of protecting. This Academy ruins lives. And its staff... you're all complicit."
+
+pause 1.0
+
+alder -sadbrow @sadbrow talking2mouth "That is enough. Go to the Disciplinary Committee's office."
+
+cheren uniform @sad2eyes noshine shadow talking2mouth "{size=30}As though we are, in any way, empowered to do anything about her...{/size}"
+
+melody @talkingmouth "Yeah, sure. Whatever. I've got a nice little chair there. I'll just kick up my feet while I wait for the DC to get out of Gym Class. Is that it?"
+
+alder "{w=0.5}.{w=0.5}.{w=0.5}."
+
+show melody surprisedbrow with dis
+
+alder sadbrow @talkingmouth "We aren't your enemy, Melody."
+
+melody -surprisedbrow @talkingmouth "...Yes."
+melody @angry "Yes, you are."
+
+hide melody with dis
+
+pause 1.0
+
+show melody on uniform with dis:
+    xpos 0.75 xzoom -1
+
+show bruno surprised with dis
+
+melody @talkingmouth "Oh, Bruno. Put a shirt on."
+
+hide melody
+show bruno sad 
+with dis
+
+pause 2.0
+
+alder -sadbrow @closedbrow talkingmouth "The point I was trying to make was that just because someone trains their Pokémon for beauty over strength, it does not mean they are weak."
+
+bruno -sad @norm2 "Similarly, just because someone trains their Pokémon for strength over beauty, it does not mean they are simpleminded."
+
+alder @talking2mouth "It takes all sorts of people to fill this word. The strong and the beautiful."
+
+bruno @think2 "The wise and the quick."
+
+alder @talking2mouth "There is no path more worth walking than another."
+alder @sadbrow talkingmouth "If you have the time, walk all of them. You'll never travel the world on a single road."
+
+pause 1.0
+
+alder sad @closedbrow talking2mouth "Alright. I don't really feel like giving a lecture right now, so let's just begin the battles."
+
+redmind @confusedeyebrows frownmouth "Hm... looks like what Melody said really affected him. He probably knew her last year. But I'm getting the impression she wasn't like 'this', last year, based on Alder spoke..."
+redmind @closedbrow frownmouth "But the Student Council {i}did{/i} say she caused just as much trouble back then."
+
+hide alder
+hide bruno 
+with dis
+
+pause 1.0
+
+show misty uniform with dis
+
+misty @angry "{size=30}Hey!{/size}"
+
+red @surprised "Oh, hi. Sorry, what's up?"
+
+misty @angry "Weren't you listening? Geez. At least {i}pay attention{/i} to the instructors! Don't you know how expensive this school is?"
+
+red @closedbrow talking2mouth "Boy, do I."
+
+misty @closedbrow talkingmouth "Look, Bruno said you and I are battling."
+misty @closedbrow talking2mouth "This time, I'm not letting Psyduck jump out and battle by himself."
+
+pause 1.0
+
+misty @angry "That means you better watch yourself! Just because I'm in the Coordinator Club doesn't mean I'm not a tough trainer!"
+misty @talkingmouth "I'll prove you can't look down on me just because you're part of the Battle Team."
+
+red @unamusedbrow talking2mouth "I promise the thought had {i}never{/i} occurred to me."
+
+if (GetRelationshipRank("Misty") > 0):
+    misty @talkingmouth "Sure. You're probably just looking for another opportunity to make a joke again!"
+
+    red @confused "Are you... actually still upset about that?"
+
+    misty @angry "Of course, you [bluecolor]jerk!{/color}"
+
+    red @closedbrow talking2mouth "Geez."
+
+    misty @closedbrow talkingmouth "I mean, the {i}least{/i} you could do is apologize for making fun of something I was serious about."
+
+    pause 1.0
+
+    red @unamusedbrow unamusedmouth "{w=0.5}.{w=0.5}.{w=0.5}."
+
+    misty @angry "That was your cue, you know!"
+
+    red @thinking "I'll... keep that in mind."
+
+    misty angry "Oh... you... you...! Battle me!"
+
+elif (GetRelationshipRank("Misty") > 1):
+    misty @talkingmouth "I know. You're not like that."
+    misty @angry "But I still want to prove it!"
+
+red @talkingmouth "Alright. Let's go!"
+
+python:
+    trainer1 = MakeRed()
+    trainer2 = MakeTrainer("Misty")
+
+call Battle([trainer1, trainer2], uniforms=[True, True])
+$ RecordBattle("Misty3")
+
+show misty uniform with dis
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+if (WonBattle("Misty3")):
+    $ ValueChange("Misty", 3)
+
+    misty @closedbrow talkingmouth "...Yeah, I'm not surprised you won."
+    misty @sad "That's the power of the Battle Team, I guess. You're always going to be stronger than some girl from the Coordinator Club."
+
+    red uniform @sadbrow talkingmouth "Hey, that's not true at all. Remember what Alder said?"
+
+else:
+    misty @surprised "Huh? Are you messing with me? You lost?"
+    misty @angry "Hey, are you going easy on me just because I'm in the Coordinator Club?! Just because you're in the Battle Team doesn't mean--"
+
+    red uniform @sadbrow talkingmouth "I swear I didn't throw. I'm totally onboard with what Alder said."
+
+red @closedbrow sweat talking2mouth "Besides, Dawn's a coordinator. And she, uh..."
+red @happy sweat "Well, I'm just very thankful I've only fought her Altaria {i}once{/i}."
+
+if (GetRelationshipRank("Misty") < 2 and HasEvent("Dawn", "BirthdayTheater")):
+    show misty surprised with dis
+
+    red @happy "Oh, speaking of Dawn--her birthday was a couple days ago, and we went to the musical theater in Inspira."
+
+    misty "Wait... you didn't...?"
+
+    red @happy "You looked very cool. Your singing was amazing. I felt like I was right there on the mountain, next to the Priestess. You did really well!"
+
+    $ ValueChange("Misty", 1, 0.5)
+
+    misty @angry "D-don't... don't tell anyone else about that!"
+
+    hide misty with vpunch
+
+    redmind @confusedeyebrows talking2mouth "And... there she goes."
+    redmind @thinking "It's a public theater, Misty. Other people {i}are{/i} going to learn about it."
+
+elif (GetRelationshipRank("Misty") < 2 and HasEvent("Klara", "AcceptCoordinatorClub")):
+    show misty surprised with dis
+
+    red @happy "Oh, speaking of Dawn--remember that Coordinator Club practice I dropped in on, on Tuesday?"
+
+    misty "I... yeah, I remember you barging into the practice room with Brendan and May. What about it?"
+
+    red @happy "You looked very cool. Your singing was amazing!"
+
+    $ ValueChange("Misty", 1, 0.5)
+
+    misty @angry "D-don't... watch me when I'm singing!"
+
+    hide misty with vpunch
+
+    redmind @confusedeyebrows talking2mouth "And... there she goes."
+    redmind @thinking "It's a public stadium, Misty. What was I supposed to do? Close my eyes?"
+    redmind @confusedeyebrows talking2mouth "And it's not like the {i}Millennium Drop{/i} will be a private event."
+
+else:
+    misty @closedbrow talkingmouth "Dawn basically doesn't count. She was in the Battle Team first, anyway."
+
+    red @sadbrow talkingmouth "Sure, but she didn't want to be. Haven't you ever been forced into something you didn't want?"
+
+    misty @angrybrow talking2mouth "{w=0.5}.{w=0.5}.{w=0.5}."
+    misty @talkingmouth angrybrow "No!"
+
+    hide misty with vpunch
+
+    redmind @confusedeyebrows talking2mouth "And... there she goes."
+
+pause 1.0
+
+show alder:
+    xpos 0.66
+show bruno think:
+    xpos 450
+with dis
+
+jump lunchtransition

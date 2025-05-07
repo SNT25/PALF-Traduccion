@@ -1,0 +1,239 @@
+label gym010526:
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+$ renpy.transition(dissolve)
+show screen currentdate
+
+scene gym with dis
+
+show blank2 behind gym
+
+$ renpy.pause(2.0, hard=True)
+
+hide blank2
+
+show alder with dis:
+    xpos 0.66
+
+show bruno think with dis:
+    xpos 0.33
+
+alder @closedbrow talking2mouth"...But spamming Full Restores won't make you a Champion, no matter how many of them you have."
+
+bruno @angry2 "Using healing items in battle is the weak man's substitute for resilience."
+
+alder @talking2mouth "Can't say I agree, but there's other reasons not to. A Full Restore might buy your Pokémon a couple of seconds of health, but since they need to stay still for you to apply the medicine..."
+alder @happy2 "Any competent opponent's going to use that opening to buff themselves, so they can knock you out in {i}one{/i} shot next time, which means you just blew three thousand bucks to give your opponent an opening."
+
+gardenia uniform @happy "Alder, Sir!"
+
+alder @talking2mouth "Oh, right, Gardenia! I actually meant to talk to you about that, uh... what was it you sold me again? Common candies?"
+
+gardenia @surprisedbrow talkingmouth "{i}All sales are final.{/i}"
+gardenia @talking2mouth "But I have a question for {i}you.{/i} You said that spamming Full Restores isn't a good idea because of the cost... but aren't Champions like you {i}extremely{/i} well-paid?"
+
+alder @happy2 "Oh, I don't want to toot my own horn. But I {i}am{/i} able to keep a pretty nice house in the Gray Natural Research Center, where my daughter and grandson live."
+alder @talking2mouth "The Unovan government makes sure its Champions are well-taken care of."
+alder @closedbrow talking2mouth "Actually, every single year I was reigning, Congress voted to increase my salary, as part of the defense budget."
+alder @happy2 "Don't know what they thought {i}this{/i} old geezer could defend them from. I couldn't even defend them from a little girl!"
+
+gardenia @talking2mouth "Okay... Unovan Champion... very well paid. Noted. What about the Kantonian Champion, Instructor Bruno? You must know, since you work under Lance."
+
+bruno @sad2 "Lance is not the sort of man who shares his financial information."
+bruno @norm2 "However, the Indigo Champion has the combined salaries of both the former Kantonian and Johtonian champions."
+bruno @think2 "One can assume that he is very well paid. Though... perhaps still not to the degree that Alder is."
+
+leaf uniform @angry "{size=30}I {i}knew{/i} he was lying about being a teacher for the money!{/size}"
+
+alder @talking2mouth "I think I heard... yeah, the Paldean Champion gets $2000 a month, I think. So $24k a year."
+
+gardenia @surprised "What? That's {i}so{/i} low! How do they not starve to death?"
+
+grusha uniform @talkingmouth "{i}Esperad.{/i} Paldea has many Champions--ninety-seven, right now. In Paldea, Champion is a rank you attain, not a job a single person has."
+
+pause 1.0
+
+misty uniform @closedbrow talking2mouth "Well, that's dumb."
+
+grusha @confusedeyebrows talking2mouth "I can think of ninety-seven people who might disagree with you."
+grusha @closedbrow talking2mouth "Anyway, we also have a 'Top Champion'--La Primera--but she doesn't accept the allowance. It's tradition for the Top Champion not to."
+
+raihan uniform @surprised "Hold on, now. So this... 'top Champion' is, like, your {i}actual{/i} Champion? And you've got ninety-seven Elite Four?"
+
+grusha @playfulbrow talking2mouth "Yes. And you need to beat them all in a row to challenge the Champion."
+
+raihan @closedbrow talking2mouth "Mad."
+
+nessa uniform @sad "Raihan, he's messing with you."
+
+raihan @surprised "What?!"
+
+pause 1.0
+
+raihan @surprised "He's a guy?!"
+
+pause 1.0
+
+gardenia @talkingmouth "Hey, hey, back on track, please! What can you tell us about the other Champions' salaries?"
+
+alder @talking2mouth "Hm... I think Steven Stone abolished the Champion's pay when he became Champion. Though I heard the salary wasn't very big, anyway."
+alder @happy2 "Of course, being the heir to Devon, he didn't need it. And Instructor Wallace was already filthy rich from endorsements and contest prizes when he became Champion."
+
+bruno @norm2 "Do you not know how much the Champion of Sinnoh is paid?"
+
+gardenia @happy "Oh, no, I know that one."
+gardenia @talkingmouth "Cynthia is paid one point one one eight billion a year. Though this amount fluctuates based on market conditions."
+
+sonia uniform @sadbrow talkingmouth "What does she even do with that much money...?"
+
+gardenia @talkingmouth "Uh... no-one knows."
+gardenia @surprisedbrow talking2mouth "I've studied the economies of Celestic Town and the area north of Route 223 so I could figure out what she was spending her money on, and invest in it..."
+gardenia @surprised "But as far as I can tell, she's either not spending that money at all, or does all her shopping online!"
+
+nessa @talkingmouth "Being fair, it's rather hard to imagine Cynthia walking into a Poké Mart and asking to buy a handful of Poké Balls."
+
+gardenia @talking2mouth "Yeah, I guess..."
+
+$ PlaySound("idea.ogg")
+
+gardenia @surprisedbrow frownmouth "!"
+
+gardenia @angrybrow happymouth "So what does your dear friend Leon spend his money on, {i}Raihan?{/i} I've seen those Gigantamax-sized checks they wheel out for him!"
+
+raihan @closedbrow talking2mouth "Ah... somehow, he spends that money even faster than he gets it. He helps out trainers in Galar, mostly, but sometimes he'll just decide to buy an island, or bankroll a new field of science..."
+
+nessa @talkingmouth "The Aether Foundation has three new wings named after him. Don't think he even knows how to pronounce 'aether.'"
+
+raihan @surprised "Being fair, it's a bloody tough word. Who decided 'ae' should be pronounced 'ee'? It should be, like... 'eye-ee.' Or maybe 'ey'?"
+
+nessa @talkingmouth "...Sunny, this is your daily reminder you're the smart one."
+
+sonia @sadbrow talking2mouth "Er... thanks, Ness."
+
+alder @happy2 "Alright, alright. The point is, every Champion makes a comfortable living."
+alder @talkingmouth "Although... just to make sure I'm getting this right... Cynthia's $1.1 billion is a lot?"
+
+gardenia @surprised "Huh? Yeah, of course! It's an absolutely {i}massive{/i} amount of money!"
+
+alder @closedbrow talking2mouth "...Huh. Guess I haven't gone shopping in a while."
+
+redmind uniform @surprised "Wait... he didn't realize that was a ton of money? Just how wealthy is he?!"
+
+bruno @norm2 "Let's move onto the battles now. We've talked long enough."
+
+pause 1.0
+
+bruno @think2 "[first_name], please battle Serena today."
+
+hide bruno 
+hide alder
+with dis
+
+pause 1.0
+
+show serena uniform with dis
+
+serena @talkingmouth "{i}Bonjour{/i}, [first_name]!"
+
+red @happy "Hey."
+
+if (HasEvent("Klara", "AcceptCoordinatorClub")):
+    red @talkingmouth "Oh, remember how I saw the coordinator club meeting yesterday?"
+
+    serena @happy "Ah, yes. It was a pleasant surprise to see you suddenly appear in the practice room's doorway with my roommates. But what of it?"
+
+    red @happy "You looked great!"
+
+    $ ValueChange("Serena")
+
+    serena @sadbrow talkingmouth "You are too kind. In truth, I think we are all quite nervous. Lisia is a woman who is very focused on her goals, much like I, but... her goals are more noble, and we all fear not helping her fulfill them."
+
+    red @sadbrow talkingmouth "Aw, don't be worried about that. I don't know much about contests, but I thought you were awesome. Really stylish and classy."
+
+    serena @sad "A kind sentiment, but the judges will be individuals who {i}do{/i} know a lot about contests."
+
+    red @sadbrow talkingmouth "Guess I can't argue with that."
+
+if (GetRelationshipRank("Serena") > 0):
+    red @happy "Oh, right, how goes the Calem-spiracy?"
+
+    serena @talkingmouth "Oh, quite well. There's a new girl in the contest club that I believe is promising. She and Calem have personalities that ought to mix well together, I believe."
+
+    red @sadbrow talkingmouth "Aw, you're going to do the whole thing without me."
+
+    serena @talkingmouth "That's certainly not my intent. I'm in no particular hurry... but haste {i}may{/i} behoove you."
+
+    red @happy "You got it!"
+    
+    $ ValueChange("Serena")
+
+    serena @happy "How reliable of you."
+
+else:
+    serena @talkingmouth "This conversation about how Champions are funded... is quite interesting."
+
+    serena @sadmouth "It certainly puts a couple personal things in my life in perspective."
+
+    redmind @thinking "She's probably surprised to hear how little some of the Champions make... she definitely gives off an 'upper class vibe', even more than the other Kalosians."
+
+    serena @sadmouth "In any case... that is enough rumination on monetary matters for the present."
+
+serena angrybrow @happymouth "Now, shall we duel?"
+
+red @winkbrow talkingmouth "Stand and deliver!"
+
+python:
+    trainer1 = MakeRed()
+    trainer2 = MakeTrainer("Serena")
+
+call Battle([trainer1, trainer2], uniforms=[True, True]) from _call_Battle_161
+$ RecordBattle("Serena2")
+
+show serena uniform with dis
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+if (WonBattle("Serena2")):
+    $ ValueChange("Serena", 3)
+
+    serena @talkingmouth "Ah, well done. You're a splendid battler."
+    serena @closedbrow talkingmouth "Of course, you realize this means that I am plotting my revenge."
+
+    red uniform @talkingmouth "It's only fair. I knew the consequences when I accepted this duel."
+
+else:
+    serena @talkingmouth "Oh? Perhaps I somewhat got the drop on you?"
+
+    red uniform @closedbrow talkingmouth "Ah, everyone has off days. I'll bounce back."
+
+    serena @talkingmouth "It's an admirable quality of yours."
+
+red @closedbrow talking2mouth "Oh, that reminds me... I noticed you didn't make it through the first round of the Quarter Qlashes. What happened?"
+
+serena @sad "Oh... well, truthfully, it's rather embarrassing, but... I was beaten by my very first opponent."
+
+serena @closedbrow talkingmouth "I am afraid she utilized exclusively Water-types. My team could do little against her, as a result."
+
+red @happy sweat "Oof! Bad luck, Serena. Sometimes the matchups just aren't in your favor."
+
+serena @talkingmouth "I suppose you {i}would{/i} know that better than anyone..."
+
+serena @closedbrow talkingmouth "Well, I shan't let it discourage me. That mishap allowed me to focus all my attention on my aspirations as a musical coordinator, after all. Perhaps it was secretly a blessing."
+serena @happy "Life has many doors, and I'm far too young to worry about the ones closed behind me."
+
+hide serena with dis
+
+pause 1.0
+
+show alder:
+    xpos 0.66
+show bruno think:
+    xpos 0.33
+with dis
+
+jump lunchtransition

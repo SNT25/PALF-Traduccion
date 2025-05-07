@@ -1,0 +1,22 @@
+init python:
+    typechart = []#wow, there was a semicolon here for months, and no-one called me out on it?
+    #Normal/Fire/Water/Electric/Grass/Ice/Fighting/Poison/Ground/Flying/Psychic/Bug/Rock/Ghost/Dragon/Dark/Steel/Fairy
+    typechart.append([1,1,1,1,1,1,1,1,1,1,1,1,0.5,0,1,1,0.5,1,1,])
+    typechart.append([1,0.5,0.5,1,2,2,1,1,1,1,1,2,0.5,1,0.5,1,2,1,1,])
+    typechart.append([1,2,0.5,1,0.5,1,1,1,2,1,1,1,2,1,0.5,1,1,1,1,])
+    typechart.append([1,1,2,0.5,0.5,1,1,1,0,2,1,1,1,1,0.5,1,1,1,1,])
+    typechart.append([1,0.5,2,1,0.5,1,1,0.5,2,0.5,1,0.5,2,1,0.5,1,0.5,1,1,])
+    typechart.append([1,0.5,0.5,1,2,0.5,1,1,2,2,1,1,1,1,2,1,0.5,1,1,])
+    typechart.append([2,1,1,1,1,2,1,0.5,1,0.5,0.5,0.5,2,0,1,2,2,0.5,1,])
+    typechart.append([1,1,1,1,2,1,1,0.5,0.5,1,1,1,0.5,0.5,1,1,0,2,1,])
+    typechart.append([1,2,1,2,0.5,1,1,2,1,0,1,0.5,2,1,1,1,2,1,1,])
+    typechart.append([1,1,1,0.5,2,1,2,1,1,1,1,2,0.5,1,1,1,0.5,1,1,])
+    typechart.append([1,1,1,1,1,1,2,2,1,1,0.5,1,1,1,1,0,0.5,1,1,])
+    typechart.append([1,0.5,1,1,2,1,0.5,0.5,1,0.5,2,1,1,0.5,1,2,0.5,0.5,1,])
+    typechart.append([1,2,1,1,1,2,0.5,1,0.5,2,1,2,1,1,1,1,0.5,1,1,])
+    typechart.append([0,1,1,1,1,1,1,1,1,1,2,1,1,2,1,0.5,1,1,1,])
+    typechart.append([1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,0.5,0,1,])
+    typechart.append([1,1,1,1,1,1,0.5,1,1,1,2,1,1,2,1,0.5,1,0.5,1,])
+    typechart.append([1,0.5,0.5,0.5,1,2,1,1,1,1,1,1,2,1,1,1,0.5,2,1,])
+    typechart.append([1,0.5,1,1,1,1,2,0.5,1,1,1,1,1,1,2,2,0.5,1,1,])
+    typechart.append([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,])

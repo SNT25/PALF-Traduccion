@@ -1,0 +1,226 @@
+label gym010524:
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+$ renpy.transition(dissolve)
+show screen currentdate
+
+scene gym with dis
+
+show blank2 behind gym
+
+$ renpy.pause(2.0, hard=True)
+
+hide blank2
+
+show alder with dis:
+    xpos 0.66
+
+show bruno think with dis:
+    xpos 450
+
+alder @talkingmouth "Good morning, everyone!"
+alder @happy2 "You're all looking young and fresh."
+alder @closedbrow talkingmouth "I have to be honest, I was pretty sore after that battle we pulled on Friday. I'm not as young as I used to be."
+
+bruno @sad ".{w=0.5}.{w=0.5}.{w=0.5}"
+
+alder @surprised2 "Oh, don't worry about me, Bruno! I'm not about to fall over."
+alder @happy2 "If anything, that's proof that I'm in the right place for where I am right now, teaching the kids who'll be the next wave of champions."
+alder @talkingmouth "Although I'm pretty sure Champion Blanc is going to hold onto Unova for a long, {i}long{/i}, time."
+
+bruno @norm4 "Not if Benga has anything to say about it."
+
+alder @closedbrow talkingmouth "Ah, now, {i}that's{/i} a firebrand. Benga. He's {i}so{/i} much like me at his age."
+
+bruno @norm2 "He has a strong sense of justice."
+
+alder @closedbrow talking2mouth "Too strong, maybe. But I can't hold that against him. Like I said--when I was his age..."
+
+red uniform @closedbrow talking2mouth "Hm... Benga? Name doesn't ring a bell."
+
+raihan uniform @talkingmouth "Alder's Grandson. Heard he's on the warpath, ever since Blanc snagged the championship."
+
+alder @happy2 "Can't deny that. He really thought {i}he{/i} was going to be the one to beat me, and take the champion title from his own grandpa, keeping it in the lineage."
+alder @sadbrow talkingmouth "But champions aren't kings. The strongest gets the title, not the grandkid of the current guy."
+alder @happy2 "Besides, I'm sure Benga'll make my daughter proud of him one way or another. I'm already proud of him, and I'd still be proud of him if he never once picked up a Poké Ball."
+
+bruno @norm2 "Youth is a precious gift. I hope all of you are taking advantage of yours."
+
+alder @talkingmouth "Bruno's very right. Take it from a guy who's getting up there."
+
+pause 1.0
+
+alder @happy2 "But enough of life lessons and my family, unless anyone wants to see pictures. I've got a fold-out in my wallet...?"
+
+bruno @happy2 "I may suggest we move onto the battles now."
+
+alder @sadbrow talkingmouth "Worth a shot."
+alder @talking2mouth "We're going back to basics with this week. You know what that means--single battles. One-on-one, one student against another."
+
+bruno @norm2 "I will call out the matches."
+
+alder @talkingmouth "And I'm going to call my family, and see how they're doing! You've got this class covered, right, Bruno?"
+
+bruno @happy2 "They are paying you too much for how seriously you take this job."
+
+alder happy @happy2 "And they're not paying {i}you{/i} enough for how seriously you take it!"
+
+bruno @norm2 "Perhaps. I'll take that anecdote to my next salary renegotiation."
+
+bruno @norm4 "Now, it's time to assign your opponents. [first_name], please battle Dawn."
+
+hide bruno
+hide alder
+show dawn uniform
+with dis
+
+pause 1.0
+
+dawn @happy "H-hi!"
+
+red @talkingmouth "Hey, rival."
+
+dawn @sadbrow talkingmouth "{size=30}You may...{/size} Sorry. I mean, you may have won the battle against me during the Quarter Qlashes..."
+
+if (WonBattle("Dawn2")):
+    dawn @sadbrow talkingmouth "And the battle in the fields on Wednesday..."
+    
+dawn @angrybrow talkingmouth "But I'm going to get back at you now, today! I've been training my team really hard, and I know how they fight better, now!"
+
+red @talkingmouth "I'm sure of it."
+
+if (GetRelationshipRank("Dawn") > 0):
+    red @happy "Maybe this battle will give you some inspiration for your next piece?"
+
+    if (GetRelationshipRank("Dawn") > 1):
+        red @talkingmouth "After all, you mentioned you wanted to create a new sculpture for that exhibition, right?"
+
+    else:
+        red @talkingmouth "After all, you've just been asking me to strike the same pose, from the same angle, for {i}hours{/i} at this point. Maybe some new angles could give you some new inspiration."
+
+    dawn @surprised "Shhh! {size=30}Please, not so loud!{/size}"
+
+    if (GetRelationshipRank("Dawn") > 0):
+        red @sadbrow talkingmouth "Sorry, but... you're going to show your sculptures to people {i}someday{/i}, right?"
+    else:
+        red @sadbrow talkingmouth "Sorry, but... if you're going to show your sculpture to everyone, you're going to need to let people know you've got a new sculpture, right?"
+
+    dawn @sadbrow talkingmouth "...Yeah. Strangers, though. I don't want other students to know what I'm doing--I don't want my friends to know..."
+
+    red @talking2mouth "I'm not sure I fully understand, but... I get it."
+
+    $ ValueChange("Dawn", 1)
+
+    dawn @sadbrow talkingmouth "Thanks for understanding."
+
+    pause 1.0
+
+dawn angrybrow happymouth "Okay... let's go!"
+
+python:
+    trainer1 = MakeRed()
+    trainer2 = MakeTrainer("Dawn")
+
+call Battle([trainer1, trainer2], uniforms=[True, True], dialogfunc=dawnrematch2to3)
+$ RecordBattle("Dawn3")
+
+show dawn uniform with dis
+
+stop music fadeout 1.5
+queue music "Audio/Music/Gym_Start.ogg" noloop
+queue music "Audio/Music/Gym_Loop.ogg"
+
+if (WonBattle("Dawn3")):
+    $ ValueChange("Dawn", 3)
+
+    dawn frownmouth @sad "Guess I've still got a long way to go before I'm back where I was before."
+
+    red uniform @sadbrow talkingmouth "You're a seriously tough battler, Dawn. You'll climb back up that mountain in no time."
+
+    dawn -frownmouth @sadbrow talkingmouth "Oh, no, I'm not upset. I'm just... I thought I was past this point. But I guess I was really just standing in the foothills..."
+    dawn @happy "I-I'm not upset. Really. I don't mind climbing again. As long as {i}I'm{/i} doing it because... I want to."
+
+else:
+    dawn @sad "Oh... I'm sorry, are you...?"
+
+    red uniform @happy "You kidding me? This is great! I got to lose to the woman who fought Cynthia."
+    red @winkbrow talking2mouth "Through the equilateral property, that means I just lost to Cynthia, which {i}anyone{/i} could be proud to say."
+
+    dawn @sadbrow talkingmouth "I think you mean 'transitive property'... And it's not {i}that{/i} great."
+    dawn @talkingmouth "It's kind of like climbing up a mountain, losing all your rations, your guides abandon you, you're tired, you've worn through your boots..."
+    dawn @sadbrow talkingmouth "And then there's an avalanche, and when you wake up, you're back at the bottom."
+
+    redmind @thinking "Cynthia... the human avalanche."
+
+if (HasEvent("Dawn", "BirthdayTheater")):
+    dawn @talkingmouth "It reminds me of that play we saw at the theater, the one Misty was in."
+    dawn @happy "Even though the priestess kept falling and getting buried in the snow, she always made her way back to the top."
+
+    red @talkingmouth "Yeah... she was strong."
+    red @sweat closedbrow talkingmouth "Well, for a fictional character, anyway."
+
+else:
+    dawn @talkingmouth "Oh! I wanted to say 'thank you' for that delicious cake you made on Saturday. It was the best cake I've had in my entire life!"
+
+    red @happy "Hey, what? You're flattering me. Can't have been {i}that{/i} good."
+
+    dawn @sadbrow talkingmouth "I... I r-really do mean it. If you can't become a Champion, well..."
+    dawn @happy "You could at least be a champion chef!"
+
+    red @sadbrow talkingmouth "I'll keep that one in my back pocket. Sounds better than being a farmer, at least."
+
+dawn @surprised "Oh! I just remembered... what did you think of Baron Phobos?"
+
+menu:
+    "He's a bit of a dick.":
+        $ AddEvent("Melody", "PhobosDick")
+
+    "Not sure.":
+        $ AddEvent("Melody", "PhobosNotSure")
+
+    "He's pretty cool.":
+        $ AddEvent("Melody", "PhobosPrettyCool")
+
+dawn @closedbrow frownmouth "Hm..."
+
+red @talkingmouth "Looked like you and May recognized him?"
+
+dawn @talkingmouth "He's kind of a famous figure in the Coordinator's club. He was a world-class coordinator. And, after leaving Kobukan, he became a really famous collector of Pokémon relics. I didn't know he had a niece, though..."
+
+red @talkingmouth "Is he still a coordinator?"
+
+if (classstats["Water"] > 10):
+    red @talkingmouth "Instructor Wallace has never mentioned him."
+
+dawn @sad "Well... generally, you need to move around, and dance, and, um... pose... in contests."
+
+red @closedbrow sweat talking2mouth "Gotcha. I can see how he'd find that difficult, given his legs. Wonder what happened?"
+
+dawn @sadbrow talkingmouth "I get the feeling he'd share that story happily, if you asked."
+
+if (HasEvent("Melody", "PhobosDick")):
+    red @winkbrow talkingmouth "Maybe, but then I'd have to listen to him even longer."
+
+else:
+    red @talkingmouth "Maybe."
+
+dawn sadbrow @talkingmouth "Well, um... looks like the bell's just about to ring, so... I'll just..."
+
+pause 0.5
+
+red @happy "Don't be a stranger."
+
+hide dawn with dis
+
+pause 1.0
+
+show alder:
+    xpos 0.66
+show bruno think:
+    xpos 450
+with dis
+
+jump lunchtransition

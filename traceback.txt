@@ -1,0 +1,67 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/misc/pickelective.rpy", line 27, in script
+    call screen electives(_with_none=False) with dissolve
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/screens.rpy", line 4360, in execute
+    screen classmates(type, maxlength):
+  File "game/screens.rpy", line 4360, in execute
+    screen classmates(type, maxlength):
+  File "game/screens.rpy", line 4379, in execute
+    text type_translation + "{size=80} - Nvl. " + FormatNum(classstats[type]) color "#fff" outlines [ (absolute(10), "#000", absolute(0), absolute(0)) ] size 120 xcenter 0.25 ypos 0.85
+  File "game/screens.rpy", line 4379, in <module>
+    text type_translation + "{size=80} - Nvl. " + FormatNum(classstats[type]) color "#fff" outlines [ (absolute(10), "#000", absolute(0), absolute(0)) ] size 120 xcenter 0.25 ypos 0.85
+TypeError: unsupported operand type(s) for +: 'RevertableDict' and 'str'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/misc/pickelective.rpy", line 27, in script
+    call screen electives(_with_none=False) with dissolve
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\ast.py", line 1974, in execute
+    self.call("execute")
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\ast.py", line 1953, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\statements.py", line 374, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\exports\statementexports.py", line 345, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\core.py", line 2215, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\core.py", line 2745, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  [Previous line repeated 1 more time]
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\core.py", line 2745, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "C:\Users\MIRZA\Desktop\PALF Traduccion\PokemonAcademyLifeForever-12.23b.2024-pc\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 4360, in execute
+    screen classmates(type, maxlength):
+  File "game/screens.rpy", line 4360, in execute
+    screen classmates(type, maxlength):
+  File "game/screens.rpy", line 4379, in execute
+    text type_translation + "{size=80} - Nvl. " + FormatNum(classstats[type]) color "#fff" outlines [ (absolute(10), "#000", absolute(0), absolute(0)) ] size 120 xcenter 0.25 ypos 0.85
+  File "game/screens.rpy", line 4379, in <module>
+    text type_translation + "{size=80} - Nvl. " + FormatNum(classstats[type]) color "#fff" outlines [ (absolute(10), "#000", absolute(0), absolute(0)) ] size 120 xcenter 0.25 ypos 0.85
+TypeError: unsupported operand type(s) for +: 'RevertableDict' and 'str'
+
+Windows-7-6.1.7601-SP1 AMD64
+Ren'Py 8.3.2.24090902
+Pokemon Academy Life Forever 12.23b.2024
+Sun Mar 16 21:59:24 2025
