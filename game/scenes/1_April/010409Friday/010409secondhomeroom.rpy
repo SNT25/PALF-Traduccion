@@ -1043,7 +1043,7 @@ $ renpy.pause(0.75, hard=True)
 
 hide blue
     
-redmind @happy "Wow, I need to start taking tips from these guys to save myself some [blue_name]-induced migraines."
+redmind @happy "Vaya, voy a tener que empezar a tomar nota de estos tipos si quiero ahorrarme unas cuantas migrañas provocadas por [blue_name]."
 
 show lance:
     xpos 240+700
@@ -1053,7 +1053,7 @@ show janine:
     xpos 240+70
     ease 1.0 xpos 240+350
 
-lance @sadbrow talking2mouth "Now then...{w=0.5} our business is with you."
+lance @sadbrow talking2mouth "Ahora bien...{w=0.5} volviendo a nuestro asunto contigo."
 
 show lance:
     xpos 240+950
@@ -1061,23 +1061,23 @@ show lance:
 show janine:
     xpos 240+350
 
-lance @talking2mouth "...You look vaguely familiar.{w=0.5} Have we met before?"
+lance @talking2mouth "Me resultás vagamente familiar.{w=0.5} ¿Nos hemos visto antes?"
 
-red @sadbrow sweat talkingmouth "Um, well... I look pretty similar to Ethan? If you ignore our hair, anyway."
+red @sadbrow sweat talkingmouth "Eh, bueno... ¿me parezco bastante a Ethan? Si ignorás el tema del pelo, claro."
 
-janine -angrybrow @closedbrow talkingmouth "The kid's a new student. He's only been here for... what, five days?{w=0.5} According to Blue, his name's [first_name]."
+janine -angrybrow @closedbrow talkingmouth "El chico es nuevo. Lleva en este lugar... ¿cúanto, cinco días?{w=0.5} Según Blue, se llama [first_name]."
 
-lance @closedbrow talking2mouth "[first_name]...{w=0.5} I'm sure I've heard that name from somewhere."
+lance @closedbrow talking2mouth "[first_name]...{w=0.5} Estoy seguro de haber oído ese nombre en algún lado."
 
-red @surprised "Uh, never mind that.{w=0.5} You said you have business with me?{w=0.5}{nw}"
-extend @happy " It's getting kinda late, so I'd like to get back before curfew."
+red @surprised "Eh, no importa eso ahora.{w=0.5} Dijiste que tenías algo que tratar conmigo, ¿no?{w=0.5}{nw}"
+extend @happy " Ya es algo tarde, y me gustaría volver antes del toque de queda."
 
-janine @talking2mouth "Don't worry, this won't take long.{w=0.5} We just wanted to ask a few questions about your team."
+janine @talking2mouth "No te preocupes, no tomará mucho.{w=0.5} Solo queríamos hacerte unas preguntas sobre tu equipo."
 
 if WonBattle("Blue2") == False:
-    lance @talking2mouth "You commanded a team of extremely diverse Pokémon flawlessly. You may have lost that battle, but they responded to your commands with the swiftness of a Champion-trained Pokémon."
+    lance @talking2mouth "Comandaste un equipo de Pokémon extremadamente diversos a la perfección. Puede que hayas perdido ese combate, pero respondían a tus órdenes con la rapidez de un Pokémon entrenado por un Campeón."
 else:
-    lance @talking2mouth "You commanded a team of extremely diverse Pokémon flawlessly. They responded to your commands with the swiftness of a Champion-trained Pokémon."
+    lance @talking2mouth "Comandaste un equipo de Pokémon extremadamente diversos a la perfección. Respondían a tus órdenes con la rapidez de un Pokémon entrenado por un Campeón."
 
 lance @talking2mouth "How long have you been training them for?"
 
