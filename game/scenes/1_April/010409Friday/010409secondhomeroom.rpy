@@ -1079,31 +1079,31 @@ if WonBattle("Blue2") == False:
 else:
     lance @talking2mouth "Comandaste un equipo de Pokémon extremadamente diversos a la perfección. Respondían a tus órdenes con la rapidez de un Pokémon entrenado por un Campeón."
 
-lance @talking2mouth "How long have you been training them for?"
+lance @talking2mouth "¿Cuánto tiempo llevás entrenándolos?"
 
-janine @closedbrow talkingmouth "My Venomoth didn't get a word I was saying 'til about middle school.{w=0.5} And I've had him since I was four."
+janine @closedbrow talkingmouth "Mi Venomoth no entendía ni una palabra de lo que le decía hasta más o menos la secundaria.{w=0.5} Y lo tengo desde los cuatro años."
 
-janine @talking2mouth "You must've put your team through some intense training.{w=0.5} Why haven't any of them except the Pikachu evolved yet?"
+janine @talking2mouth "Debiste haber sometido a tu equipo a un entrenamiento intensivo.{w=0.5} ¿Por qué ninguno evolucionó, salvo Pikachu?"
 
 show janine surprisedbrow frownmouth
 show lance sadbrow
 with dis
 
-red @talkingmouth "Uh... well, actually, only the [starter_species_name] and the Pikachu are mine.{w=0.5} I borrowed the other four from my friends for this specific battle."
-redmind @thinking "...Crap, that's not against the rules, is it?"
-redmind @thinking "Well, whatever I say here, I can't tell them about Sam's 'Frienergy' theory. If he's right, that's something I need to keep very private."
+red @talkingmouth "Eh... bueno, en realidad, sólo el [starter_species_name] y el Pikachu son míos.{w=0.5} Los otros cuatro se los pedí prestados a mis amigos para este combate."
+redmind @thinking "...Mierda, eso no va contra las reglas, ¿verdad?"
+redmind @thinking "Bueno, diga lo que diga, no puedo contarles la teoría de la 'Energistad' de Sam. Si tiene razón, es algo que tengo que mantener muy en secreto."
 
-red @talkingmouth "And I really didn't do anything particularly special.{w=0.5} I just told them what I wanted them to do, and they listened."
+red @talkingmouth "Y en realidad no hice nada especial.{w=0.5} Solo les dije lo que quería que hicieran, y me hicieron caso."
 
 show lance closedbrow
 show janine thinking
 with dis
 
-redmind "...Oh, crap. That was a lie, wasn't it? I've always been awful at lying. Was that, all along, because of Sam's theory?"
+redmind "... Ay, no. Eso no fue una tecnicamente una mentira, ¿no? Siempre he sido pésimo mintiendo. ¿Será que, desde el principio, todo esto tiene que ver con la teoría de Sam?"
 
 pause 1.5
 
-janine @angrybrow talking2mouth "Are you serious?"
+janine @angrybrow talking2mouth "¿Hablas en serio?"
 
 show janine surprisedbrow frownmouth
 show lance angrybrow
@@ -1113,18 +1113,18 @@ show blue:
     xpos 240+1700 alpha 0.0
     ease 0.5 xpos 240+1300 alpha 1.0
     
-blue uniform @angry "Yeah. Four of those aren't even his! Which is totally cheating, right?"
+blue uniform @angry "Sí. ¡Cuatro de esos ni siquiera son suyos! Lo cual significa que hizo trampa, ¿verdad?"
 
 show janine angrybrow frownmouth
 
 show blue angry:
     xpos 240+1300 alpha 1.0
     
-blue @angrybrow talkingmouth "What're you trying to pull, [first_name]?!"
+blue @angrybrow talkingmouth "¡¿Qué demonios te traés entre manos, [first_name]?!"
 
 show blue surprisedbrow frownmouth with dis
 
-janine @angrybrow talking2mouth "I thought I told you to keep your mouth shut!"
+janine @angrybrow talking2mouth "¡Te dije que te quedaras callado!"
 
 show blue angry:
     xpos 240+1300 alpha 1.0
@@ -1134,59 +1134,59 @@ $ renpy.pause(1.5, hard=True)
 
 hide blue
 
-janine -angrybrow @closedbrow talkingmouth "In any case, there has to be something else.{w=0.5} Working with Pokémon, let alone battling with them, just isn't that simple."
+janine -angrybrow @closedbrow talkingmouth "En cualquier caso, tiene que haber algo más.{w=0.5} Trabajar con Pokémon, y mucho más combatir con ellos, no es así de simple."
 
-redmind @sad "Geez. There's just no belief there. Now I'm second-guessing everything I'm saying... This ability is really complicating things."
-redmind @thinking "I just wish I knew if it existed."
+redmind @sad "Genial, no tienen ni una pizca de confianza. Hasta yo mismo empiezo a dudar de todo lo que digo... Esta habilidad me está complicando demasiado las cosas."
+redmind @thinking "Ojalá supiera si realmente existe, o si no es más que una simple teoría."
 
-janine @talking2mouth "Do you use hand signals or specific vocal commands?{w=0.5} Come on, give us something to work with here."
+janine @talking2mouth "¿Utilizas ciertas señales con las manos o quizás ciertos sonidos específicos?{w=0.5} Vamos, danos algo con lo que podamos trabajar."
 
-red @sadbrow talkingmouth "I really don't know what to tell you.{w=0.5} They understand me and I can understand them. I'm starting to feel like a broken record here."
+red @sadbrow talkingmouth "De verdad no sé qué más decirles.{w=0.5} Ellos me entienden, y yo los entiendo a ellos. Siento que estoy repitiendo lo mismo una y otra vez."
 
-janine @closedbrow talkingmouth "Okay, these were your friends' Pokémon. Are your friends, like, Champions? Did they put them through intense training without raising their level?"
+janine @closedbrow talkingmouth "Está bien, pero ¿qué hay de los Pokémon que tomaste prestados? ¿Tus amigos son, no sé, Campeones o algo por el estilo? ¿Los entrenaron de forma intensiva sin subirles el nivel?"
 
-red @sadbrow talkingmouth "No... my friends are just other students. I met them, uh, last Friday."
+red @sadbrow talkingmouth "No... mis amigos son solo otros estudiantes. Los conocí, eh... el viernes pasado."
 
-janine @closedbrow talkingmouth "Okay... you said that Pikachu was yours, right? What about--"
+janine @closedbrow talkingmouth "Okay... dijiste que Pikachu era tuyo, ¿y qué hay de--"
 
-lance @closedbrow talking2mouth "I should've known."
+lance @closedbrow talking2mouth "Ya debería haberlo sabido."
 
 show janine surprisedbrow frownmouth with dis
 
-lance @sadbrow talking2mouth "Now I remember.{w=0.5} {i}You're{/i} the one with that runt of a Pikachu."
+lance @sadbrow talking2mouth "Ahora lo recuerdo perfectamente,{w=0.5} {i}Tú eres{/i} el que tenía ese Pikachu indisciplinado."
 
-redmind "Oh, crap."
+redmind "Oh mierda."
 
-janine -surprisedbrow -frownmouth @talking2mouth "Wait, this kid?{w=0.5} He's the one that you were complaining about before?"
+janine -surprisedbrow -frownmouth @talking2mouth "Espera,{w=0.5} ¿este es el chico es de quien te quejabas antes?"
 
-janine @closedbrow talkingmouth "Small world."
+janine @closedbrow talkingmouth "El mundo sí que es un pañuelo."
 
-lance @sadbrow talking2mouth "I shudder to think of the time I've wasted listening to your pitiful meanderings...{w=0.5}{nw}"
+lance @sadbrow talking2mouth "Me estremece pensar en el tiempo que he desperdiciado escuchando tus patéticas divagaciones...{w=0.5}{nw}"
 
-extend @angrybrow talkingmouth " You had no idea what you were talking about from the beginning."
+extend @angrybrow talkingmouth " Desde el principio no tenías ni idea de lo que estabas diciendo."
 
 show lance angrybrow:
     xpos 240+950
     ease 0.5 xpos 240+900
     
-lance @talking2mouth "They understand me and I understand them.'{w=0.5} To say such things...{w=0.25} you mock the very foundation of Kobukan Academy."
+lance @talking2mouth "'Ellos me entienden y yo los entiendo.'{w=0.5} Decir algo así...{w=0.25} ridiculizas los mismos cimientos de la Academia Kobukan."
 
 show lance:
     xpos 240+900
 
-lance closedbrow @talking2mouth "I have nothing more to say to you."
+lance closedbrow @talking2mouth "No tengo nada más que decirte."
 
-janine @sadbrow talking2mouth "Lance, take it easy.{w=0.5} I think he was being serious."
+janine @sadbrow talking2mouth "Lance, tomatelo con calma.{w=0.5} Creo que esta hablando en serio."
 
 show lance:
     xpos 240+900
     ease 0.5 xpos 240+950
     
-lance @talking2mouth "If he is, and he is not intentionally wasting our time, he is direly delusional, and we have ever more reason to show him the door."
+lance @talking2mouth "Si es así, y no está desperdiciando nuestro tiempo a propósito, entonces está delirando gravamente, y eso solo nos da aún más razones para mostrarle la puerta."
     
-redmind @angrybrow frownmouth "What's his problem all of a sudden?{w=0.5} It's like his personality completely turned itself on its head when he remembered who I was."
+redmind @angrybrow frownmouth "¿Cuál es su problema de repente?{w=0.5} Es como si su personalidad hubiera dado un giro total en cuanto recordó quién era."
 
-lance @talking2mouth "I was hoping to get some information out of you, but it's clear that you're just wasting everyone's time."
+lance @talking2mouth "Esperaba poder sacar algo de información útil, pero está claro que solo estás haciendo perder el tiempo a todos."
 
 show blue uniform happy:
     xpos 240+1350 alpha 0.0
@@ -1196,26 +1196,26 @@ blue @talkingmouth "Pfft."
     
 show blue sad with dis
 
-lance @angrybrow talking2mouth "{i}Why are you still here?{/i}{w=0.5} Has anyone, ever, even once in your privileged life, told you {i}no?{/i}"
+lance @angrybrow talking2mouth "{i}¿Por qué seguís en este lugar?{/i}{w=0.5} ¿Alguien, alguna vez, aunque sea una vez en tu privilegiada vida, te dijo la palabra {i}no{/i}?"
 
 if WonBattle("Blue2"):
-    lance @sadbrow talking2mouth "The grandson of Professor Oak losing to someone like him...{w=0.5} What an embarrassment."
+    lance @sadbrow talking2mouth "El nieto del Profesor Oak perdiendo contra alguien como él...{w=0.5} Qué vergüenza."
     
-    blue "...!"
+    blue "¡!"
     
-    lance @angrybrow talking2mouth "You could have beaten him, but you lacked finesse and discipline.{w=0.5} Even with your absurd level advantage, you struggled mightily."
+    lance @angrybrow talking2mouth "Pudiste haberle ganado, pero te faltaron sutileza y disciplina.{w=0.5} Incluso con tu absurda ventaja de nivel, te costó demasiado."
 
-    lance @closedbrow talking2mouth "Your match was a travesty to watch."
+    lance @closedbrow talking2mouth "Fue penoso verte ese combate."
 
 else:
-    lance @sadbrow talking2mouth "The grandson of Professor Oak having so much trouble with someone like him...{w=0.5} What an embarrassment."
+    lance @sadbrow talking2mouth "El nieto del Profesor Oak teniendo tantos problemas contra alguien como él...{w=0.5} Qué vergüenza."
     show lance angry
     
-    blue "...!"
+    blue "¡!"
     
-    lance @angrybrow talking2mouth "Don't think I didn't hear you mouthing off when you came in here.{w=0.5} Celebrating victory before the match even started...{w=0.5}"
+    lance @angrybrow talking2mouth "DNo creas que no te oí al entrar, fanfarroneando.{w=0.5} Celebrando la victoria antes de que el combate siquiera empezara...{w=0.5}"
     
-    lance @closedbrow talking2mouth "Even with your overwhelming level advantage, it was far from a clean battle."
+    lance @closedbrow talking2mouth "Incluso con tu aplastante ventaja de nivel, estuvo lejos de ser una batalla limpia."
     
 
 show lance thinking
