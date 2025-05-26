@@ -1213,32 +1213,32 @@ else:
     
     blue "¡!"
     
-    lance @angrybrow talking2mouth "DNo creas que no te oí al entrar, fanfarroneando.{w=0.5} Celebrando la victoria antes de que el combate siquiera empezara...{w=0.5}"
+    lance @angrybrow talking2mouth "No creas que no te oí al entrar, fanfarroneando.{w=0.5} Celebrando la victoria antes de que el combate siquiera empezara...{w=0.5}"
     
-    lance @closedbrow talking2mouth "Incluso con tu aplastante ventaja de nivel, estuvo lejos de ser una batalla limpia."
+    lance @closedbrow talking2mouth "Incluso con tu aplastante ventaja de nivel, estuvo lejos de ser una batalla sencilla."
     
 
 show lance thinking
 show blue angry
 with dis
 
-redmind @happy "Call me immature, but even I can't stop myself from smiling at [blue_name] getting scolded like that.{w=0.5} It's sort of refreshing to see it happen to someone that's not me."
+redmind @happy "Llámame inmaduro, pero ni siquiera yo puedo evitar sonreír al ver a [blue_name] siendo regañado así.{w=0.5} Es algo refrescante verlo pasarle a alguien que no soy."
 
 show blue angry:
     xpos 240+1350
     ease 0.25 xpos 240+1250
     
-blue @angrybrow talkingmouth "You got a problem with the way I do things, I'll take you on myself!"
+blue @angrybrow talkingmouth "¿Tienes algún un problema con la forma en que hago las cosas? ¡Te enfrentaré yo mismo!"
 
 show janine angry
 
-blue @talkingmouth "Acting so high and mighty just 'cause of a few trophies.{w=0.5} Yeah, I know of your accomplishments... or lack thereof."
+blue @talkingmouth "Actuando tan altanero solo por unos cuantos trofeos.{w=0.5} Sí, conozco tus logros... o la falta de ellos."
 
 show lance angry
 show blue cocky
 with dis
 
-blue @talkingmouth "Yeah, you might've Champed two regions, but how many tries did that take? One of the Elite Four literally died of old age before you ever beat her!"
+blue @talkingmouth "Sí, puede que hayas sido Campeón en dos regiones, pero ¿cuántos intentos te tomó? ¡Uno de los Alto Mando literalmente murió de viejo antes de que siquiera lo derrotaras!"
 
 show blue angry
 
@@ -1281,7 +1281,7 @@ show janine angry:
     alpha 0.0 xpos 240+850
     ease 0.25 alpha 1.0
 
-janine @angrybrow talking2mouth "I've just had about enough of you and your {nw}"
+janine @angrybrow talking2mouth "Ya he tenido suficiente de ti y tu {nw}"
 
 show janine angry:
     xpos 240+850 alpha 1.0
@@ -1289,15 +1289,15 @@ show janine angry:
 show blue surprisedbrow frownmouth:
     xpos 240+1200
 
-extend @talkingmouth "disrespect towards Lance.{w=0.5} If you don't get out of my face within the next ten seconds, we're gonna have a {i}big{/i} problem."
+extend @talkingmouth " falta de respeto hacia Lance.{w=0.5} Si no te desapareces de mi vista en los próximos diez segundos, vamos a tener un {i}gran{/i} problema."
     
-redmind @thinking "'Discretion is the better part of valor,' Blue..."
+redmind @thinking "'La discreción es la mejor parte del valor,' Blue..."
 
 show blue angry with dis
 
-blue @talkingmouth "...Tch!"
+blue @talkingmouth "... ¡Tch!"
 
-blue @angrybrow talkingmouth "[first_name]! You won't always be able to rely on your friends! You'll be left alone and powerless one day--{w=0.5}and you're still just a third-rate Trainer compared to me!"
+blue @angrybrow talkingmouth "¡[first_name]! ¡No siempre podrás depender de tus amigos! Algún día estarás solo y sin poder--{w=0.5} ¡y sigues siendo solo un Entrenador de tercera categoría comparado conmigo!"
 
 show blue angry:
     xpos 240+1200
@@ -1307,7 +1307,7 @@ show janine angry:
     xpos 240+850
     ease 0.5 xpos 240+950
 
-janine @talking2mouth "Get {i}out!{/i} "
+janine @talking2mouth "¡{i}Fuera{/i}!"
     
 show blue angry:
     xpos 240+1250 alpha 1.0
@@ -1317,7 +1317,7 @@ pause 1.0
 
 hide blue
 
-redmind "I thought I was a second-rate Trainer.{w=0.33} When did I get demoted?"
+redmind "Pensé que era un Entrenador de segunda categoría.{w=0.33} ¿Cuándo me degradaron?"
 
 show janine -angry with dis:
     xpos 240+950
@@ -1327,17 +1327,17 @@ show lance -angry with dis:
     xpos 240+300
     ease 0.5 xpos 240+500
     
-lance @talking2mouth "And why haven't {i}you{/i} left yet?"
+lance @talking2mouth "¿Y por qué {i}tú{/i} no te has ido todavía?"
     
-lance @sadbrow talking2mouth "Leave. You have no more business being here."
+lance @sadbrow talking2mouth "Vete. Ya no tienes nada que hacer aquí."
 
-red @talking2mouth "On my way out."
+red @talking2mouth "Voy de salida."
 
-janine @talking2mouth "Just a second, Lance.{w=0.5} I'd like a word with him myself, if you're okay with that."
+janine @talking2mouth "Un segundo, Lance.{w=0.5} Me gustaría tener unas palabras con él personalmente, si estás de acuerdo con eso."
     
-lance @closedbrow talking2mouth "I see no point, but do what you want."
+lance @closedbrow talking2mouth "No veo el sentido, pero haz lo que quieras."
 
-lance @talking2mouth "I take my leave of you.{w=0.5} If you need me for something, you know where to find me."
+lance @talking2mouth "Me retiro.{w=0.5} Si necesitas algo de mí, sabes dónde encontrarme."
 
 show lance:
     xpos 240+500 alpha 1.0
@@ -1355,60 +1355,60 @@ show janine:
     xpos 240+1000
     ease 0.75 xpos 240+720
     
-janine @happy "Phew! Now that we have some privacy, I'd like to talk a little more about you and your Pokémon."
+janine @happy "¡Uf! Ahora que tenemos algo de privacidad, me gustaría hablar un poco más sobre ti y tus Pokémon."
 
 show janine:
     xpos 240+720
     
-janine @talking2mouth "You said you've only had your starter, that [starter_species_name], for a short while, but you two can understand what the other is saying without a hitch.{w=0.5} And it's the same way with your Pikachu."
+janine @talking2mouth "Dijiste que solo has tenido a tu inicial, ese [starter_species_name], por un corto tiempo, pero los dos pueden entender lo que el otro dice sin problemas.{w=0.5} Y lo mismo pasa con tu Pikachu."
 
-janine @closedbrow talkingmouth "I mean, you're hiding something, obviously, but I don't think you're straight-up lying."
+janine @closedbrow talkingmouth "Quiero decir, obviamente estás ocultando algo, pero no creo que estés mintiendo directamente."
 
-red @happy "You believe me?{w=0.33} Finally!{w=0.5} It was starting to feel like everybody in the room was against me."
+red @happy "¿Me crees?{w=0.33} ¡Por fin!{w=0.5} Empezaba a sentir que todos en la sala estaban en mi contra."
 
-janine @happy "Yeah, but, you might prefer that I didn't believe you. I mean, I'm going to try and use that. Use the heck out of it, actually."
+janine @happy "Sí, pero puede que prefieras que no te crea. Quiero decir, voy a intentar aprovechar eso. De hecho, voy a sacarle el máximo provecho."
 
-red @surprised "U-use? What do you mean?"
+red @surprised "¿U-usar? ¿Qué quieres decir?"
 
-janine @closedbrow talkingmouth "You said that four of your Pokémon weren't actually yours. Never trained with them before?"
+janine @closedbrow talkingmouth "Dijiste que cuatro de tus Pokémon en realidad no eran tuyos. ¿Nunca entrenaste con ellos antes?"
 
-red @talkingmouth "Uh, yeah."
+red @talkingmouth "Uh, sí."
 
-janine @closedbrow talkingmouth "Well, that's {i}really{/i} interesting. Because if you can do that with Pokémon that are stronger than the ones you have on-hand, then we could just hand you a couple strong Pokémon and have you go to town."
-janine @talking2mouth "As long as you're able to borrow, you wouldn't have to train at all... which would save us so much time..."
+janine @closedbrow talkingmouth "Bueno, eso es {i}realmente{/i} interesante. Porque si puedes hacer eso con Pokémon más fuertes que los que tienes a mano, entonces podríamos simplemente darte un par de Pokémon poderosos y dejarte volar."
+janine @talking2mouth "Mientras seas capaz de pedirlos prestados, no tendrías que entrenar en absoluto... lo que nos ahorraría mucho tiempo..."
 
-redmind @lightblush frownmouth surprisedbrow "Uh... she's looking at me like she's a spider figuring out the best way to eat me..."
+redmind @lightblush frownmouth surprisedbrow "Uh... me está mirando como si fuera una araña pensando en la mejor manera de comer a su presa..."
 
-red @surprised "I'm not sure I can help {i}that{/i} much. I mean, I'm still figuring out what I can, and, y'know, {i}can't{/i} do with Pokémon."
+red @surprised "No estoy seguro de poder ayudar {i}tanto{/i}. Quiero decir, todavía estoy descubriendo lo que puedo y, ya sabes, lo que {i}no{/i} puedo hacer con los Pokémon."
 
-janine @angrybrow talking2mouth "Uh, yeah. Duh. And this is how we figure it out. Test you until you break."
+janine @angrybrow talking2mouth "Uh, sí. Obvio. Y así es como lo averiguamos. Te pondremos a prueba hasta que te rompas."
 
-red @surprised "Could we stop right before that point?"
+red @surprised "¿Podríamos parar justo antes de llegar a ese punto?"
 
 show janine:
     xpos 240+720
     ease 0.5 xpos 240+800
     
-janine @closedbrow talkingmouth "You can tap out any time."
+janine @closedbrow talkingmouth "Puedes retirarte en cualquier momento."
 
 show janine:
     xpos 240+800
     ease 0.5 xpos 240+720
 
-janine @happy "After I let you, I mean."
+janine @happy "Después de que yo te deje, quiero decir."
 
 show janine:
     xpos 240+720
 
-redmind @surprisedbrow frownmouth "Uh... I kinda feel like something in me is awakening..."
+redmind @surprisedbrow frownmouth "Uh... siento que algo dentro de mí está despertando..."
 
-janine @talking2mouth "Hey, you alright? You look pale."
+janine @talking2mouth "¿Estás bien? Te ves pálido."
 
-red @talkingmouth "Yeah, it's, uh, it's just been a long day."
+red @talkingmouth "Sí, es que, uh, ha sido un día muy largo."
 
-janine @surprised "Oh, yeah, it's getting late, right? You should probably head back."
+janine @surprised "Oh, sí, ya se está haciendo tarde, ¿verdad? Probablemente deberías regresar."
 
-red @happy "Right. Thanks."
+red @happy "Sí. Gracias."
 
 pause 2.0
 
@@ -1416,78 +1416,78 @@ show janine:
     xpos 240+720
     ease 0.5 xpos 240+800
     
-janine @talking2mouth "Oh, hold up.{nw}{w=0.5}" 
-extend @happy " You're cool with being pushed to your absolute breaking point, right?"
+janine @talking2mouth "Oh, espera.{nw}{w=0.5}" 
+extend @happy " Estás bien con que te lleven hasta tus limites, ¿verdad?"
 
 menu:
-    "As long as it's by you.":
+    "Siempre y cuando sea por ti.":
         show janine blush surprised with dis
 
         pause 2.0
         
-        janine angrybrow blush smirkmouth "You've got a lot of nerve."
+        janine angrybrow blush smirkmouth "Tienes mucho valor."
 
-        red @angrybrow talkingmouth "As I'm willing to prove in battle. Over and over."
+        red @angrybrow talkingmouth "El cúal estoy dispuesto a demostrar en batalla. Una y otra vez."
 
-        janine -blush -angrybrow -smirkmouth @closedbrow talkingmouth "...Borrow some stronger Pokémon. Your current Pokémon just won't cut it for the tryouts, never mind that you only have two of them."
+        janine -blush -angrybrow -smirkmouth @closedbrow talkingmouth "... Pide prestados algunos Pokémon más fuertes. Los que tienes ahora no serán suficientes para las pruebas, y ni hablar de que solo tienes dos."
 
-        red @surprised "Wait, what are you saying?"
+        red @surprised "Espera, ¿qué estás diciendo?"
 
-        janine @talking2mouth "Well, I'm going to see you at the Battle Team tryouts on the 19th."
+        janine @talking2mouth "Bueno, te veré en las pruebas del equipo de batalla el 19."
 
-        janine @talkingmouth "Right?"
+        janine @talkingmouth "¿Verdad?"
 
-        red @angrybrow talking2mouth "Absolutely."
+        red @angrybrow talking2mouth "Absolutamente."
 
         pause 1.0
 
         $ ValueChange("Janine", 2, (240 + 800) /1920)
 
-        janine angrybrow blush smirkmouth "{w=0.25}.{w=0.25}.{w=0.25}.Good boy."
+        janine angrybrow blush smirkmouth "{w=0.25}.{w=0.25}.{w=0.25}. Buen chico."
 
-    "Absolutely.":
-        janine @closedbrow talkingmouth "...Borrow some stronger Pokémon. Your current Pokémon just won't cut it for the tryouts, never mind that you only have two of them."
+    "Absolutamente.":
+        janine @closedbrow talkingmouth "... Pide prestados algunos Pokémon más fuertes. Los que tienes ahora no serán suficientes para las pruebas, y ni hablar de que solo tienes dos."
 
-        red @surprised "Wait, what are you saying?"
+        red @surprised "Espera, ¿qué estás diciendo?"
 
-        janine @talking2mouth "Well, I'm going to see you at the Battle Team tryouts on the 19th."
+        janine @talking2mouth "Bueno, te veré en las pruebas del equipo de batalla el 19."
 
-        janine @talkingmouth "Right?"
+        janine @talkingmouth "¿Verdad?"
 
-        red @angrybrow talking2mouth "Absolutely."
+        red @angrybrow talking2mouth "Absolutamente."
 
         pause 1.0
 
         $ ValueChange("Janine", 1, (240 + 800) /1920)
 
-        janine @smirkmouth "Correct answer."
+        janine @smirkmouth "Respuesta correcta."
 
-    "I'd rather not.":
-        janine @closedbrow talkingmouth "Hm... well, there's a way where you wouldn't have to train as hard, I guess."
+    "Preferiria que no.":
+        janine @closedbrow talkingmouth "Hm... bueno, hay una manera en la que no tendrías que entrenar tanto, supongo."
 
-        janine @closedbrow talkingmouth "...Borrow some stronger Pokémon. Your current Pokémon just won't cut it for the tryouts, never mind that you only have two of them."
+        janine @closedbrow talkingmouth "... Pide prestados algunos Pokémon más fuertes. Los que tienes ahora no serán suficientes para las pruebas, y ni hablar de que solo tienes dos."
 
-        red @surprised "Wait, what are you saying?"
+        red @surprised "Espera, ¿qué estás diciendo?"
 
-        janine @talking2mouth "Well, I'm going to see you at the Battle Team tryouts on the 19th."
+        janine @talking2mouth "Bueno, te veré en las pruebas del equipo de batalla el 19."
 
-        janine @talkingmouth "Right?"
+        janine @talkingmouth "¿Verdad?"
 
-        red @angrybrow talking2mouth "Absolutely."
+        red @angrybrow talking2mouth "Absolutamente."
 
         pause 1.0
 
-        janine @smirkmouth "Correct answer."
+        janine @smirkmouth "Respuesta correcta."
 
-janine @happy "Now, get to bed.{w=0.5} If you're not back soon, security will catch you."
+janine @happy "Ahora, ve a la cama.{w=0.5} Si no vuelves pronto, seguridad te atrapará."
 
-redmind @thinking "Yeah, I'd have more luck escaping them if I was a pizza... at least according to Hilbert."
+redmind @thinking "Sí, tendría más suerte escapando de ellos si fuera una pizza... al menos según Hilbert."
 
 show janine:
     xpos 240+800
     ease 1.0 xpos 240+900
 
-janine @talking2mouth "Remember. April 19th. Be there."
+janine @talking2mouth "Acuérdate. 19 de abril. No faltes."
 
 window hide
 

@@ -1,52 +1,78 @@
-2025-05-02 00:22:09 UTC
-Windows-7-6.1.7601-SP1
+2025-05-23 05:52:09 UTC
+Windows-10-10.0.26100
 Ren'Py 8.3.2.24090902
 
 Pokemon Academy Life Forever
 12.23b.2024
 Built at 2024-12-23 22:33:37 UTC
 
-Early init took 1.32s
-Loading error handling took 0.37s
-Loading script took 3.61s
-Loading save slot metadata took 0.51s
+Early init took 0.24s
+Loading error handling took 0.17s
+Loading script took 1.65s
+Loading save slot metadata took 0.29s
 Loading persistent took 0.00s
 Set script version to: (8, 3, 2)
- - Init at game/portraits.rpy:7 took 0.75004 s.
-Running init code took 1.16s
-Loading analysis data took 0.25s
-Analyze and compile ATL took 0.38s
-Reloading save slot metadata took 0.32s
+ - Init at game/portraits.rpy:7 took 0.32029 s.
+Running init code took 0.51s
+Loading analysis data took 0.13s
+Analyze and compile ATL took 0.18s
+Reloading save slot metadata took 0.06s
 Index archives took 0.00s
 Dump and make backups took 0.00s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.27s
+Initial gc took 0.28s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.27s
+Init translation took 0.28s
 Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.11s
-Save screen analysis took 0.09s
-Prepare screens took 0.49s
+Load screen analysis took 0.09s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.23s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.37s
+Save bytecode. took 0.00s
 Running _start took 0.00s
-Interface start took 0.36s
+Interface start took 0.37s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
 Fullscreen mode.
-Vendor: "b'Intel'"
-Renderer: b'Intel(R) HD Graphics 2000'
-Version: b'3.1.0 - Build 9.17.10.4229'
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon(TM) Graphics'
+Version: b'4.6.0 Compatibility Profile Context 25.5.1.250226'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
+adding Kate to persondex
+adding Summer to persondex
+adding Shauna to persondex
+deleting activeitem
+Added event to replace whitneyhashappiny
+Added event to replace nessahasbonsly
+deleting hildahasbonsly var
+added event to indicate brendan caught shrew
+added event to indicate tia got wynaut
+added event to indicate nate (temporarily) got toxel
+added event to indicate flannery got magby
+Converting inventory item Rare Candy to ID 227
+Converting inventory item Poké Ball to ID 0
+Converting inventory item Premier Ball to ID 3
+Converting inventory item Ultra Ball to ID 2
+Converting inventory item Great Ball to ID 1
+Converting inventory item Experience Share to ID 100
+Converting inventory item Lucky Egg to ID 101
+Converting Pokémon item Magnet, held by Zig, to ID 82
+Converting Pokémon item Pink Bow, held by Luna, to ID 95
+Converting Pokémon item Miracle Seed, held by Ceres, to ID 81
+Converting Pokémon item Black Belt, held by Leo, to ID 84
+Converting Blue's Eevee's Soothe Bell to ID 102
+Converting Blue's Gyarados's Experience Share to ID 100
 Adding celebi wing
+Performing the gardenia bank replacement
 making sure melody won't call you 'None'
+adding lentdratini event to leaf

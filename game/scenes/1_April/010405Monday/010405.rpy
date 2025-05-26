@@ -1401,7 +1401,7 @@ $ showredonly = False
 
 redmind @thinking "Y ahora posa como si acabara de hacer una acrobacia en el Pokéathlon."
 
-whitney @talking2mouth "¡Aquí estoy!{W=0.5} ¡No llego tarde, sólo estaba esperando el momento perfecto para hacer mi gran entrada!"
+whitney @talking2mouth "¡Aquí estoy!{w=0.5} ¡No llego tarde, sólo estaba esperando el momento perfecto para hacer mi gran entrada!"
 
 show whitney:
     xpos 500 zoom 1.0
