@@ -23,7 +23,7 @@ $ PlaySound("BellChime.ogg")
 $ renpy.pause(2.0, hard=True)
 $ renpy.music.set_volume(1.0, delay=1.0, channel="music")
 
-oak @talkingmouth "Parece que han sido{w=0.25}.{w=0.25}.{w=0.5} ¡salvados por la campana!"
+oak @talkingmouth "Parece que han sido.{w=0.25}.{w=0.25}.{w=0.5} ¡Salvados por la campana!"
 
 $ renpy.music.play("Audio/school_crowd.ogg", channel='crowd', loop=True, fadein=1.5)
 
@@ -1487,7 +1487,7 @@ show janine:
     xpos 240+800
     ease 1.0 xpos 240+900
 
-janine @talking2mouth "Acuérdate. 19 de abril. No faltes."
+janine @talking2mouth "Recuerda, 19 de abril. No faltes."
 
 window hide
 
@@ -1532,17 +1532,17 @@ show may:
     xpos 240+900
 with Dissolve(2.0)
 
-redmind @thinking "What a day..."
+redmind @thinking "Pero que día..."
 
-redmind @thinking "I agreed to meet with Brendan and May for dinner without a second thought, but I haven't paid any attention to the conversation the entire time."
+redmind @thinking "Acepté acompañar a Brendan y May para cenar sin pensarlo dos veces, pero no les preste atención a la conversación."
 
-brendan @talking2mouth "How'd your day go, man?{w=0.5} You seem kinda down."
+brendan @talking2mouth "¿Cómo te fue hoy, hombre?{w=0.5} Pareces algo decaído."
 
-red @happy "Me? Nah, I'm fine.{w=0.33} Just a little tired. Still haven't found where to buy energy bars in this school."
+red @happy "¿Yo? Nah, estoy bien.{w=0.33} Solo estoy un poco cansado porque todavía no he encontrado el lugar donde vendan barritas energéticas."
 
-may -happy @sadbrow happymouth "You've been tired a lot lately.{w=0.5} You should try and take it easy one of these days."
+may -happy @sadbrow happymouth "Has estado muy cansado últimamente.{w=0.5} Deberías tratar de tomarte uno de estos días con más calma."
 
-red @happy "Oh, believe me. I've been trying."
+red @happy "Oh, créeme. Lo he estado intentando."
 
 show brendan surprisedbrow frownmouth with dis:
     xpos 240+600
@@ -1557,7 +1557,7 @@ show leaf:
     xpos 240+200 alpha 0.0
     ease 0.7 xpos 240+400 alpha 1.0
     
-leaf @talkingmouth "I'll bet you're tired.{w=0.5} I'm surprised you managed to crawl out of that situation in one piece."
+leaf @talkingmouth "Apuesto a que estás cansado.{w=0.5} Me sorprende que hayas logrado salir de esa situación sin un rasguño."
 
 show brendan -surprisedbrow -frownmouth -surprised with dis:
     xpos 240+800
@@ -1568,49 +1568,49 @@ show may:
 show leaf:
     xpos 240+400 alpha 1.0
     
-leaf @flirttalk "Seems like you just love getting into trouble."
+leaf @flirttalk "Parece que simplemente te encanta meterte en problemas."
 
-red @closedbrow talkingmouth "Man, trouble seeks me out. And trouble has spiky, reddish-brown hair."
+red @closedbrow talkingmouth "Hombre, los problemas me buscan. Y los problemas tienen el cabello rojizo y puntiagudo."
 
-leaf @happy "Well, I know what'll cheer you up!{w=0.5} What are you guys doing for the weekend?"
+leaf @happy "Bueno, ¡sé de algo que te animará!{w=0.5} ¿Qué planean hacer para el fin de semana?"
 
-brendan @closedbrow talkingmouth "Oh boy, let's see... got a ton of homework for both homeroom and my electives.{w=0.5}{nw}"
+brendan @closedbrow talkingmouth "Vaya, a ver... tengo un montón de tarea tanto para la clase principal como para mis optativas.{w=0.5}{nw}"
 
-extend frownmouth @surprised " Get this, we need to read three chapters and write a three-page rep--"
+extend frownmouth @surprised " Escucha esto, tenemos que leer tres capítulos y escribir un infor--"
 
-leaf @happy "Well, {i}I{/i} was thinking that we can go to the fields outside of school to catch some wild Pokémon!"
+leaf @happy "Bueno, {i}yo{/i} estaba pensando que podríamos ir a los campos fuera de la escuela para atrapar algunos Pokémon salvajes."
 
-red @closedbrow talking2mouth "Is that even allowed?"
+red @closedbrow talking2mouth "¿Eso siquiera está permitido?"
 
-leaf @talking2mouth "Yep! I asked around and all of the teachers gave me the okay."
+leaf @talking2mouth "¡Sí! Pregunté por ahí y todos los profesores me dieron el visto bueno."
 
-leaf @closedbrow talkingmouth "Apparently, all the Pokémon in the fields were originally imported from other regions just for the students here!"
+leaf @closedbrow talkingmouth "Al parecer, todos los Pokémon en los campos fueron importados de otras regiones para los estudiantes de nuestra academia."
 
-may @happymouth "Really? They just imported Pokémon from other regions?"
-may @closedbrow talking2mouth "I hope they remembered to do their research on maintaining the native ecosystem..."
+may @happymouth "¿De verdad? ¿Simplemente importaron Pokémon de otras regiones?"
+may @closedbrow talking2mouth "Espero que hayan investigado sobre cómo preservar el ecosistema nativo..."
 
-red @closedbrow talking2mouth "That is {i}really{/i} convenient.{w=0.5} I didn't even know importing Pokémon was a thing...{w=0.5} Or legal."
+red @closedbrow talking2mouth "Eso es {i}realmente{/i} conveniente.{w=0.5} Ni siquiera sabía que importar Pokémon era una posibilidad...{w=0.5} O que fuera legal."
 
-may @talkingmouth "We should invite Serena and the other guys, too.{w=0.5}{nw}"
+may @talkingmouth "Deberíamos invitar también a Serena y a los demás.{w=0.5}{nw}"
 
-extend @sadbrow happymouth " I bet they'd get pretty upset if they found out we forgot about them."
+extend @sadbrow happymouth " Apuesto a que se molestarían bastante si descubrieran que nos olvidamos de ellos."
 
-red @happy "Definitely. This sounds good to me!"
+red @happy "Definitivamente. ¡Esto va a estar genial!"
 
-leaf @happy "Okay, so it's decided!{w=0.5}{nw}"
+leaf @happy "¡Muy bien, entonces está decidido!{w=0.5}{nw}"
 
 show brendan surprisedbrow frownmouth with dis
 
-extend @flirttalk " Let's all meet up at the entrance first thing in the morning and catch some wild Pokémon!"
+extend @flirttalk " ¡Reunámonos todos en la entrada a primera hora de la mañana y atrapemos algunos Pokémon salvajes!"
 
-may @happybrow talkingmouth "Yay! I'll be looking forward to it!"
+may @happybrow talkingmouth "¡Yay! ¡Lo estaré esperando con ansias!"
 
-brendan sadbrow frownmouth @closedbrow talkingmouth "But...{w=0.5} my homework..."
+brendan sadbrow frownmouth @closedbrow talkingmouth "Pero...{w=0.5} mi tarea..."
 
-redmind @happy "I should bring [pika_name] and [starter_name] with me, too.{w=0.5} Might be a good chance to see them in action against some wild Pokémon."
-redmind @thinking "Speaking of which, everyone else is probably bringing their Pokémon, too.{w=0.5} Now, that'll be interesting to see..."
-redmind @thinking "I should keep an eye on which Pokémon my friends might let me borrow for the upcoming Battle Team tryouts... oh, geez, I still need to tell everyone about that..."
-redmind @happy "I mean, she basically invited me to apply! I guess she doesn't know about Lance's dogma. But she saw how he acted, and didn't seem to care about that, so..."
+redmind @happy "Debería llevar a [pika_name] y a [starter_name] conmigo.{w=0.5} Podría ser una buena oportunidad para verlos en acción contra algunos Pokémon salvajes."
+redmind @thinking "Hablando de eso, probablemente todos los demás también traigan a sus Pokémon.{w=0.5} Eso si que será algo interesante de ver."
+redmind @thinking "Debería estar atento a qué Pokémon mis amigos podrían dejarme usar para las próximas pruebas del equipo de batalla... ah, me había olvidado, todavía necesito contarles a todos sobre eso."
+redmind @happy "Quiero decir, ¡básicamente me invitó a postularme! Supongo que no conoce el dogma de Lance. Pero ella vio cómo estaba y no pareció importarle, así que..."
 
 window hide
 
@@ -1625,6 +1625,6 @@ call clearscreens from _call_clearscreens_44
 
 $ renpy.pause(2.5, hard=True)
 
-narrator "Your mind races, but you eventually manage to drift off into a deep, but excited, sleep."
+narrator "Tu cabeza da mil vueltas sobre diferentes temas, como un Bunnelby en el campo, pero luego de un rato caes en un profundo sueño."
 
 jump day010410

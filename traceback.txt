@@ -18,9 +18,9 @@ Full traceback:
     call freeroam from _call_freeroam_18
   File "game/misc/freeroam.rpy", line 3, in script
     python:
-  File "C:\Users\Santiago\Desktop\PALF-Traduccion\renpy\ast.py", line 821, in execute
+  File "c:\Users\Santiago\Desktop\PALF-Traduccion\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Santiago\Desktop\PALF-Traduccion\renpy\python.py", line 1178, in py_exec_bytecode
+  File "c:\Users\Santiago\Desktop\PALF-Traduccion\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
   File "game/misc/freeroam.rpy", line 5, in <module>
     AddPikachu()
@@ -29,6 +29,6 @@ Full traceback:
 NameError: name 'pikachuobj' is not defined
 
 Windows-10-10.0.26100 AMD64
-Ren'Py 8.3.2.24090902
+Ren'Py 8.3.7.25031702
 Pokemon Academy Life Forever 12.23b.2024
-Fri May 23 02:08:14 2025
+Mon May 26 23:36:01 2025

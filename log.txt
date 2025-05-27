@@ -1,22 +1,22 @@
-2025-05-23 05:52:09 UTC
+2025-05-27 02:35:37 UTC
 Windows-10-10.0.26100
-Ren'Py 8.3.2.24090902
+Ren'Py 8.3.7.25031702
 
 Pokemon Academy Life Forever
 12.23b.2024
 Built at 2024-12-23 22:33:37 UTC
 
-Early init took 0.24s
-Loading error handling took 0.17s
-Loading script took 1.65s
-Loading save slot metadata took 0.29s
+Early init took 0.37s
+Loading error handling took 0.25s
+Loading script took 7.76s
+Loading save slot metadata took 0.45s
 Loading persistent took 0.00s
 Set script version to: (8, 3, 2)
- - Init at game/portraits.rpy:7 took 0.32029 s.
-Running init code took 0.51s
-Loading analysis data took 0.13s
+ - Init at game/portraits.rpy:7 took 0.32214 s.
+Running init code took 0.60s
+Loading analysis data took 0.16s
 Analyze and compile ATL took 0.18s
-Reloading save slot metadata took 0.06s
+Reloading save slot metadata took 0.24s
 Index archives took 0.00s
 Dump and make backups took 0.00s
 Cleaning cache took 0.00s
@@ -25,18 +25,18 @@ Initial gc took 0.28s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
+Creating interface object took 0.03s
 Cleaning stores took 0.00s
-Init translation took 0.28s
+Init translation took 0.00s
 Build styles took 0.00s
-Load screen analysis took 0.09s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.05s
+Save screen analysis took 0.05s
 Prepare screens took 0.23s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Save bytecode. took 0.23s
 Running _start took 0.00s
-Interface start took 0.37s
+Interface start took 1.26s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -48,31 +48,31 @@ Version: b'4.6.0 Compatibility Profile Context 25.5.1.250226'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
-adding Kate to persondex
-adding Summer to persondex
-adding Shauna to persondex
-deleting activeitem
-Added event to replace whitneyhashappiny
-Added event to replace nessahasbonsly
-deleting hildahasbonsly var
-added event to indicate brendan caught shrew
-added event to indicate tia got wynaut
-added event to indicate nate (temporarily) got toxel
-added event to indicate flannery got magby
-Converting inventory item Rare Candy to ID 227
-Converting inventory item Poké Ball to ID 0
-Converting inventory item Premier Ball to ID 3
-Converting inventory item Ultra Ball to ID 2
-Converting inventory item Great Ball to ID 1
-Converting inventory item Experience Share to ID 100
-Converting inventory item Lucky Egg to ID 101
-Converting Pokémon item Magnet, held by Zig, to ID 82
-Converting Pokémon item Pink Bow, held by Luna, to ID 95
-Converting Pokémon item Miracle Seed, held by Ceres, to ID 81
-Converting Pokémon item Black Belt, held by Leo, to ID 84
-Converting Blue's Eevee's Soothe Bell to ID 102
-Converting Blue's Gyarados's Experience Share to ID 100
 Adding celebi wing
-Performing the gardenia bank replacement
 making sure melody won't call you 'None'
-adding lentdratini event to leaf
+
+Full traceback:
+  File "game/scenes/1_April/010405Monday/010405gym.rpy", line 423, in script call
+    call freeroam from _call_freeroam_18
+  File "game/misc/freeroam.rpy", line 3, in script
+    python:
+  File "c:\Users\Santiago\Desktop\PALF-Traduccion\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "c:\Users\Santiago\Desktop\PALF-Traduccion\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/misc/freeroam.rpy", line 5, in <module>
+    AddPikachu()
+  File "game/functions.rpy", line 504, in AddPikachu
+    if (pikachuobj not in playerparty):
+NameError: name 'pikachuobj' is not defined
+
+While running game code:
+  File "game/scenes/1_April/010405Monday/010405gym.rpy", line 423, in script call
+    call freeroam from _call_freeroam_18
+  File "game/misc/freeroam.rpy", line 3, in script
+    python:
+  File "game/misc/freeroam.rpy", line 5, in <module>
+    AddPikachu()
+  File "game/functions.rpy", line 504, in AddPikachu
+    if (pikachuobj not in playerparty):
+NameError: name 'pikachuobj' is not defined
